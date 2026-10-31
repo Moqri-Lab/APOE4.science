@@ -524,7 +524,7 @@ trials = [
     ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", "https://clinicaltrials.gov/study/NCT03887455"),
     ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", "https://clinicaltrials.gov/study/NCT04437511"),
+     pill("ok", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab.", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
      pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4.", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
