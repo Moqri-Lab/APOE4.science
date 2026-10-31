@@ -436,10 +436,18 @@ groups = [
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
          "A rare APOE variant that appears to protect against early-onset disease, pointing to APOE as a drug target.", "https://doi.org/10.1038/s41591-019-0611-3"),
+        ("Reiman EM, et al. Exceptionally low likelihood of Alzheimer’s dementia in APOE2 homozygotes from a 5,000-person neuropathological study. <i>Nature Communications</i> 2020.",
+         "The opposite end of the APOE spectrum: ε2/ε2 carries exceptionally low risk compared with ε4/ε4.", "https://doi.org/10.1038/s41467-019-14279-8"),
         ("Le Guen Y, et al. Association of rare APOE missense variants V236E and R251G with risk of Alzheimer disease. <i>JAMA Neurology</i> 2022.",
          "R251G, inherited together with ε4, roughly halves its risk effect, showing that ε4 risk can be offset.", "https://doi.org/10.1001/jamaneurol.2022.1166"),
         ("Nelson MR, et al. The APOE-R136S mutation protects against APOE4-driven Tau pathology, neurodegeneration and neuroinflammation. <i>Nature Neuroscience</i> 2023.",
          "The Christchurch change blocks APOE4-driven tau damage in mice, supporting APOE-directed therapies.", "https://doi.org/10.1038/s41593-023-01480-8"),
+    ]),
+    ("Targeting APOE", [
+        ("Huynh TV, et al. Age-dependent effects of apoE reduction using antisense oligonucleotides in a model of β-amyloidosis. <i>Neuron</i> 2017.",
+         "Lowering APOE before plaques form strongly reduces amyloid pathology in mice; later lowering changes plaque size and toxicity.", "https://doi.org/10.1016/j.neuron.2017.11.014"),
+        ("Liao F, et al. Targeting of nonlipidated, aggregated apoE with antibodies inhibits amyloid accumulation. <i>Journal of Clinical Investigation</i> 2018.",
+         "The HAE-4 antibody, which binds aggregated apoE, lowers plaque burden in APOE4 mice.", "https://doi.org/10.1172/JCI96429"),
     ]),
     ("Reviews", [
         ("Belloy ME, Napolioni V, Greicius MD. A quarter century of APOE and Alzheimer’s disease: progress to date and the path forward. <i>Neuron</i> 2019.",
@@ -546,10 +554,10 @@ drugs = [
          "Phase 2a prevention trial in biomarker-positive ε4 carriers planned; not yet recruiting."),
     ]),
     ("Earlier-stage approaches", [
-        ("APOE4-targeting antibodies", "Antibodies that bind APOE4, such as HAE-4",
-         "Reduce amyloid and tau pathology in animal models; not yet in clinical trials as far as published reports show."),
+        ("Anti-APOE antibodies", "Antibodies against aggregated apoE, such as HAE-4",
+         "Lower amyloid plaques in APOE4 mice; not yet in clinical trials as far as published reports show."),
         ("APOE4 lowering", "Antisense oligonucleotides and gene silencing",
-         "Aim to reduce APOE4 production; in preclinical or early development."),
+         "Aim to reduce APOE production; lowering APOE before plaques form reduced amyloid in mice. Preclinical or early development."),
         ("APOE2 plus APOE4 silencing", "Gene therapy (for example Lexeo’s LX1020)",
          "Adds protective APOE2 while suppressing APOE4; preclinical."),
         ("Gene editing", "CRISPR-based conversion of APOE4",
