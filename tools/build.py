@@ -227,7 +227,8 @@ pages["resources.html"] = head("Resources", "Where to find ε4/ε4 data",
           <thead><tr><th>Resource</th><th>What it offers for APOE4 research</th><th>Access</th></tr></thead>
           <tbody>
             <tr><td><a href="https://naccdata.org/">NACC</a></td><td>Clinical follow-up and neuropathology from US Alzheimer’s Disease Research Centers, with APOE genotype for most participants. Basis of the Fortea 2024 analysis.</td><td>Online request form</td></tr>
-            <tr><td><a href="https://www.niagads.org/">NIAGADS / ADSP</a></td><td>Genome-wide and whole-genome sequencing data, including more diverse ancestries. Can be linked to NACC records.</td><td>Formal data access request</td></tr>
+            <tr><td><a href="https://www.niagads.org/">NIAGADS</a></td><td>NIA’s repository for Alzheimer’s genetics, including genome-wide data from the Alzheimer’s Disease Genetics Consortium. Records can be linked to NACC.</td><td>Formal data access request</td></tr>
+            <tr><td><a href="https://adsp.niagads.org/">ADSP</a></td><td>Alzheimer’s Disease Sequencing Project: whole-genome sequencing in tens of thousands of people, including diverse ancestries, with harmonized phenotypes.</td><td>Through NIAGADS</td></tr>
             <tr><td><a href="https://ncrad.org/">NCRAD</a></td><td>Stored DNA, plasma, serum and spinal fluid from research-center participants with known outcomes.</td><td>Biosample request</td></tr>
             <tr><td><a href="https://adni.loni.usc.edu/">ADNI</a></td><td>Repeated amyloid and tau PET, MRI, fluid biomarkers and cognition, with APOE genotype.</td><td>Data use agreement</td></tr>
             <tr><td><a href="https://www.a4studydata.org/">A4 Study</a></td><td>Cognitively unimpaired older adults with amyloid PET, repeated MRI including microbleeds, and APOE genotype.</td><td>Data use agreement</td></tr>
