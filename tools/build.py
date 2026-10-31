@@ -44,6 +44,9 @@ td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:no
 @media (max-width:820px){.resource{grid-template-columns:minmax(0,1fr);gap:14px}.resource dl.facts div{grid-template-columns:minmax(0,1fr)}}
 .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:8px 14px;z-index:20}
 .skip:focus{left:max(16px, env(safe-area-inset-left, 0px));top:8px}
+dl.glossary div{grid-template-columns:260px minmax(0,1fr)}
+dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:14.5px;color:var(--ink);font-weight:600}
+@media (max-width:820px){dl.glossary div{grid-template-columns:minmax(0,1fr)}}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -56,6 +59,7 @@ PAGES = [  # (file, nav label, title)
     ("papers.html", "Papers", "Key papers"),
     ("trials.html", "Trials", "Clinical trials"),
     ("drugs.html", "Drugs", "Drugs"),
+    ("glossary.html", "Glossary", "Glossary"),
     ("newsletter.html", "Newsletter", "Newsletter"),
 ]
 
@@ -229,6 +233,16 @@ pages["gene.html"] = head("The gene", "One letter apart",
           <div class="fig">4.8×</div>
           <p>Higher odds of accumulating two or more small brain bleeds over follow-up in ε4/ε4 adults without symptoms. This matters for the safety of anti-amyloid drugs.</p>
           <p class="src">A4 Study, <i>Alzheimer’s &amp; Dementia</i> 2025</p>
+        </article>
+        <article class="finding">
+          <div class="fig">84 → 68</div>
+          <p>Mean age at onset fell from 84 to 68 as the number of ε4 copies rose, in 42 families with late-onset Alzheimer’s. Two copies were nearly sufficient to cause disease by age 80 in these families.</p>
+          <p class="src">Corder et al., <i>Science</i> 1993</p>
+        </article>
+        <article class="finding">
+          <div class="fig">51–60%</div>
+          <p>Estimated lifetime risk of Alzheimer’s by age 85 for ε4/ε4 (about 51% in men and 60% in women), versus about 11–14% for the general population. Family studies give higher estimates.</p>
+          <p class="src">Genin et al., <i>Molecular Psychiatry</i> 2011</p>
         </article>
       </div>
       <p class="note" style="margin-top:20px">Full references are on the <a href="papers.html">Papers</a> page.</p>
@@ -424,6 +438,16 @@ for g, items in groups:
     body += f'    <div class="group">\n      <h2>{g}</h2>\n{refs(items)}\n    </div>\n'
 body += "    </section>"
 pages["papers.html"] = body
+
+# ---------- Glossary ----------
+GLOSSARY = [('Allele', 'One version of a gene. APOE has three common alleles: ε2, ε3 and ε4.'), ('Homozygote / heterozygote', 'A homozygote carries two copies of the same allele (ε4/ε4). A heterozygote carries two different alleles (for example ε3/ε4).'), ('Penetrance', 'The share of people with a genotype who develop the disease. ε4/ε4 shows high but incomplete penetrance.'), ('Amyloid-β (Aβ)', 'A protein fragment that clumps into plaques between brain cells; the earliest known change in Alzheimer’s.'), ('Tau', 'A protein that forms tangles inside neurons. Tau spread tracks closely with symptoms.'), ('Cerebral amyloid angiopathy (CAA)', 'Amyloid deposited in the walls of brain blood vessels, which weakens them and raises the risk of bleeds. More common with ε4.'), ('Microbleed', 'A tiny, usually silent bleed in the brain, seen on certain MRI scans.'), ('ARIA', 'Amyloid-related imaging abnormalities: brain swelling (ARIA-E) or small bleeds and iron deposits (ARIA-H) seen on MRI, mainly with anti-amyloid antibodies. Risk is highest in ε4/ε4.'), ('Amyloid PET / tau PET', 'Brain scans that measure amyloid plaques or tau tangles in living people.'), ('Plasma biomarkers', 'Blood tests for Alzheimer’s-related proteins, such as p-tau217, Aβ42/40, NfL and GFAP.'), ('MCI', 'Mild cognitive impairment: measurable decline in memory or thinking that does not yet disrupt daily life.'), ('CDR-SB, ADAS-Cog, iADRS', 'Rating scales used as outcomes in Alzheimer’s trials to measure cognition and daily function.'), ('Preclinical Alzheimer’s', 'Alzheimer’s brain changes, such as amyloid, without symptoms. Prevention trials enroll at this stage.'), ('Natural history study', 'An observational study that follows people over time without an experimental treatment, to learn how a disease unfolds.'), ('Gene therapy', 'Delivering genetic material, often with a harmless virus (AAV), to change what cells produce, for example adding APOE2.'), ('APOE3 Christchurch', 'A rare APOE variant that appeared to protect a carrier of an early-onset Alzheimer’s mutation, pointing to APOE as a drug target.')]
+pages["glossary.html"] = head("Glossary", "Terms used on this site",
+    "Short definitions of the genetics, biomarker and trial terms that come up in APOE4 research.") + """
+    <section>
+      <dl class="facts glossary">
+""" + "\n".join(f'        <div><dt>{t}</dt><dd>{d}</dd></div>' for t, d in GLOSSARY) + """
+      </dl>
+    </section>"""
 
 # ---------- Trials ----------
 def pill(kind, text):
