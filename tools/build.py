@@ -42,6 +42,8 @@ td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:no
 .resource-head h2 a{color:var(--ink);text-decoration-color:var(--e4)}
 .resource dl.facts div{grid-template-columns:110px minmax(0,1fr)}
 @media (max-width:820px){.resource{grid-template-columns:minmax(0,1fr);gap:14px}.resource dl.facts div{grid-template-columns:minmax(0,1fr)}}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:8px 14px;z-index:20}
+.skip:focus{left:max(16px, env(safe-area-inset-left, 0px));top:8px}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -76,6 +78,11 @@ def shell(fname, title, body, extra_head=""):
         for f, label, _ in PAGES
     )
     doc_title = "APOE4 Science" if fname == "index.html" else f"{title} · APOE4 Science"
+    jsonld = ""
+    if fname == "index.html":
+        jsonld = ('\n<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite",'
+                  '"name":"APOE4 Science","url":"' + SITE + '","description":"' + DESC + '",'
+                  '"maintainer":{"@type":"Person","name":"Mahdi Moqri"}}</script>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -93,13 +100,15 @@ def shell(fname, title, body, extra_head=""):
 <meta property="og:image" content="{SITE}og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">{extra_head}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{SITE}{'' if fname == 'index.html' else fname}">{jsonld}{extra_head}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="top">
     <a class="mark" href="index.html">apoe<span>4</span>.science</a>
@@ -107,7 +116,7 @@ def shell(fname, title, body, extra_head=""):
 {nav}
     </nav>
   </header>
-  <main>
+  <main id="main">
 {body}
   </main>
   <footer>
@@ -521,5 +530,8 @@ NOT_FOUND = head("Page not found", "This page doesn’t exist",
         <p>Try the <a href="index.html">home page</a>, or go straight to <a href="gene.html">Gene and evidence</a>, <a href="resources.html">Resources</a>, <a href="papers.html">Papers</a>, <a href="trials.html">Trials</a> or <a href="drugs.html">Drugs</a>.</p>
       </div>
     </section>"""
+OUT.joinpath("robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n")
+OUT.joinpath("sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    + "".join(f"  <url><loc>{SITE}{'' if f == 'index.html' else f}</loc></url>\n" for f, _, _ in PAGES) + "</urlset>\n")
 OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
 print("built", len(PAGES), "pages")
