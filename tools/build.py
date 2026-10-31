@@ -538,7 +538,7 @@ pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
 # ---------- Drugs ----------
 drugs = [
     ("Approved for early Alzheimer’s", [
-        ("Lecanemab (Leqembi)", "Anti-amyloid antibody, IV or subcutaneous",
+        ("Lecanemab (Leqembi)", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
          "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment. In the EU (April 2025), approved only for people who are not ε4 homozygotes."),
         ("Donanemab (Kisunla)", "Anti-amyloid antibody, IV",
          "Higher risk of ARIA in ε4/ε4. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes."),
