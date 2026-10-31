@@ -12,4 +12,4 @@ The pages are generated. Edit the content in `tools/build.py` (and shared styles
 python3 tools/build.py
 ```
 
-This rewrites the `.html` pages and `style.css`. Commit the regenerated files; GitHub Pages serves them from the `main` branch root.
+This rewrites the `.html` pages (including `404.html`) and `style.css`. To redraw the link-preview image `og.png`, run `python3 tools/make_og.py` (needs Pillow). Commit the regenerated files; GitHub Pages serves them from the `main` branch root.

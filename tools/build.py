@@ -33,6 +33,7 @@ table.data td:first-child{font-weight:600;white-space:nowrap}
 .signup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;align-items:center}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
+td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -57,7 +58,11 @@ def ct(q):
     return "https://clinicaltrials.gov/search?term=" + urllib.parse.quote_plus(q)
 
 
-def shell(fname, title, body):
+SITE = "https://apoe4.science/"
+DESC = "A community resource on APOE ε4 homozygosity: evidence, data, trials and drugs."
+
+
+def shell(fname, title, body, extra_head=""):
     nav = "\n".join(
         f'      <a href="{f}"{" aria-current=\"page\"" if f == fname else ""}>{label}</a>'
         for f, label, _ in PAGES
@@ -70,7 +75,17 @@ def shell(fname, title, body):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{doc_title}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="A community resource on APOE ε4 homozygosity: evidence, data, trials and drugs.">
+<meta name="description" content="{DESC}">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APOE4 Science">
+<meta property="og:title" content="{doc_title}">
+<meta property="og:description" content="{DESC}">
+<meta property="og:url" content="{SITE}{'' if fname == 'index.html' else fname}">
+<meta property="og:image" content="{SITE}og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">{extra_head}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -316,21 +331,22 @@ trials = [
     ("HT-4253", "HT-4253 (Halia Therapeutics)", "ε4 carriers, prevention (Phase 2)",
      pill("run", "Planned 2026") + " Listed as not yet recruiting.", "https://clinicaltrials.gov/study/NCT07399171"),
 ]
+TRIAL_ASOF = {'APOLLOE4': 'Apr 2025', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Oct 2024', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Not verified', 'HT-4253': '2026 registry'}
 rows = "\n".join(
-    f'            <tr><td><a href="{link}">{name}</a></td><td>{drug}</td><td>{pop}</td><td>{res}</td></tr>'
+    f'            <tr><td><a href="{link}">{name}</a></td><td>{drug}</td><td>{pop}</td><td>{res}</td><td class="asof">{TRIAL_ASOF[name]}</td></tr>'
     for name, drug, pop, res, link in trials)
 pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
     "Trials run only in ε4 homozygotes or carriers, and major trials that report safety and results by genotype.") + f"""
     <section>
       <div class="alleles" role="region" aria-label="Trials" tabindex="0">
         <table class="data">
-          <thead><tr><th>Trial</th><th>Intervention</th><th>Who</th><th>Status and result</th></tr></thead>
+          <thead><tr><th>Trial</th><th>Intervention</th><th>Who</th><th>Status and result</th><th>As of</th></tr></thead>
           <tbody>
 {rows}
           </tbody>
         </table>
       </div>
-      <p class="note">Trial status changes often. Check each registry entry for the latest. To find trials enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
+      <p class="note">Trial status changes often. “As of” is the date of the result or status shown; check each registry entry for the latest. To find trials enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
     </section>"""
 
 # ---------- Drugs ----------
@@ -380,4 +396,13 @@ pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news 
 OUT.joinpath("style.css").write_text(BASE_CSS.strip() + "\n" + EXTRA_CSS)
 for fname, label, title in PAGES:
     OUT.joinpath(fname).write_text(shell(fname, title, pages[fname]))
+
+NOT_FOUND = head("Page not found", "This page doesn’t exist",
+    "It may have moved when the site was reorganized.") + """
+    <section>
+      <div class="prose">
+        <p>Try the <a href="index.html">home page</a>, or go straight to <a href="gene.html">Gene and evidence</a>, <a href="resources.html">Resources</a>, <a href="papers.html">Papers</a>, <a href="trials.html">Trials</a> or <a href="drugs.html">Drugs</a>.</p>
+      </div>
+    </section>"""
+OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
 print("built", len(PAGES), "pages")
