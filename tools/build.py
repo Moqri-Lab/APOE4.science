@@ -339,10 +339,10 @@ RESOURCES = [
     dict(id="seaad", name="SEA-AD", url="https://portal.brain-map.org/explore/seattle-alzheimers-disease",
          full="Seattle Alzheimer’s Disease Brain Cell Atlas",
          host="Allen Institute, University of Washington and Kaiser Permanente Washington",
-         size="Detailed brain atlas from a community-based cohort of brain donors",
+         size="Middle temporal gyrus from 84 donors spanning the Alzheimer’s spectrum, plus neurotypical reference brains",
          data="Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology",
-         apoe="Cell-type-resolved brain changes with donor APOE genotype.",
-         access="Open access for most data",
+         apoe="Cell-type-resolved brain changes across disease stages; check donor metadata for APOE genotype.",
+         access="Open access; also distributed through the AD Knowledge Portal and a public AWS bucket",
          best="Cell-type brain atlas"),
 ]
 
