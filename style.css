@@ -109,7 +109,7 @@ nav a[aria-current="page"]{color:var(--ink);font-weight:600;text-decoration:unde
 .page-head{padding-block:56px 8px;display:grid;gap:12px}
 .page-head h1{font-size:clamp(34px,5vw,52px)}
 .page-head .lede{font-size:18px;color:var(--muted);max-width:62ch}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .card{display:grid;gap:8px;align-content:start;padding:24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);background:var(--surface)}
 .card:hover h3{color:var(--e4)}
 .card h3{font-size:22px}
