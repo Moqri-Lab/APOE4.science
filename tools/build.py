@@ -102,7 +102,7 @@ def shell(fname, title, body, extra_head=""):
     if fname == "index.html":
         jsonld = ('\n<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite",'
                   '"name":"APOE4 Science","url":"' + SITE + '","description":"' + DESC + '",'
-                  '"maintainer":{"@type":"Person","name":"Mahdi Moqri"}}</script>')
+                  '"maintainer":{"@type":"Person","name":"Mahdi Moqri","honorificSuffix":"PhD","url":"https://moqri.bwh.harvard.edu/"}}</script>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -141,7 +141,7 @@ def shell(fname, title, body, extra_head=""):
 {body}
   </main>
   <footer>
-    <span>apoe4.science · Maintained by Mahdi Moqri, PhD, in a personal capacity. An educational resource, not medical advice.</span>
+    <span>apoe4.science · Maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. An educational resource, not medical advice.</span>
     <span class="updated">Last reviewed October 2026 · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
   </footer>
 </div>
@@ -206,7 +206,7 @@ pages["index.html"] = f"""    <div class="hero">
         <h1 style="margin-top:14px">Two copies of APOE4 may be a <em>genetic form</em> of Alzheimer’s disease.</h1>
         <p class="lede">Evidence, data resources, papers, trials and drugs on APOE ε4 homozygosity, gathered in one place for the community.</p>
       </div>
-      <div class="geno" aria-label="Genotype epsilon 4 slash epsilon 4">ε4/ε4<small>About 2–3% of people</small></div>
+      <div class="geno" aria-label="Genotype epsilon 4 slash epsilon 4">ε4/ε4<small><a href="https://www.eurekalert.org/news-releases/1043340">About 2–3% of people</a></small></div>
     </div>
     <section>
       <div class="cards">
@@ -251,32 +251,32 @@ pages["gene.html"] = head("The gene", "One letter apart",
         <article class="finding">
           <div class="fig">~65</div>
           <p>Typical age at symptom onset in ε4/ε4 carriers, with a narrower range than in ε3/ε3. Almost all show Alzheimer’s pathology at autopsy.</p>
-          <p class="src">Fortea et al., <i>Nature Medicine</i> 2024 (NACC brain donors and five biomarker cohorts)</p>
+          <p class="src"><a href="https://doi.org/10.1038/s41591-024-02931-w">Fortea et al., <i>Nature Medicine</i> 2024</a> (NACC brain donors and five biomarker cohorts)</p>
         </article>
         <article class="finding">
           <div class="fig">55</div>
           <p>Age from which Alzheimer’s biomarkers are already higher than in ε3/ε3. By 65, nearly all have abnormal spinal-fluid amyloid and about 75% have a positive amyloid scan.</p>
-          <p class="src">Fortea et al., <i>Nature Medicine</i> 2024</p>
+          <p class="src"><a href="https://doi.org/10.1038/s41591-024-02931-w">Fortea et al., <i>Nature Medicine</i> 2024</a></p>
         </article>
         <article class="finding">
           <div class="fig">~13×</div>
           <p>Higher odds of moderate to severe amyloid in brain blood vessel walls (cerebral amyloid angiopathy) at autopsy with two ε4 copies.</p>
-          <p class="src">Greenberg et al., <i>Annals of Neurology</i> 1995</p>
+          <p class="src"><a href="https://doi.org/10.1002/ana.410380219">Greenberg et al., <i>Annals of Neurology</i> 1995</a></p>
         </article>
         <article class="finding">
           <div class="fig">4.8×</div>
           <p>Higher odds of accumulating two or more small brain bleeds over follow-up in ε4/ε4 adults without symptoms. This matters for the safety of anti-amyloid drugs.</p>
-          <p class="src">A4 Study, <i>Alzheimer’s &amp; Dementia</i> 2025</p>
+          <p class="src"><a href="https://doi.org/10.1002/alz.70751">A4 Study, <i>Alzheimer’s &amp; Dementia</i> 2025</a></p>
         </article>
         <article class="finding">
           <div class="fig">84 → 68</div>
           <p>Mean age at onset fell from 84 to 68 as the number of ε4 copies rose, in 42 families with late-onset Alzheimer’s. Two copies were nearly sufficient to cause disease by age 80 in these families.</p>
-          <p class="src">Corder et al., <i>Science</i> 1993</p>
+          <p class="src"><a href="https://doi.org/10.1126/science.8346443">Corder et al., <i>Science</i> 1993</a></p>
         </article>
         <article class="finding">
           <div class="fig">51–60%</div>
           <p>Estimated lifetime risk of Alzheimer’s by age 85 for ε4/ε4 (about 51% in men and 60% in women), versus about 11–14% for the general population. Family studies give higher estimates.</p>
-          <p class="src">Genin et al., <i>Molecular Psychiatry</i> 2011</p>
+          <p class="src"><a href="https://doi.org/10.1038/mp.2011.52">Genin et al., <i>Molecular Psychiatry</i> 2011</a></p>
         </article>
       </div>
       <div class="group" style="margin-top:40px">
@@ -293,7 +293,7 @@ pages["gene.html"] = head("The gene", "One letter apart",
             </tbody>
           </table>
         </div>
-        <p class="src note">Belloy et al., <i>JAMA Neurology</i> 2023</p>
+        <p class="src note"><a href="https://doi.org/10.1001/jamaneurol.2023.3599">Belloy et al., <i>JAMA Neurology</i> 2023</a></p>
       </div>
       <p class="note" style="margin-top:20px">Full references are on the <a href="papers.html">Papers</a> page.</p>
     </section>"""
@@ -459,13 +459,13 @@ groups = [
         ("Montagne A, Nation DA, Sagare AP, et al. APOE4 leads to blood–brain barrier dysfunction predicting cognitive decline. <i>Nature</i> 2020.",
          "A vascular route for APOE4 effects, independent of amyloid and tau.", "https://doi.org/10.1038/s41586-020-2247-3"),
         ("Independent effects of white matter lesion volume and APOE ε4 on ARIA-H in the A4 Study. <i>Alzheimer’s &amp; Dementia</i> 2025.",
-         "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://pubmed.ncbi.nlm.nih.gov/41085172/"),
+         "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://doi.org/10.1002/alz.70751"),
     ]),
     ("Blood biomarkers", [
         ("APOE ε4 carriership determines a faster plasma p-tau217 progression in Aβ-positive individuals. <i>Alzheimer’s &amp; Dementia</i> 2025.",
          "In amyloid-positive people, p-tau217 rises faster in ε4 carriers (TRIAD and ADNI).", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12741900/"),
-        ("APOE4 impact on soluble and insoluble tau pathology is mostly influenced by amyloid-β. 2025.",
-         "A contrasting view: in BioFINDER and WRAP, APOE4 effects on p-tau217 largely run through amyloid.", "https://pubmed.ncbi.nlm.nih.gov/39817469/"),
+        ("APOE4 impact on soluble and insoluble tau pathology is mostly influenced by amyloid-β. <i>Brain</i> 2025.",
+         "A contrasting view: in BioFINDER and WRAP, APOE4 effects on p-tau217 largely run through amyloid.", "https://doi.org/10.1093/brain/awaf016"),
     ]),
     ("Mechanisms", [
         ("Shi Y, Yamada K, Liddelow SA, et al. ApoE4 markedly exacerbates tau-mediated neurodegeneration in a mouse model of tauopathy. <i>Nature</i> 2017.",
@@ -535,38 +535,45 @@ def pill(kind, text):
 
 trials = [
     ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral", "325 ε4/ε4 with early Alzheimer’s (Phase 3)",
-     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup.",
+     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\">Topline results</a>",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine)", "Cognitively unimpaired ε4/ε4, aged 60–75",
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
      "https://clinicaltrials.gov/study/NCT02565511"),
     ("Generation Study 2", "Umibecestat", "Cognitively unimpaired ε4 carriers at high risk",
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
-     ct("Generation Study 2 umibecestat")),
+     "https://clinicaltrials.gov/study/NCT03131453"),
     ("LX1001", "AAV gene therapy delivering APOE2", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
-     pill("run", "Interim data") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.",
-     ct("LX1001")),
+     pill("ok", "Completed") + " <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\">Topline results</a>: 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.",
+     "https://clinicaltrials.gov/study/NCT03634007"),
     ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4.", "https://clinicaltrials.gov/study/NCT03887455"),
+     pill("ok", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. <a href=\"https://doi.org/10.1056/NEJMoa2212948\">Results</a>", "https://clinicaltrials.gov/study/NCT03887455"),
     ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab.", "https://clinicaltrials.gov/study/NCT04437511"),
+     pill("ok", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a href=\"https://doi.org/10.1001/jama.2023.13239\">Results</a>", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
-     pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4.", "https://clinicaltrials.gov/study/NCT05738486"),
+     pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a href=\"https://doi.org/10.1002/alz.70062\">Results</a>", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
-     pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time.", "https://clinicaltrials.gov/study/NCT02008357"),
+     pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a href=\"https://doi.org/10.1056/NEJMoa2305032\">Results</a>", "https://clinicaltrials.gov/study/NCT02008357"),
     ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
-     pill("run", "Not yet recruiting") + " 112 planned. Aims to lower an amyloid risk score in blood.", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("run", "Recruiting") + " 112 planned. Aims to lower an amyloid risk score in blood.", "https://clinicaltrials.gov/study/NCT07399171"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': '2026 registry'}
-rows = "\n".join(
-    f'            <tr><td data-label="Trial"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
-    for name, drug, pop, res, link in trials)
-pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
-    "Trials run only in ε4 homozygotes or carriers, and major trials that report safety and results by genotype.") + f"""
-    <section>
-      <div class="alleles" role="region" aria-label="Trials" tabindex="0">
+TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026'}
+TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
+    ("Run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
+    ("Major trials that report results by genotype", ["AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
+]
+TRIAL_BY_NAME = {t[0]: t for t in trials}
+assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
+trial_sections = ""
+for g, names in TRIAL_GROUPS:
+    rows = "\n".join(
+        f'            <tr><td data-label="Trial"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
+    trial_sections += f"""    <div class="group">
+      <h2>{g}</h2>
+      <div class="alleles" role="region" aria-label="{g}" tabindex="0">
         <table class="data">
           <thead><tr><th>Trial</th><th>Intervention</th><th>Who</th><th>Status and result</th><th>As of</th></tr></thead>
           <tbody>
@@ -574,41 +581,46 @@ pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
           </tbody>
         </table>
       </div>
-      <p class="note">Trial status changes often. “As of” is the date of the result or status shown; check each registry entry for the latest. To find trials enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
+    </div>
+"""
+pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
+    "Trials run only in ε4 homozygotes or carriers, and major trials that report safety and results by genotype. Within each group, ongoing trials come first, then the most recent results.") + f"""
+    <section>
+{trial_sections}      <p class="note">Trial status changes often. “As of” is the date of the result or status shown; check each registry entry for the latest. To find trials enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
     </section>"""
 
 # ---------- Drugs ----------
 drugs = [
     ("Approved for early Alzheimer’s", [
         ("Lecanemab (Leqembi)", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
-         "Higher risk of ARIA, including symptomatic and serious ARIA, in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment; patients who decline testing can still be treated. In the EU (April 2025), approved only for people who are not ε4 homozygotes."),
+         "Higher risk of ARIA, including symptomatic and serious ARIA, in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment; patients who decline testing can still be treated. In the EU (April 2025), approved only for people who are not ε4 homozygotes. Sources: <a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">US label</a>, <a href=\"https://www.alzheimer-europe.org/news/alzheimer-europe-welcomes-news-european-commission-has-authorised-lecanemab-treatment-early\">EU authorisation</a>."),
         ("Donanemab (Kisunla)", "Anti-amyloid antibody, IV",
-         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes."),
+         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes. Sources: <a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">US label</a>, <a href=\"https://clinicaltrials.gov/study/NCT05738486\">TRAILBLAZER-ALZ 6</a>, <a href=\"https://investor.lilly.com/node/52961\">EU authorisation</a>."),
         ("Donepezil, rivastigmine, galantamine, memantine", "Symptomatic treatments",
          "Treat symptoms; do not slow the disease. Used regardless of APOE genotype."),
     ]),
     ("Investigational, aimed at ε4/ε4", [
         ("Valiltramiprosate (ALZ-801)", "Oral; blocks formation of toxic amyloid oligomers",
-         "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA."),
+         "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\">Results</a>"),
         ("LX1001", "Gene therapy that adds the protective APOE2 form",
-         "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA in interim data. FDA Fast Track."),
+         "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\">Results</a>"),
         ("HT-4253", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
-         "Phase 2a prevention trial in biomarker-positive ε4 carriers planned; not yet recruiting."),
+         "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a>."),
     ]),
     ("Earlier-stage approaches", [
         ("Anti-APOE antibodies", "Antibodies against aggregated apoE, such as HAE-4",
-         "Lower amyloid plaques in APOE4 mice; not yet in clinical trials as far as published reports show."),
+         "Lower amyloid plaques in APOE4 mice; not yet in clinical trials as far as published reports show. <a href=\"https://doi.org/10.1172/JCI96429\">Source</a>"),
         ("APOE4 lowering", "Antisense oligonucleotides and gene silencing",
-         "Aim to reduce APOE production; lowering APOE before plaques form reduced amyloid in mice. Preclinical or early development."),
+         "Aim to reduce APOE production; lowering APOE before plaques form reduced amyloid in mice. Preclinical or early development. <a href=\"https://doi.org/10.1016/j.neuron.2017.11.014\">Source</a>"),
         ("APOE2 plus APOE4 silencing", "Gene therapy (for example Lexeo’s LX1020)",
-         "Adds protective APOE2 while suppressing APOE4; preclinical."),
+         "Adds protective APOE2 while suppressing APOE4; preclinical. <a href=\"https://www.lexeotx.com/programs/cns-programs/\">Source</a>"),
         ("Gene editing", "CRISPR-based conversion of APOE4",
          "Proof-of-concept studies only; efficiency must improve before clinical use."),
     ]),
     ("Stopped or withdrawn", [
-        ("Aducanumab (Aduhelm)", "Anti-amyloid antibody", "Discontinued by the manufacturer in 2024."),
-        ("Umibecestat (CNP520)", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening."),
-        ("CAD106", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program."),
+        ("Aducanumab (Aduhelm)", "Anti-amyloid antibody", "Discontinued by the manufacturer in January 2024. <a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Source</a>"),
+        ("Umibecestat (CNP520)", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
+        ("CAD106", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
     ]),
 ]
 body = head("Drugs", "Treatments and what they mean for ε4/ε4",

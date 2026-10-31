@@ -2,7 +2,7 @@
 
 Source for [apoe4.science](https://apoe4.science), a community resource on APOE ε4 homozygosity: evidence, data resources, papers, trials and drugs.
 
-Maintained by Mahdi Moqri, PhD, in a personal capacity.
+Maintained by [Mahdi Moqri, PhD](https://moqri.bwh.harvard.edu/), in a personal capacity.
 
 ## Editing
 
