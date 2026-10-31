@@ -592,19 +592,19 @@ pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
 # ---------- Drugs ----------
 drugs = [
     ("Approved for early Alzheimer’s", [
-        ("Lecanemab (Leqembi)", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
+        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">Lecanemab (Leqembi)</a>", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
          "Higher risk of ARIA, including symptomatic and serious ARIA, in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment; patients who decline testing can still be treated. In the EU (April 2025), approved only for people who are not ε4 homozygotes. Sources: <a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">US label</a>, <a href=\"https://www.alzheimer-europe.org/news/alzheimer-europe-welcomes-news-european-commission-has-authorised-lecanemab-treatment-early\">EU authorisation</a>."),
-        ("Donanemab (Kisunla)", "Anti-amyloid antibody, IV",
+        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">Donanemab (Kisunla)</a>", "Anti-amyloid antibody, IV",
          "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes. Sources: <a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">US label</a>, <a href=\"https://clinicaltrials.gov/study/NCT05738486\">TRAILBLAZER-ALZ 6</a>, <a href=\"https://investor.lilly.com/node/52961\">EU authorisation</a>."),
         ("Donepezil, rivastigmine, galantamine, memantine", "Symptomatic treatments",
-         "Treat symptoms; do not slow the disease. Used regardless of APOE genotype."),
+         "Treat symptoms; do not slow the disease. Used regardless of APOE genotype. <a href=\"https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated\">Source</a>"),
     ]),
     ("Investigational, aimed at ε4/ε4", [
-        ("Valiltramiprosate (ALZ-801)", "Oral; blocks formation of toxic amyloid oligomers",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT04770220\">Valiltramiprosate (ALZ-801)</a>", "Oral; blocks formation of toxic amyloid oligomers",
          "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\">Results</a>"),
-        ("LX1001", "Gene therapy that adds the protective APOE2 form",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a>", "Gene therapy that adds the protective APOE2 form",
          "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\">Results</a>"),
-        ("HT-4253", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
          "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a>."),
     ]),
     ("Earlier-stage approaches", [
@@ -615,12 +615,12 @@ drugs = [
         ("APOE2 plus APOE4 silencing", "Gene therapy (for example Lexeo’s LX1020)",
          "Adds protective APOE2 while suppressing APOE4; preclinical. <a href=\"https://www.lexeotx.com/programs/cns-programs/\">Source</a>"),
         ("Gene editing", "CRISPR-based conversion of APOE4",
-         "Proof-of-concept studies only; efficiency must improve before clinical use."),
+         "Proof-of-concept studies only, such as prime editing of APOE4 in mice with brain-directed AAV; efficiency must improve before clinical use. <a href=\"https://doi.org/10.1177/10430342251401888\">Source</a>"),
     ]),
     ("Stopped or withdrawn", [
-        ("Aducanumab (Aduhelm)", "Anti-amyloid antibody", "Discontinued by the manufacturer in January 2024. <a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Source</a>"),
-        ("Umibecestat (CNP520)", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
-        ("CAD106", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
+        ("<a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Aducanumab (Aduhelm)</a>", "Anti-amyloid antibody", "Discontinued by the manufacturer in January 2024. <a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Source</a>"),
+        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">Umibecestat (CNP520)</a>", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
+        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">CAD106</a>", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program. <a href=\"https://clinicaltrials.gov/study/NCT02565511\">Registry</a>"),
     ]),
 ]
 body = head("Drugs", "Treatments and what they mean for ε4/ε4",
