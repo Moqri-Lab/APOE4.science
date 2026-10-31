@@ -513,7 +513,7 @@ trials = [
      pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup.",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine)", "Cognitively unimpaired ε4/ε4, aged 60–75",
-     pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening; CAD106 arm also halted.",
+     pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
      "https://clinicaltrials.gov/study/NCT02565511"),
     ("Generation Study 2", "Umibecestat", "Cognitively unimpaired ε4 carriers at high risk",
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
