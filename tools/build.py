@@ -131,7 +131,7 @@ def head(label, h1, lede):
 def refs(items):
     out = []
     for cite, why, link in items:
-        out.append(f'        <li>{cite} <a href="{link}">Find</a><p class="why">{why}</p></li>')
+        out.append(f'        <li>{cite} <a href="{link}">Read</a><p class="why">{why}</p></li>')
     return '      <ul class="refs">\n' + "\n".join(out) + "\n      </ul>"
 
 
@@ -358,15 +358,15 @@ pages["resources.html"] = head("Resources", "Where to find ε4/ε4 data",
 groups = [
     ("Genetics and risk", [
         ("Corder EH, Saunders AM, Strittmatter WJ, et al. Gene dose of apolipoprotein E type 4 allele and the risk of Alzheimer’s disease in late onset families. <i>Science</i> 1993.",
-         "First showed that risk rises and age at onset falls with each ε4 copy.", pm("Corder gene dose apolipoprotein E type 4 allele 1993")),
+         "First showed that risk rises and age at onset falls with each ε4 copy.", "https://doi.org/10.1126/science.8346443"),
         ("Strittmatter WJ, Saunders AM, Schmechel D, et al. Apolipoprotein E: high-avidity binding to β-amyloid and increased frequency of type 4 allele in late-onset familial Alzheimer disease. <i>PNAS</i> 1993.",
-         "Linked APOE to Alzheimer’s and to amyloid binding.", pm("Strittmatter apolipoprotein E high-avidity binding beta-amyloid 1993")),
+         "Linked APOE to Alzheimer’s and to amyloid binding.", "https://doi.org/10.1073/pnas.90.5.1977"),
         ("Farrer LA, Cupples LA, Haines JL, et al. Effects of age, sex, and ethnicity on the association between apolipoprotein E genotype and Alzheimer disease: a meta-analysis. <i>JAMA</i> 1997.",
-         "Classic estimates of risk by genotype, age, sex and ancestry.", pm("Farrer effects of age sex ethnicity apolipoprotein E genotype meta-analysis 1997")),
+         "Classic estimates of risk by genotype, age, sex and ancestry.", "https://doi.org/10.1001/jama.1997.03550160069041"),
         ("Genin E, Hannequin D, Wallon D, et al. APOE and Alzheimer disease: a major gene with semi-dominant inheritance. <i>Molecular Psychiatry</i> 2011.",
-         "Lifetime risk estimates for ε4/ε4.", pm("Genin APOE Alzheimer disease major gene semi-dominant inheritance")),
+         "Lifetime risk estimates for ε4/ε4.", "https://doi.org/10.1038/mp.2011.52"),
         ("Belloy ME, Andrews SJ, Le Guen Y, et al. APOE genotype and Alzheimer disease risk across age, sex, and population ancestry. <i>JAMA Neurology</i> 2023.",
-         "Large modern estimates across ancestries.", pm("Belloy APOE genotype Alzheimer disease risk across age sex population ancestry")),
+         "Large modern estimates across ancestries.", "https://doi.org/10.1001/jamaneurol.2023.3599"),
         ("Fortea J, Pegueroles J, Alcolea D, et al. APOE4 homozygosity represents a distinct genetic form of Alzheimer’s disease. <i>Nature Medicine</i> 2024.",
          "Near-full penetrance of pathology and predictable onset in ε4/ε4.", "https://doi.org/10.1038/s41591-024-02931-w"),
     ]),
@@ -374,43 +374,43 @@ groups = [
         ("Greenberg SM, Rebeck GW, Vonsattel JP, Gomez-Isla T, Hyman BT. Apolipoprotein E ε4 and cerebral hemorrhage associated with amyloid angiopathy. <i>Annals of Neurology</i> 1995.",
          "About 13-fold higher odds of moderate to severe amyloid angiopathy with two ε4 copies.", "https://doi.org/10.1002/ana.410380219"),
         ("Jansen WJ, Ossenkoppele R, Knol DL, et al. Prevalence of cerebral amyloid pathology in persons without dementia: a meta-analysis. <i>JAMA</i> 2015.",
-         "Amyloid positivity by age and APOE genotype in people without dementia.", pm("Jansen prevalence cerebral amyloid pathology persons without dementia meta-analysis")),
+         "Amyloid positivity by age and APOE genotype in people without dementia.", "https://doi.org/10.1001/jama.2015.4668"),
         ("Montagne A, Nation DA, Sagare AP, et al. APOE4 leads to blood–brain barrier dysfunction predicting cognitive decline. <i>Nature</i> 2020.",
-         "A vascular route for APOE4 effects, independent of amyloid and tau.", pm("Montagne APOE4 leads to blood-brain barrier dysfunction predicting cognitive decline")),
+         "A vascular route for APOE4 effects, independent of amyloid and tau.", "https://doi.org/10.1038/s41586-020-2247-3"),
         ("Independent effects of white matter lesion volume and APOE ε4 on ARIA-H in the A4 Study. <i>Alzheimer’s &amp; Dementia</i> 2025.",
          "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://pubmed.ncbi.nlm.nih.gov/41085172/"),
     ]),
     ("Mechanisms", [
         ("Shi Y, Yamada K, Liddelow SA, et al. ApoE4 markedly exacerbates tau-mediated neurodegeneration in a mouse model of tauopathy. <i>Nature</i> 2017.",
-         "APOE4 worsens tau damage, partly through microglia.", pm("Shi ApoE4 markedly exacerbates tau-mediated neurodegeneration")),
+         "APOE4 worsens tau damage, partly through microglia.", "https://doi.org/10.1038/nature24016"),
         ("Lin YT, Seo J, Gao F, et al. APOE4 causes widespread molecular and cellular alterations associated with Alzheimer’s disease phenotypes in human iPSC-derived brain cell types. <i>Neuron</i> 2018.",
-         "Matched human cell models of APOE3 versus APOE4.", pm("Lin APOE4 causes widespread molecular cellular alterations iPSC-derived brain cell types")),
+         "Matched human cell models of APOE3 versus APOE4.", "https://doi.org/10.1016/j.neuron.2018.05.008"),
         ("Blanchard JW, Akay LA, Davila-Velderrain J, et al. APOE4 impairs myelination via cholesterol dysregulation in oligodendrocytes. <i>Nature</i> 2022.",
-         "Cholesterol handling and myelin loss in human ε4 brains and cells.", pm("Blanchard APOE4 impairs myelination cholesterol dysregulation oligodendrocytes")),
+         "Cholesterol handling and myelin loss in human ε4 brains and cells.", "https://doi.org/10.1038/s41586-022-05439-w"),
         ("Haney MS, Pálovics R, Munson CN, et al. APOE4/4 is linked to damaging lipid droplets in Alzheimer’s disease microglia. <i>Nature</i> 2024.",
-         "Lipid-laden microglia in ε4/ε4 brains.", pm("Haney APOE4/4 damaging lipid droplets Alzheimer's disease microglia")),
+         "Lipid-laden microglia in ε4/ε4 brains.", "https://doi.org/10.1038/s41586-024-07185-7"),
     ]),
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
-         "A rare APOE variant that appears to protect against early-onset disease, pointing to APOE as a drug target.", pm("Arboleda-Velasquez resistance autosomal dominant Alzheimer APOE3 Christchurch homozygote")),
+         "A rare APOE variant that appears to protect against early-onset disease, pointing to APOE as a drug target.", "https://doi.org/10.1038/s41591-019-0611-3"),
     ]),
     ("Reviews", [
         ("Belloy ME, Napolioni V, Greicius MD. A quarter century of APOE and Alzheimer’s disease: progress to date and the path forward. <i>Neuron</i> 2019.",
-         "Broad review of APOE genetics and biology.", pm("Belloy Napolioni Greicius quarter century APOE Alzheimer's disease")),
+         "Broad review of APOE genetics and biology.", "https://doi.org/10.1016/j.neuron.2019.01.056"),
         ("Yamazaki Y, Zhao N, Caulfield TR, Liu CC, Bu G. Apolipoprotein E and Alzheimer disease: pathobiology and targeting strategies. <i>Nature Reviews Neurology</i> 2019.",
-         "Mechanisms and therapeutic approaches.", pm("Yamazaki apolipoprotein E Alzheimer disease pathobiology targeting strategies")),
+         "Mechanisms and therapeutic approaches.", "https://doi.org/10.1038/s41582-019-0228-7"),
     ]),
     ("Trial results by genotype", [
         ("van Dyck CH, Swanson CJ, Aisen P, et al. Lecanemab in early Alzheimer’s disease. <i>New England Journal of Medicine</i> 2023.",
-         "Clarity AD; ARIA rates reported by APOE genotype.", pm("van Dyck lecanemab in early Alzheimer's disease")),
+         "Clarity AD; ARIA rates reported by APOE genotype.", "https://doi.org/10.1056/NEJMoa2212948"),
         ("Sims JR, Zimmer JA, Evans CD, et al. Donanemab in early symptomatic Alzheimer disease: the TRAILBLAZER-ALZ 2 randomized clinical trial. <i>JAMA</i> 2023.",
-         "ARIA rates reported by APOE genotype.", pm("Sims donanemab early symptomatic Alzheimer disease TRAILBLAZER-ALZ 2")),
+         "ARIA rates reported by APOE genotype.", "https://doi.org/10.1001/jama.2023.13239"),
         ("Efficacy and safety of oral valiltramiprosate in APOE4/4 homozygotes with early AD: topline results from the APOLLOE4 Phase 3 trial. 2025.",
          "The first completed Phase 3 trial run only in ε4/ε4.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/"),
     ]),
 ]
 body = head("Key papers", "The studies that define what we know",
-    "Grouped by topic. “Find” opens the paper or a PubMed search for it.") + "\n    <section>\n"
+    "Grouped by topic. Each link opens the paper.") + "\n    <section>\n"
 for g, items in groups:
     body += f'    <div class="group">\n      <h2>{g}</h2>\n{refs(items)}\n    </div>\n'
 body += "    </section>"
