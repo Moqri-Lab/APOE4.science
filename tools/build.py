@@ -295,7 +295,6 @@ pages["gene.html"] = head("The gene", "One letter apart",
         </div>
         <p class="src note"><a href="https://doi.org/10.1001/jamaneurol.2023.3599">Belloy et al., <i>JAMA Neurology</i> 2023</a></p>
       </div>
-      <p class="note" style="margin-top:20px">Full references are on the <a href="papers.html">Papers</a> page.</p>
     </section>"""
 
 # ---------- Resources ----------
