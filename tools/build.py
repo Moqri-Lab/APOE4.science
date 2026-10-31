@@ -267,7 +267,7 @@ RESOURCES = [
     dict(id="nacc", name="NACC", url="https://naccdata.org/",
          full="National Alzheimer’s Coordinating Center",
          host="University of Washington; funded by NIA",
-         size="About 45,000 participants followed since 2005 across roughly 35 Alzheimer’s Disease Research Centers",
+         size="About 45,000 participants in the Uniform Data Set as of 2021, followed since 2005 across roughly 35 Alzheimer’s Disease Research Centers",
          data="Yearly clinical and cognitive assessments, diagnoses, medications, neuropathology for brain donors, and linked imaging and biomarker data",
          apoe="APOE genotype for most participants. The Fortea 2024 study used 3,297 genotyped NACC brain donors to show near-full penetrance of pathology in ε4/ε4.",
          access="Online data request form; free; usually days to a few weeks",
