@@ -34,6 +34,14 @@ table.data td:first-child{font-weight:600;white-space:nowrap}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
 td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.resources{display:grid;gap:0}
+.resource{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:32px;padding-block:32px;border-bottom:1px solid var(--rule);scroll-margin-top:24px}
+.resource:first-child{padding-top:0}
+.resource-head{display:grid;gap:8px;align-content:start}
+.resource-head h2{font-size:28px}
+.resource-head h2 a{color:var(--ink);text-decoration-color:var(--e4)}
+.resource dl.facts div{grid-template-columns:110px minmax(0,1fr)}
+@media (max-width:820px){.resource{grid-template-columns:minmax(0,1fr);gap:14px}.resource dl.facts div{grid-template-columns:minmax(0,1fr)}}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -217,27 +225,133 @@ pages["gene.html"] = head("The gene", "One letter apart",
       <p class="note" style="margin-top:20px">Full references are on the <a href="papers.html">Papers</a> page.</p>
     </section>"""
 
-# ---------- Evidence ----------
-# ---------- Researchers ----------
+# ---------- Resources ----------
+RESOURCES = [
+    dict(id="nacc", name="NACC", url="https://naccdata.org/",
+         full="National Alzheimer’s Coordinating Center",
+         host="University of Washington; funded by NIA",
+         size="About 45,000 participants followed since 2005 across roughly 35 Alzheimer’s Disease Research Centers",
+         data="Yearly clinical and cognitive assessments, diagnoses, medications, neuropathology for brain donors, and linked imaging and biomarker data",
+         apoe="APOE genotype for most participants. The Fortea 2024 study used 3,297 genotyped NACC brain donors to show near-full penetrance of pathology in ε4/ε4.",
+         access="Online data request form; free; usually days to a few weeks",
+         best="Clinical trajectories, age at onset and pathology"),
+    dict(id="niagads", name="NIAGADS", url="https://www.niagads.org/",
+         full="NIA Genetics of Alzheimer’s Disease Data Storage Site",
+         host="University of Pennsylvania; NIA’s designated repository for Alzheimer’s genetic data",
+         size="Dozens of genetic datasets, including the Alzheimer’s Disease Genetics Consortium (ADGC) genome-wide studies",
+         data="Genotype arrays, sequencing, summary statistics and associated phenotypes",
+         apoe="Genetic records of NACC participants can be linked to their NACC clinical data on request, enabling genotype-stratified trajectories.",
+         access="Formal data access request with a research use statement, institutional signing official and data use agreement; renewed yearly. NIH security standards apply.",
+         best="Genetic modifiers, ancestry effects"),
+    dict(id="adsp", name="ADSP", url="https://adsp.niagads.org/",
+         full="Alzheimer’s Disease Sequencing Project",
+         host="NIA and NHGRI; data distributed through NIAGADS",
+         size="Whole-genome sequencing in tens of thousands of people, with growing African American, Hispanic and Asian representation",
+         data="Whole genomes and exomes, plus harmonized cognition, diagnosis and biomarker data from the ADSP Phenotype Harmonization Consortium",
+         apoe="Enough ε4/ε4 carriers across ancestries to look for variants that delay or hasten onset in homozygotes.",
+         access="Through NIAGADS, with the same request process. ADSP also asks for a plan to return derived data.",
+         best="Protective and risk variants within ε4/ε4"),
+    dict(id="ncrad", name="NCRAD", url="https://ncrad.org/",
+         full="National Centralized Repository for Alzheimer’s Disease and Related Dementias",
+         host="Indiana University; funded by NIA",
+         size="Biosamples from Alzheimer’s Disease Research Centers and many NIA-funded cohorts",
+         data="DNA, plasma, serum, spinal fluid and cell lines, linked to clinical data",
+         apoe="Stored samples from people with known genotype and outcomes, for measuring new biomarkers such as proteomic or epigenetic aging clocks.",
+         access="Biosample request reviewed by NCRAD and the contributing studies",
+         best="New biomarker measurements on existing cohorts"),
+    dict(id="adni", name="ADNI", url="https://adni.loni.usc.edu/",
+         full="Alzheimer’s Disease Neuroimaging Initiative",
+         host="Multi-site North American study; data shared through LONI at the University of Southern California",
+         size="Several thousand participants across study phases since 2004",
+         data="Repeated MRI, amyloid and tau PET, spinal fluid and plasma biomarkers, cognition and genetics",
+         apoe="Repeated imaging lets you compare when amyloid, tau and small bleeds appear in ε4/ε4 versus other genotypes.",
+         access="Online application and data use agreement through LONI’s Image and Data Archive",
+         best="Biomarker and imaging timelines"),
+    dict(id="a4", name="A4 Study", url="https://www.a4studydata.org/",
+         full="Anti-Amyloid Treatment in Asymptomatic Alzheimer’s study, with the companion LEARN study",
+         host="Alzheimer’s Therapeutic Research Institute (USC)",
+         size="1,169 randomized amyloid-positive older adults without symptoms, plus amyloid-negative LEARN participants",
+         data="Amyloid PET at screening, tau PET in a subset, repeated MRI including microbleeds, cognition, plasma biomarkers and APOE genotype",
+         apoe="Shows how small brain bleeds accumulate in ε4/ε4 adults without symptoms (odds ratio 4.8 in a 2025 analysis).",
+         access="Data use agreement through the A4 data portal",
+         best="Preclinical ε4/ε4 biology and ARIA risk"),
+    dict(id="adkp", name="AD Knowledge Portal", url="https://adknowledgeportal.synapse.org/",
+         full="AMP-AD and MODEL-AD data portal",
+         host="Sage Bionetworks (Synapse); funded by NIA",
+         size="Brain tissue from thousands of donors across ROSMAP, Mount Sinai Brain Bank, Mayo and diverse-cohort studies, plus mouse models",
+         data="Brain genomics, transcriptomics, single-cell, proteomics, metabolomics and epigenomics; humanized APOE4 knock-in mice from MODEL-AD",
+         apoe="Compare brain molecular changes by genotype in humans, and test APOE4 effects with age in mice.",
+         access="Synapse account and certification, plus a data use certificate signed by your institution for controlled data",
+         best="Brain molecular mechanisms"),
+    dict(id="ukb", name="UK Biobank", url="https://www.ukbiobank.ac.uk/",
+         full="UK Biobank",
+         host="UK charity; data analysed on its cloud Research Analysis Platform",
+         size="About 500,000 adults recruited 2006–2010; roughly 2% are ε4/ε4",
+         data="Genotypes and whole genomes, plasma proteomics in about 53,000 people, brain MRI in a subset, and linked hospital, death and primary-care records",
+         apoe="Thousands of ε4/ε4 participants followed for over 15 years, many with proteomics, for prediction and risk-factor studies.",
+         access="Project application with a fee; analysis on the cloud platform",
+         best="Large-scale prediction and outcomes"),
+    dict(id="aou", name="All of Us", url="https://www.researchallofus.org/",
+         full="NIH All of Us Research Program",
+         host="NIH; analysis in the Researcher Workbench",
+         size="Hundreds of thousands of participants with whole-genome sequencing, with strong representation of groups underrepresented in research",
+         data="Whole genomes, electronic health records, surveys and wearable data",
+         apoe="APOE genotype can be derived from the genomes and studied across diverse ancestries alongside health records.",
+         access="Institutional data use agreement, then individual registration and training; genomic data is in the controlled tier",
+         best="Diverse ancestries and health records"),
+    dict(id="seaad", name="SEA-AD", url="https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+         full="Seattle Alzheimer’s Disease Brain Cell Atlas",
+         host="Allen Institute, University of Washington and Kaiser Permanente Washington",
+         size="Detailed brain atlas from a community-based cohort of brain donors",
+         data="Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology",
+         apoe="Cell-type-resolved brain changes with donor APOE genotype.",
+         access="Open access for most data",
+         best="Cell-type brain atlas"),
+]
+
+summary_rows = "\n".join(
+    f'            <tr><td><a href="#{r["id"]}">{r["name"]}</a></td><td>{r["best"]}</td><td>{r["access"].split(";")[0].split(",")[0]}</td></tr>'
+    for r in RESOURCES)
+detail = "\n".join(f"""      <article class="resource" id="{r['id']}">
+        <div class="resource-head">
+          <h2><a href="{r['url']}">{r['name']}</a></h2>
+          <p class="label">{r['full']}</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Run by</dt><dd>{r['host']}</dd></div>
+          <div><dt>Size</dt><dd>{r['size']}</dd></div>
+          <div><dt>Data</dt><dd>{r['data']}</dd></div>
+          <div><dt>For ε4/ε4</dt><dd>{r['apoe']}</dd></div>
+          <div><dt>Access</dt><dd>{r['access']}</dd></div>
+        </dl>
+      </article>""" for r in RESOURCES)
+
 pages["resources.html"] = head("Resources", "Where to find ε4/ε4 data",
-    "Cohorts and repositories with APOE genotype linked to clinical, biomarker, omic or autopsy data.") + """
+    "Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Sizes are approximate; check each resource for current numbers and terms.") + f"""
     <section>
-      <div class="alleles" role="region" aria-label="Data resources" tabindex="0">
+      <div class="alleles" role="region" aria-label="Resources at a glance" tabindex="0">
         <table class="data">
-          <thead><tr><th>Resource</th><th>What it offers for APOE4 research</th><th>Access</th></tr></thead>
+          <thead><tr><th>Resource</th><th>Best for</th><th>Access</th></tr></thead>
           <tbody>
-            <tr><td><a href="https://naccdata.org/">NACC</a></td><td>Clinical follow-up and neuropathology from US Alzheimer’s Disease Research Centers, with APOE genotype for most participants. Basis of the Fortea 2024 analysis.</td><td>Online request form</td></tr>
-            <tr><td><a href="https://www.niagads.org/">NIAGADS</a></td><td>NIA’s repository for Alzheimer’s genetics, including genome-wide data from the Alzheimer’s Disease Genetics Consortium. Records can be linked to NACC.</td><td>Formal data access request</td></tr>
-            <tr><td><a href="https://adsp.niagads.org/">ADSP</a></td><td>Alzheimer’s Disease Sequencing Project: whole-genome sequencing in tens of thousands of people, including diverse ancestries, with harmonized phenotypes.</td><td>Through NIAGADS</td></tr>
-            <tr><td><a href="https://ncrad.org/">NCRAD</a></td><td>Stored DNA, plasma, serum and spinal fluid from research-center participants with known outcomes.</td><td>Biosample request</td></tr>
-            <tr><td><a href="https://adni.loni.usc.edu/">ADNI</a></td><td>Repeated amyloid and tau PET, MRI, fluid biomarkers and cognition, with APOE genotype.</td><td>Data use agreement</td></tr>
-            <tr><td><a href="https://www.a4studydata.org/">A4 Study</a></td><td>Cognitively unimpaired older adults with amyloid PET, repeated MRI including microbleeds, and APOE genotype.</td><td>Data use agreement</td></tr>
-            <tr><td><a href="https://adknowledgeportal.synapse.org/">AD Knowledge Portal</a></td><td>Brain multi-omics by genotype (ROSMAP, Mount Sinai, Mayo) and APOE4 knock-in mouse models (MODEL-AD).</td><td>Synapse account and data use certificate</td></tr>
-            <tr><td><a href="https://www.ukbiobank.ac.uk/">UK Biobank</a></td><td>About half a million participants with genotypes, plasma proteomics and long-term health records, including a large ε4/ε4 group.</td><td>Approved project application</td></tr>
+{summary_rows}
           </tbody>
         </table>
       </div>
-      <p class="note">Each resource sets its own terms. NIH rules on controlled-access genomic data also limit the use of public generative AI tools with individual-level data.</p>
+    </section>
+    <section class="resources">
+{detail}
+    </section>
+    <section>
+      <div class="sec-head">
+        <p class="label">Combining resources</p>
+        <h2>Common pairings</h2>
+      </div>
+      <ul class="measures prose">
+        <li><b>NACC + NIAGADS/ADSP:</b> clinical trajectories with whole-genome data, linked through NACC participant IDs.</li>
+        <li><b>NACC + NCRAD:</b> outcomes plus stored blood or spinal fluid from the same people, for new biomarker assays.</li>
+        <li><b>ADNI or A4 + UK Biobank:</b> deep imaging timelines alongside large-scale prediction and outcomes.</li>
+      </ul>
+      <p class="note">Each resource sets its own terms. NIH rules on controlled-access genomic data also limit the use of public generative AI tools with individual-level data, and require data to be held in approved secure environments.</p>
     </section>"""
 
 # ---------- Papers ----------
