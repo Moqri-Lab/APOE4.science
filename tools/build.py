@@ -47,6 +47,18 @@ td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:no
 dl.glossary div{grid-template-columns:260px minmax(0,1fr)}
 dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:14.5px;color:var(--ink);font-weight:600}
 @media (max-width:820px){dl.glossary div{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  header.top{flex-direction:column;align-items:flex-start;gap:12px;padding-block:16px}
+  header.top nav{flex-wrap:nowrap;overflow-x:auto;max-width:100%;gap:18px;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  header.top nav a{white-space:nowrap}
+}
+@media (max-width:640px){
+  table.data{min-width:0}
+  table.data thead{position:absolute;left:-9999px}
+  table.data tr{display:block;padding:14px 16px;border-bottom:1px solid var(--rule)}
+  table.data td{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:5px 0;border:0;white-space:normal}
+  table.data td::before{content:attr(data-label);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -96,6 +108,7 @@ def shell(fname, title, body, extra_head=""):
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="{DESC}">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#b0234f">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="APOE4 Science">
 <meta property="og:title" content="{doc_title}">
@@ -128,6 +141,7 @@ def shell(fname, title, body, extra_head=""):
     <span class="updated">Last reviewed October 2026</span>
   </footer>
 </div>
+<script>var c=document.querySelector('nav a[aria-current]');if(c&&c.scrollIntoView&&window.innerWidth<640)c.scrollIntoView({{inline:"center",block:"nearest"}});</script>
 </body>
 </html>
 """
@@ -333,7 +347,7 @@ RESOURCES = [
 ]
 
 summary_rows = "\n".join(
-    f'            <tr><td><a href="#{r["id"]}">{r["name"]}</a></td><td>{r["best"]}</td><td>{r["access"].split(";")[0].split(",")[0]}</td></tr>'
+    f'            <tr><td data-label="Resource"><a href="#{r["id"]}">{r["name"]}</a></td><td data-label="Best for">{r["best"]}</td><td data-label="Access">{r["access"].split(";")[0].split(",")[0]}</td></tr>'
     for r in RESOURCES)
 detail = "\n".join(f"""      <article class="resource" id="{r['id']}">
         <div class="resource-head">
@@ -491,7 +505,7 @@ trials = [
 ]
 TRIAL_ASOF = {'APOLLOE4': 'Apr 2025', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': '2026 registry'}
 rows = "\n".join(
-    f'            <tr><td><a href="{link}">{name}</a></td><td>{drug}</td><td>{pop}</td><td>{res}</td><td class="asof">{TRIAL_ASOF[name]}</td></tr>'
+    f'            <tr><td data-label="Trial"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
     for name, drug, pop, res, link in trials)
 pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
     "Trials run only in ε4 homozygotes or carriers, and major trials that report safety and results by genotype.") + f"""
@@ -535,7 +549,7 @@ body = head("Drugs", "Treatments and what they mean for ε4/ε4",
     "APOE genotype matters most for the safety of anti-amyloid antibodies. Several newer approaches target APOE4 biology directly.")
 body += "\n    <section>\n"
 for g, items in drugs:
-    rows = "\n".join(f"            <tr><td>{n}</td><td>{t}</td><td>{x}</td></tr>" for n, t, x in items)
+    rows = "\n".join(f'            <tr><td data-label="Drug">{n}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>' for n, t, x in items)
     body += f"""    <div class="group">
       <h2>{g}</h2>
       <div class="alleles" role="region" aria-label="{g}" tabindex="0">
