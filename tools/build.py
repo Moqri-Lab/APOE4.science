@@ -455,8 +455,6 @@ groups = [
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
          "A rare APOE variant that appears to protect against early-onset disease, pointing to APOE as a drug target.", "https://doi.org/10.1038/s41591-019-0611-3"),
-        ("Reiman EM, et al. Exceptionally low likelihood of Alzheimer’s dementia in APOE2 homozygotes from a 5,000-person neuropathological study. <i>Nature Communications</i> 2020.",
-         "The opposite end of the APOE spectrum: ε2/ε2 carries exceptionally low risk compared with ε4/ε4.", "https://doi.org/10.1038/s41467-019-14279-8"),
         ("Le Guen Y, et al. Association of rare APOE missense variants V236E and R251G with risk of Alzheimer disease. <i>JAMA Neurology</i> 2022.",
          "R251G, inherited together with ε4, roughly halves its risk effect, showing that ε4 risk can be offset.", "https://doi.org/10.1001/jamaneurol.2022.1166"),
         ("Nelson MR, et al. The APOE-R136S mutation protects against APOE4-driven Tau pathology, neurodegeneration and neuroinflammation. <i>Nature Neuroscience</i> 2023.",
