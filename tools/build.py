@@ -59,6 +59,9 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
   table.data td{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:5px 0;border:0;white-space:normal}
   table.data td::before{content:attr(data-label);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 }
+.bar-row{display:flex;align-items:center;gap:10px;min-width:160px}
+.bar{display:block;height:10px;background:var(--e4);min-width:4px}
+.num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -258,6 +261,22 @@ pages["gene.html"] = head("The gene", "One letter apart",
           <p>Estimated lifetime risk of Alzheimer’s by age 85 for ε4/ε4 (about 51% in men and 60% in women), versus about 11–14% for the general population. Family studies give higher estimates.</p>
           <p class="src">Genin et al., <i>Molecular Psychiatry</i> 2011</p>
         </article>
+      </div>
+      <div class="group" style="margin-top:40px">
+        <h2>Risk differs by ancestry</h2>
+        <p class="note" style="margin-top:0">Odds of Alzheimer’s with one ε4 copy (ε3/ε4) compared with ε3/ε3, by population ancestry. The study reported a similar stepwise pattern across ancestries for ε4/ε4.</p>
+        <div class="alleles" role="region" aria-label="APOE ε3/ε4 odds ratios by ancestry" tabindex="0">
+          <table class="data">
+            <thead><tr><th>Ancestry</th><th>Odds ratio</th><th>95% CI</th></tr></thead>
+            <tbody>
+            <tr><td data-label="Ancestry">East Asian</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:91%"></span><span class="num">4.54</span></span></td><td data-label="95% CI" class="asof">3.99–5.17</td></tr>
+            <tr><td data-label="Ancestry">White</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:69%"></span><span class="num">3.46</span></span></td><td data-label="95% CI" class="asof">3.27–3.65</td></tr>
+            <tr><td data-label="Ancestry">Black</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:44%"></span><span class="num">2.18</span></span></td><td data-label="95% CI" class="asof">1.90–2.49</td></tr>
+            <tr><td data-label="Ancestry">Hispanic</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:38%"></span><span class="num">1.90</span></span></td><td data-label="95% CI" class="asof">1.65–2.18</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="src note">Belloy et al., <i>JAMA Neurology</i> 2023</p>
       </div>
       <p class="note" style="margin-top:20px">Full references are on the <a href="papers.html">Papers</a> page.</p>
     </section>"""

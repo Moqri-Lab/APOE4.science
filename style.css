@@ -152,6 +152,9 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
   table.data td{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:5px 0;border:0;white-space:normal}
   table.data td::before{content:attr(data-label);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 }
+.bar-row{display:flex;align-items:center;gap:10px;min-width:160px}
+.bar{display:block;height:10px;background:var(--e4);min-width:4px}
+.num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
