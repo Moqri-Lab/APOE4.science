@@ -416,12 +416,22 @@ groups = [
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
          "A rare APOE variant that appears to protect against early-onset disease, pointing to APOE as a drug target.", "https://doi.org/10.1038/s41591-019-0611-3"),
+        ("Le Guen Y, et al. Association of rare APOE missense variants V236E and R251G with risk of Alzheimer disease. <i>JAMA Neurology</i> 2022.",
+         "R251G, inherited together with ε4, roughly halves its risk effect, showing that ε4 risk can be offset.", "https://doi.org/10.1001/jamaneurol.2022.1166"),
+        ("Nelson MR, et al. The APOE-R136S mutation protects against APOE4-driven Tau pathology, neurodegeneration and neuroinflammation. <i>Nature Neuroscience</i> 2023.",
+         "The Christchurch change blocks APOE4-driven tau damage in mice, supporting APOE-directed therapies.", "https://doi.org/10.1038/s41593-023-01480-8"),
     ]),
     ("Reviews", [
         ("Belloy ME, Napolioni V, Greicius MD. A quarter century of APOE and Alzheimer’s disease: progress to date and the path forward. <i>Neuron</i> 2019.",
          "Broad review of APOE genetics and biology.", "https://doi.org/10.1016/j.neuron.2019.01.056"),
         ("Yamazaki Y, Zhao N, Caulfield TR, Liu CC, Bu G. Apolipoprotein E and Alzheimer disease: pathobiology and targeting strategies. <i>Nature Reviews Neurology</i> 2019.",
          "Mechanisms and therapeutic approaches.", "https://doi.org/10.1038/s41582-019-0228-7"),
+        ("Hampel H, Elhage A, Cho M, Apostolova LG, Nicoll JAR, Atri A. Amyloid-related imaging abnormalities (ARIA): radiological, biological and clinical characteristics. <i>Brain</i> 2023.",
+         "What ARIA is, how it is detected, and why ε4/ε4 raises risk.", "https://doi.org/10.1093/brain/awad188"),
+    ]),
+    ("Community and policy", [
+        ("UsAgainstAlzheimer’s. FDA Patient Listening Session: Alzheimer’s disease and APOE ε4 homozygotes. Summary, July 2025.",
+         "APOE ε4 homozygotes describe their needs and the lack of treatment options to FDA staff.", "https://www.usagainstalzheimers.org/sites/default/files/2025-11/07222025-FDA_Patient_Listening_Session-APOE4_Homozygosity_Summary_Final.pdf"),
     ]),
     ("Trial results by genotype", [
         ("van Dyck CH, Swanson CJ, Aisen P, et al. Lecanemab in early Alzheimer’s disease. <i>New England Journal of Medicine</i> 2023.",
