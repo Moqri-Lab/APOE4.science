@@ -431,22 +431,22 @@ trials = [
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
      ct("Generation Study 2 umibecestat")),
     ("LX1001", "AAV gene therapy delivering APOE2", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
-     pill("run", "Interim data 2024") + " Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6, no ARIA. FDA Fast Track. Small, open-label.",
+     pill("run", "Interim data") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.",
      ct("LX1001")),
     ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", ct("Clarity AD lecanemab")),
+     pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", "https://clinicaltrials.gov/study/NCT03887455"),
     ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", ct("TRAILBLAZER-ALZ 2 donanemab")),
+     pill("ok", "Positive") + " Slowed decline; ARIA most frequent in ε4/ε4.", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
-     pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4.", ct("TRAILBLAZER-ALZ 6")),
+     pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4.", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
-     pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time.", ct("A4 solanezumab")),
+     pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time.", "https://clinicaltrials.gov/study/NCT02008357"),
     ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
-     pill("run", "Ongoing") + " Prevention trial; check registry for genotype-specific dosing and monitoring.", ct("AHEAD 3-45 lecanemab")),
-    ("HT-4253", "HT-4253 (Halia Therapeutics)", "ε4 carriers, prevention (Phase 2)",
-     pill("run", "Planned 2026") + " Listed as not yet recruiting.", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
+    ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
+     pill("run", "Not yet recruiting") + " 112 planned. Aims to lower an amyloid risk score in blood.", "https://clinicaltrials.gov/study/NCT07399171"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Apr 2025', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Oct 2024', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Not verified', 'HT-4253': '2026 registry'}
+TRIAL_ASOF = {'APOLLOE4': 'Apr 2025', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': '2026 registry'}
 rows = "\n".join(
     f'            <tr><td><a href="{link}">{name}</a></td><td>{drug}</td><td>{pop}</td><td>{res}</td><td class="asof">{TRIAL_ASOF[name]}</td></tr>'
     for name, drug, pop, res, link in trials)
@@ -468,9 +468,9 @@ pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
 drugs = [
     ("Approved for early Alzheimer’s", [
         ("Lecanemab (Leqembi)", "Anti-amyloid antibody, IV or subcutaneous",
-         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment. In the EU, approved only for people who are not ε4 homozygotes."),
+         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment. In the EU (April 2025), approved only for people who are not ε4 homozygotes."),
         ("Donanemab (Kisunla)", "Anti-amyloid antibody, IV",
-         "Higher risk of ARIA in ε4/ε4. A slower dose titration lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU, approved only for people who are not ε4 homozygotes."),
+         "Higher risk of ARIA in ε4/ε4. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes."),
         ("Donepezil, rivastigmine, galantamine, memantine", "Symptomatic treatments",
          "Treat symptoms; do not slow the disease. Used regardless of APOE genotype."),
     ]),
@@ -479,6 +479,8 @@ drugs = [
          "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA."),
         ("LX1001", "Gene therapy that adds the protective APOE2 form",
          "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA in interim data. FDA Fast Track."),
+        ("HT-4253", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
+         "Phase 2a prevention trial in biomarker-positive ε4 carriers planned; not yet recruiting."),
     ]),
     ("Stopped or withdrawn", [
         ("Aducanumab (Aduhelm)", "Anti-amyloid antibody", "Discontinued by the manufacturer in 2024."),
