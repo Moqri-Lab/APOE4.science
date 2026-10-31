@@ -539,6 +539,16 @@ drugs = [
         ("HT-4253", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
          "Phase 2a prevention trial in biomarker-positive ε4 carriers planned; not yet recruiting."),
     ]),
+    ("Earlier-stage approaches", [
+        ("APOE4-targeting antibodies", "Antibodies that bind APOE4, such as HAE-4",
+         "Reduce amyloid and tau pathology in animal models; not yet in clinical trials as far as published reports show."),
+        ("APOE4 lowering", "Antisense oligonucleotides and gene silencing",
+         "Aim to reduce APOE4 production; in preclinical or early development."),
+        ("APOE2 plus APOE4 silencing", "Gene therapy (for example Lexeo’s LX1020)",
+         "Adds protective APOE2 while suppressing APOE4; preclinical."),
+        ("Gene editing", "CRISPR-based conversion of APOE4",
+         "Proof-of-concept studies only; efficiency must improve before clinical use."),
+    ]),
     ("Stopped or withdrawn", [
         ("Aducanumab (Aduhelm)", "Anti-amyloid antibody", "Discontinued by the manufacturer in 2024."),
         ("Umibecestat (CNP520)", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening."),
