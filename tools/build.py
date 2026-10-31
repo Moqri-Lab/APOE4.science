@@ -485,7 +485,7 @@ def pill(kind, text):
 
 trials = [
     ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral", "325 ε4/ε4 with early Alzheimer’s (Phase 3)",
-     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms.",
+     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup.",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine)", "Cognitively unimpaired ε4/ε4, aged 60–75",
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening; CAD106 arm also halted.",
@@ -509,7 +509,7 @@ trials = [
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
      pill("run", "Not yet recruiting") + " 112 planned. Aims to lower an amyloid risk score in blood.", "https://clinicaltrials.gov/study/NCT07399171"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Apr 2025', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': '2026 registry'}
+TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': '2026 registry'}
 rows = "\n".join(
     f'            <tr><td data-label="Trial"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
     for name, drug, pop, res, link in trials)
