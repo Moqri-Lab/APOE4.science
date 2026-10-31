@@ -417,6 +417,12 @@ groups = [
         ("Independent effects of white matter lesion volume and APOE ε4 on ARIA-H in the A4 Study. <i>Alzheimer’s &amp; Dementia</i> 2025.",
          "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://pubmed.ncbi.nlm.nih.gov/41085172/"),
     ]),
+    ("Blood biomarkers", [
+        ("APOE ε4 carriership determines a faster plasma p-tau217 progression in Aβ-positive individuals. <i>Alzheimer’s &amp; Dementia</i> 2025.",
+         "In amyloid-positive people, p-tau217 rises faster in ε4 carriers (TRIAD and ADNI).", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12741900/"),
+        ("APOE4 impact on soluble and insoluble tau pathology is mostly influenced by amyloid-β. 2025.",
+         "A contrasting view: in BioFINDER and WRAP, APOE4 effects on p-tau217 largely run through amyloid.", "https://pubmed.ncbi.nlm.nih.gov/39817469/"),
+    ]),
     ("Mechanisms", [
         ("Shi Y, Yamada K, Liddelow SA, et al. ApoE4 markedly exacerbates tau-mediated neurodegeneration in a mouse model of tauopathy. <i>Nature</i> 2017.",
          "APOE4 worsens tau damage, partly through microglia.", "https://doi.org/10.1038/nature24016"),
