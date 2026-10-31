@@ -13,3 +13,5 @@ python3 tools/build.py
 ```
 
 This rewrites the `.html` pages (including `404.html`) and `style.css`. To redraw the link-preview image `og.png`, run `python3 tools/make_og.py` (needs Pillow). Commit the regenerated files; GitHub Pages serves them from the `main` branch root.
+
+To announce a change on the home page, add a line at the top of `UPDATES` in `tools/build.py`.

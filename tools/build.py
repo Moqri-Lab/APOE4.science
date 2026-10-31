@@ -62,6 +62,7 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
 .bar-row{display:flex;align-items:center;gap:10px;min-width:160px}
 .bar{display:block;height:10px;background:var(--e4);min-width:4px}
 .num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -184,6 +185,13 @@ NEWSLETTER = """    <section id="newsletter">
 pages = {}
 
 # ---------- Home ----------
+UPDATES = [  # newest first; keep to about five
+    ("Oct 2026", 'Trial statuses checked against registries; donanemab ARIA rates by genotype added to <a href="trials.html">Trials</a>.'),
+    ("Oct 2026", 'New chart of APOE ε4 risk by ancestry on <a href="gene.html">Gene and evidence</a>.'),
+    ("Oct 2026", 'AD Workbench, All of Us and SEA-AD added to <a href="resources.html">Resources</a>.'),
+    ("Oct 2026", '<a href="glossary.html">Glossary</a> of genetics, biomarker and trial terms.'),
+    ("Oct 2026", 'Site launched.'),
+]
 cards = [
     ("gene.html", "Gene and evidence", "Three forms of APOE, one amino acid apart, and what two copies of ε4 do to timing, amyloid and blood vessels."),
     ("resources.html", "Resources", "Cohorts and repositories with ε4/ε4 data, and how to access them."),
@@ -206,6 +214,15 @@ pages["index.html"] = f"""    <div class="hero">
     f'        <a class="card" href="{f}"><h3>{t}</h3><p>{d}</p></a>' for f, t, d in cards
 ) + """
       </div>
+    </section>
+    <section>
+      <div class="sec-head">
+        <p class="label">Recently updated</p>
+        <h2>What’s new</h2>
+      </div>
+      <ul class="refs">
+""" + "\n".join(f'        <li><span class="asof">{d}</span> · {t}</li>' for d, t in UPDATES) + """
+      </ul>
     </section>
 """ + NEWSLETTER
 
