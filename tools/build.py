@@ -736,6 +736,27 @@ for g, items in drugs:
       </div>
     </div>
 """
+body += """    <div class="group" id="access">
+      <h2>Can ε4/ε4 be treated?</h2>
+      <div class="alleles" role="region" aria-label="Approval for ε4/ε4 by region" tabindex="0">
+        <table class="data">
+          <thead><tr><th>Region</th><th>Lecanemab</th><th>Donanemab</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Region">US</td><td data-label="Lecanemab">Yes, with boxed warning; APOE testing advised</td><td data-label="Donanemab">Yes, with boxed warning; APOE testing advised</td></tr>\n            <tr><td data-label="Region">EU</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No (non-carriers and heterozygotes only)</td></tr>\n            <tr><td data-label="Region">UK</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No; regulator advises testing and not treating two-copy carriers</td></tr>\n            <tr><td data-label="Region">Australia</td><td data-label="Lecanemab">Not approved for anyone</td><td data-label="Donanemab">No; APOE4 testing required before treatment</td></tr>\n            <tr><td data-label="Region">Japan, China</td><td data-label="Lecanemab">Not checked</td><td data-label="Donanemab">Yes, regardless of APOE4 status</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">In the US, testing is advised but not required; patients who decline can still be treated without knowing their ARIA risk. Confirmed amyloid (PET or spinal fluid) is required everywhere. """ + cite("https://www.alzheimer-europe.org/news/donanemab-licensed-uks-mhra-drug-will-not-be-covered-nhs-according-draft-nice-guidance", "UK MHRA") + cite("https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2025-07/files/donanemab-psd-july-2025.docx", "Australia PBS") + cite("https://investor.lilly.com/node/52961", "Lilly EU approval") + """</p>
+    </div>
+    <div class="group" id="cost">
+      <h2>Cost in the US</h2>
+      <ul class="measures prose">
+        <li><b>Lecanemab:</b> about $26,500 a year by IV; the weekly autoinjector for maintenance is about $19,500 a year. """ + cite("https://www.cbsnews.com/news/leqembi-price-insurance-medicare-coverage-heres-how-it-works", "CBS News") + """</li>
+        <li><b>Donanemab:</b> about $12,500 for 6 months up to about $48,900 for 18 months, since treatment can stop once amyloid clears. """ + cite("https://beingpatient.com/?p=122644", "Being Patient") + """</li>
+        <li><b>Medicare:</b> covered under Part B with 20% coinsurance and no annual out-of-pocket cap, over $5,000 a year for lecanemab at list price. Amyloid testing and repeated MRI scans add to the cost, more so for ε4/ε4. """ + cite("https://www.kff.org/policy-watch/new-alzheimers-drugs-spark-hope-for-patients-and-cost-concerns-for-medicare/", "KFF") + """</li>
+      </ul>
+    </div>
+"""
 body += DISCLAIMER + "\n    </section>"
 pages["drugs.html"] = body
 
@@ -743,6 +764,11 @@ pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news 
 
 # Full citations for numbered references (keyed by URL)
 REFS = {
+    'https://www.alzheimer-europe.org/news/donanemab-licensed-uks-mhra-drug-will-not-be-covered-nhs-according-draft-nice-guidance': 'Alzheimer Europe. Donanemab is licensed by the UK’s MHRA, but will not be covered by the NHS, according to draft NICE guidance. News, October 2024.',
+    'https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2025-07/files/donanemab-psd-july-2025.docx': 'Pharmaceutical Benefits Scheme (Australia). Donanemab public summary document, July 2025.',
+    'https://www.cbsnews.com/news/leqembi-price-insurance-medicare-coverage-heres-how-it-works': 'CBS News. Leqembi price, insurance and Medicare coverage: here’s how it works.',
+    'https://beingpatient.com/?p=122644': 'Being Patient. Kisunla (donanemab) cost by length of treatment.',
+    'https://www.kff.org/policy-watch/new-alzheimers-drugs-spark-hope-for-patients-and-cost-concerns-for-medicare/': 'KFF. New Alzheimer’s drugs spark hope for patients and cost concerns for Medicare.',
     "https://www.eurekalert.org/news-releases/1043340": "Sant Pau Research Institute. APOE4 homozygosity a distinct genetic form of Alzheimer’s disease. Press release, EurekAlert!, May 2024.",
     "https://doi.org/10.1038/s41591-024-02931-w": "Fortea J, et al. APOE4 homozygosity represents a distinct genetic form of Alzheimer’s disease. <i>Nature Medicine</i> 2024.",
     "https://doi.org/10.1038/mp.2011.52": "Genin E, et al. APOE and Alzheimer disease: a major gene with semi-dominant inheritance. <i>Molecular Psychiatry</i> 2011.",
