@@ -70,6 +70,7 @@ span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 
 PAGES = [  # (file, nav label, title)
     ("index.html", "Home", "APOE4 Science"),
+    ("start.html", "Start here", "Start here: if you are ε4/ε4"),
     ("gene.html", "Gene and evidence", "The APOE gene and the evidence"),
     ("resources.html", "Resources", "Resources"),
     ("papers.html", "Papers", "Key papers"),
@@ -142,7 +143,7 @@ def shell(fname, title, body, extra_head=""):
   </main>
   <footer>
     <span>apoe4.science · Maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. An educational resource, not medical advice.</span>
-    <span class="updated">Last reviewed October 2026 · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
+    <span class="updated">Last reviewed October 2026 · <a href="about.html">About and sources</a> · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
   </footer>
 </div>
 <script>var c=document.querySelector('nav a[aria-current]');if(c&&c.scrollIntoView&&window.innerWidth<640)c.scrollIntoView({{inline:"center",block:"nearest"}});</script>
@@ -186,6 +187,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Oct 2026", 'New <a href="start.html">Start here</a> page for people who have just learned they are ε4/ε4.'),
     ("Oct 2026", 'Trial statuses checked against registries; donanemab ARIA rates by genotype added to <a href="trials.html">Trials</a>.'),
     ("Oct 2026", 'New chart of APOE ε4 risk by ancestry on <a href="gene.html">Gene and evidence</a>.'),
     ("Oct 2026", 'AD Workbench, All of Us and SEA-AD added to <a href="resources.html">Resources</a>.'),
@@ -205,6 +207,7 @@ pages["index.html"] = f"""    <div class="hero">
         <p class="label">A community resource</p>
         <h1 style="margin-top:14px">Two copies of APOE4 may be a <em>genetic form</em> of Alzheimer’s disease.</h1>
         <p class="lede">Evidence, data resources, papers, trials and drugs on APOE ε4 homozygosity, gathered in one place for the community.</p>
+        <p class="note">Just learned you are ε4/ε4? <a href="start.html">Start here</a>.</p>
       </div>
       <div class="geno" aria-label="Genotype epsilon 4 slash epsilon 4">ε4/ε4<small><a href="https://www.eurekalert.org/news-releases/1043340">About 2–3% of people</a></small></div>
     </div>
@@ -225,6 +228,42 @@ pages["index.html"] = f"""    <div class="hero">
       </ul>
     </section>
 """ + NEWSLETTER
+
+
+# ---------- Start here ----------
+def src(url, text):
+    return f'<a href="{url}">{text}</a>'
+
+FORTEA = "https://doi.org/10.1038/s41591-024-02931-w"
+pages["start.html"] = head("Start here", "If you have just learned you are ε4/ε4",
+    "A plain-language first stop: what two copies of APOE4 mean, what they do not mean, and practical next steps.") + f"""
+    <section>
+      <div class="group prose">
+        <h2>What it means</h2>
+        <p>You inherited the ε4 form of the APOE gene from both parents. About 2–3% of people do ({src("https://www.eurekalert.org/news-releases/1043340", "Fortea et al. 2024, press release")}). It is the strongest common genetic risk factor for late-onset Alzheimer’s disease.</p>
+        <p>In a large 2024 study, nearly all ε4/ε4 carriers had Alzheimer’s changes in the brain by older age, and symptoms began on average around age 65, earlier than in people with other genotypes ({src(FORTEA, "Fortea et al., <i>Nature Medicine</i> 2024")}). The authors proposed that ε4/ε4 be treated as a genetic form of Alzheimer’s.</p>
+      </div>
+      <div class="group prose">
+        <h2>What it does not mean</h2>
+        <ul class="measures">
+          <li><b>It is not a diagnosis.</b> Brain changes can be present for years before any symptoms, and not everyone develops dementia. One study estimated lifetime risk by age 85 at about 51% for ε4/ε4 men and 60% for women, versus 11–14% overall ({src("https://doi.org/10.1038/mp.2011.52", "Genin et al., <i>Molecular Psychiatry</i> 2011")}).</li>
+          <li><b>Risk differs between people.</b> It varies with age, sex and ancestry ({src("https://doi.org/10.1001/jamaneurol.2023.3599", "Belloy et al., <i>JAMA Neurology</i> 2023")}), and rare protective variants can offset ε4 ({src("https://doi.org/10.1001/jamaneurol.2022.1166", "Le Guen et al., <i>JAMA Neurology</i> 2022")}).</li>
+          <li><b>Your relatives’ risk is not the same as yours.</b> Each of your children inherits one of your two ε4 copies, so each is at least an ε4 carrier; what they inherit from their other parent also matters.</li>
+        </ul>
+      </div>
+      <div class="group prose">
+        <h2>Practical next steps</h2>
+        <ul class="measures">
+          <li><b>Talk to a genetic counselor.</b> They can explain your result, what it means for family members, and whether further testing makes sense. Search the {src("https://findageneticcounselor.nsgc.org/", "National Society of Genetic Counselors directory")}.</li>
+          <li><b>Tell your doctors before any anti-amyloid treatment.</b> ε4/ε4 carries the highest risk of brain swelling and bleeding (ARIA) with lecanemab and donanemab. US labels advise APOE testing before treatment ({src("https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975", "Leqembi label")}), and in the EU these drugs are not approved for ε4 homozygotes. See <a href="drugs.html">Drugs</a>.</li>
+          <li><b>Work on the risk factors you can change.</b> The 2024 Lancet Commission estimated that nearly half of dementia cases are linked to 14 modifiable factors, including high blood pressure, hearing loss, high LDL cholesterol, physical inactivity, smoking, diabetes and social isolation ({src("https://doi.org/10.1016/S0140-6736(24)01296-0", "Livingston et al., <i>Lancet</i> 2024")}). These estimates are for the general population; how much they shift risk specifically in ε4/ε4 is less certain.</li>
+          <li><b>Consider research.</b> Some trials enroll only ε4 carriers. See <a href="trials.html">Trials</a>, or the Alzheimer’s Association’s free {src("https://www.alz.org/alzheimers-dementia/research_progress/clinical-trials/trialmatch", "TrialMatch")} service.</li>
+          <li><b>Know your legal protections.</b> In the US, the Genetic Information Nondiscrimination Act protects you in health insurance and employment, but not for life or long-term care insurance ({src("https://www.genome.gov/genetics-glossary/Genetic-Information-Nondiscrimination-Act-GINA", "NHGRI")}). Consider this before sharing your result.</li>
+          <li><b>Find others.</b> {src("https://www.apoe4.info/", "ApoE4.Info")} is a long-running nonprofit community of ε4 carriers.</li>
+        </ul>
+      </div>
+""" + DISCLAIMER + """
+    </section>"""
 
 # ---------- Gene ----------
 pages["gene.html"] = head("The gene", "One letter apart",
@@ -657,6 +696,30 @@ NOT_FOUND = head("Page not found", "This page doesn’t exist",
     </section>"""
 OUT.joinpath("robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n")
 OUT.joinpath("sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + "".join(f"  <url><loc>{SITE}{'' if f == 'index.html' else f}</loc></url>\n" for f, _, _ in PAGES) + "</urlset>\n")
+    + "".join(f"  <url><loc>{SITE}{'' if f == 'index.html' else f}</loc></url>\n" for f, _, _ in PAGES)
+    + f"  <url><loc>{SITE}about.html</loc></url>\n</urlset>\n")
+
+ABOUT = head("About", "About this site and its sources",
+    "What APOE4 Science is, who maintains it, and how information is chosen and checked.") + """
+    <section>
+      <div class="group prose">
+        <h2>Who maintains it</h2>
+        <p>APOE4 Science is maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. It is not an official resource of any employer or institution, and it is not medical advice.</p>
+      </div>
+      <div class="group prose">
+        <h2>How sources are chosen</h2>
+        <ul class="measures">
+          <li>Every figure links to its source, preferring peer-reviewed papers, trial registries and official drug labels.</li>
+          <li>Trial results are shown as reported; company announcements and subgroup findings are labeled as such.</li>
+          <li>Trial statuses are checked against ClinicalTrials.gov. The “As of” date shows when each result or status applies.</li>
+          <li>Where studies disagree, both are listed (for example, on blood biomarkers in <a href="papers.html">Papers</a>).</li>
+        </ul>
+      </div>
+      <div class="group prose">
+        <h2>Corrections and updates</h2>
+        <p>Found an error or a missing study? <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a> on GitHub, where the full source and change history are public. For research updates, subscribe to the <a href="newsletter.html">newsletter</a>.</p>
+      </div>
+    </section>"""
+OUT.joinpath("about.html").write_text(shell("about.html", "About", ABOUT))
 OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
 print("built", len(PAGES), "pages")

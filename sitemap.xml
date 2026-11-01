@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://apoe4.science/</loc></url>
+  <url><loc>https://apoe4.science/start.html</loc></url>
   <url><loc>https://apoe4.science/gene.html</loc></url>
   <url><loc>https://apoe4.science/resources.html</loc></url>
   <url><loc>https://apoe4.science/papers.html</loc></url>
@@ -8,4 +9,5 @@
   <url><loc>https://apoe4.science/drugs.html</loc></url>
   <url><loc>https://apoe4.science/glossary.html</loc></url>
   <url><loc>https://apoe4.science/newsletter.html</loc></url>
+  <url><loc>https://apoe4.science/about.html</loc></url>
 </urlset>
