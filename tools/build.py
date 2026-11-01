@@ -81,7 +81,7 @@ span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 """
 
 PAGES = [  # (file, nav label, title)
-    ("index.html", "Home", "APOE4 Science"),
+    ("index.html", "Home", "APOE4.Science"),
     ("start.html", "Start here", "Start here: if you are ε4/ε4"),
     ("gene.html", "Gene and evidence", "The APOE gene and the evidence"),
     ("drugs.html", "Drugs", "Drugs"),
@@ -110,11 +110,11 @@ def shell(fname, title, body, extra_head=""):
         f'      <a href="{f}"{" aria-current=\"page\"" if f == fname else ""}>{label}</a>'
         for f, label, _ in PAGES
     )
-    doc_title = "APOE4 Science" if fname == "index.html" else f"{title} · APOE4 Science"
+    doc_title = "APOE4.Science" if fname == "index.html" else f"{title} · APOE4.Science"
     jsonld = ""
     if fname == "index.html":
         jsonld = ('\n<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite",'
-                  '"name":"APOE4 Science","url":"' + SITE + '","description":"' + DESC + '",'
+                  '"name":"APOE4.Science","url":"' + SITE + '","description":"' + DESC + '",'
                   '"maintainer":{"@type":"Person","name":"Mahdi Moqri","honorificSuffix":"PhD","url":"https://moqri.bwh.harvard.edu/"}}</script>')
     return f"""<!doctype html>
 <html lang="en">
@@ -127,7 +127,7 @@ def shell(fname, title, body, extra_head=""):
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#b0234f">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="APOE4 Science">
+<meta property="og:site_name" content="APOE4.Science">
 <meta property="og:title" content="{doc_title}">
 <meta property="og:description" content="{DESC}">
 <meta property="og:url" content="{SITE}{'' if fname == 'index.html' else fname}">
@@ -191,7 +191,7 @@ NEWSLETTER = """    <section id="newsletter">
           <p class="note">The newsletter is hosted on Substack, which stores your email. If you later create a Substack profile, you can hide your subscriptions in its settings. Unsubscribe from any email.</p>
           <p class="note">Prefer Substack directly? <a href="https://apoe4science.substack.com">apoe4science.substack.com</a></p>
         </div>
-        <iframe src="https://apoe4science.substack.com/embed" title="Subscribe to the APOE4 Science newsletter" loading="lazy" scrolling="no"></iframe>
+        <iframe src="https://apoe4science.substack.com/embed" title="Subscribe to the APOE4.Science newsletter" loading="lazy" scrolling="no"></iframe>
       </div>
     </section>"""
 
@@ -854,11 +854,11 @@ OUT.joinpath("sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n
     + f"  <url><loc>{SITE}about.html</loc></url>\n</urlset>\n")
 
 ABOUT = head("About", "About this site and its sources",
-    "What APOE4 Science is, who maintains it, and how information is chosen and checked.") + """
+    "What APOE4.Science is, who maintains it, and how information is chosen and checked.") + """
     <section>
       <div class="group prose">
         <h2>Who maintains it</h2>
-        <p>APOE4 Science is maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. It is not an official resource of any employer or institution, and it is not medical advice.</p>
+        <p>APOE4.Science is maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. It is not an official resource of any employer or institution, and it is not medical advice.</p>
       </div>
       <div class="group prose">
         <h2>How sources are chosen</h2>
