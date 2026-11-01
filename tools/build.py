@@ -647,15 +647,15 @@ trials = [
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
      pill("run", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
-    ("Blood Sample Study in Adults with Known APOE Genetic Results", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
+    ("Mass General Brigham APOE Study", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
      pill("run", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems. Brigham and Women’s Hospital, Boston; payment up to $100. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the BWH APOE study",
      pill("run", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin. Results are not returned to participants. Brigham and Women’s Hospital, Boston; payment up to $50. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026', 'Blood Sample Study in Adults with Known APOE Genetic Results': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
+TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
     ("Drug trials run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
-    ("Observational studies in people with known APOE genotype", ["Harvard Alzheimer’s Risk Study", "Blood Sample Study in Adults with Known APOE Genetic Results"]),
+    ("Observational studies in people with known APOE genotype", ["Harvard Alzheimer’s Risk Study", "Mass General Brigham APOE Study"]),
     ("Major trials that report results by genotype", ["AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
