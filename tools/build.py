@@ -592,6 +592,8 @@ groups = [
          "ARIA rates reported by APOE genotype.", "https://doi.org/10.1001/jama.2023.13239"),
         ("Efficacy and safety of oral valiltramiprosate in APOE4/4 homozygotes with early AD: topline results from the APOLLOE4 Phase 3 trial. 2025.",
          "The first completed Phase 3 trial run only in ε4/ε4.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/"),
+        ("Abushakra S, …, Tolar M. Full peer-reviewed results of the APOLLOE4 Phase 3 trial of oral valiltramiprosate in APOE4/4 homozygotes with early Alzheimer’s disease. <i>Drugs</i> 2025.",
+         "No significant clinical benefit at 78 weeks overall, but slower brain atrophy; MCI-subgroup benefits were not the primary analysis.", "https://doi.org/10.1007/s40265-025-02250-5"),
     ]),
 ]
 body = head("Key papers", "The studies that define what we know",
