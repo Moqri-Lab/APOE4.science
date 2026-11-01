@@ -33,7 +33,7 @@ table.data td:first-child{font-weight:600;white-space:nowrap}
 .signup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;align-items:center}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
-a.cite{text-decoration:none;font-family:var(--mono);font-size:.8em;padding:0 .2em;margin-left:.1em;border-radius:3px;white-space:nowrap}
+a.cite{text-decoration:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.95em;font-weight:600;line-height:1;padding:0 .12em;margin-left:.08em;border-radius:3px;white-space:nowrap}
 a.cite:hover,a.cite:focus-visible{background:var(--surface);text-decoration:none}
 td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
 .resources{display:grid;gap:0}
