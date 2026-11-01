@@ -76,7 +76,7 @@ PAGES = [  # (file, nav label, title)
     ("gene.html", "Gene and evidence", "The APOE gene and the evidence"),
     ("resources.html", "Resources", "Resources"),
     ("papers.html", "Papers", "Key papers"),
-    ("trials.html", "Trials", "Clinical trials"),
+    ("trials.html", "Trials", "Clinical trials and studies"),
     ("drugs.html", "Drugs", "Drugs"),
     ("glossary.html", "Glossary", "Glossary"),
     ("newsletter.html", "Newsletter", "Newsletter"),
@@ -129,7 +129,7 @@ def shell(fname, title, body, extra_head=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -190,6 +190,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Oct 2026", '<a href="trials.html">Trials and studies</a> now include observational studies enrolling by APOE genotype.'),
     ("Oct 2026", 'MGB Biobank added to <a href="resources.html">Resources</a>; sources now shown as ↗ links.'),
     ("Oct 2026", 'New <a href="start.html">Start here</a> page for people who have just learned they are ε4/ε4.'),
     ("Oct 2026", 'Trial statuses checked against registries; donanemab ARIA rates by genotype added to <a href="trials.html">Trials</a>.'),
@@ -202,7 +203,7 @@ cards = [
     ("gene.html", "Gene and evidence", "Three forms of APOE, one amino acid apart, and what two copies of ε4 do to timing, amyloid and blood vessels."),
     ("resources.html", "Resources", "Cohorts and repositories with ε4/ε4 data, and how to access them."),
     ("papers.html", "Key papers", "The studies that define what we know, grouped by topic."),
-    ("trials.html", "Clinical trials", "Trials in ε4/ε4 carriers and trials that report results by genotype."),
+    ("trials.html", "Trials and studies", "Drug trials and observational studies in ε4/ε4 carriers, and trials that report results by genotype."),
     ("drugs.html", "Drugs", "Approved and investigational treatments, and what they mean for ε4/ε4."),
     ("newsletter.html", "Newsletter", "Research updates on APOE4 in your inbox."),
 ]
@@ -355,6 +356,22 @@ RESOURCES = [
          apoe="APOE genotype for most participants. The Fortea 2024 study used 3,297 genotyped NACC brain donors to show near-full penetrance of pathology in ε4/ε4.",
          access="Online data request form; free; usually days to a few weeks. Also analysable in the AD Workbench",
          best="Clinical trajectories, age at onset and pathology"),
+    dict(id="adni", name="ADNI", url="https://adni.loni.usc.edu/",
+         full="Alzheimer’s Disease Neuroimaging Initiative",
+         host="Multi-site North American study; data shared through LONI at the University of Southern California",
+         size="Several thousand participants across study phases since 2004",
+         data="Repeated MRI, amyloid and tau PET, spinal fluid and plasma biomarkers, cognition and genetics",
+         apoe="Repeated imaging lets you compare when amyloid, tau and small bleeds appear in ε4/ε4 versus other genotypes.",
+         access="Online application and data use agreement through LONI’s Image and Data Archive",
+         best="Biomarker and imaging timelines"),
+    dict(id="a4", name="A4 Study", url="https://www.a4studydata.org/",
+         full="Anti-Amyloid Treatment in Asymptomatic Alzheimer’s study, with the companion LEARN study",
+         host="Alzheimer’s Therapeutic Research Institute (USC)",
+         size="More than 1,100 randomized amyloid-positive adults aged 65–85 without symptoms, plus amyloid-negative LEARN participants",
+         data="Amyloid PET at screening, tau PET in a subset, repeated MRI including microbleeds, cognition, plasma biomarkers and APOE genotype",
+         apoe="Shows how small brain bleeds accumulate in ε4/ε4 adults without symptoms (odds ratio 4.8 in a 2025 analysis).",
+         access="Data use agreement through the A4 data portal",
+         best="Preclinical ε4/ε4 biology and ARIA risk"),
     dict(id="niagads", name="NIAGADS", url="https://www.niagads.org/",
          full="NIA Genetics of Alzheimer’s Disease Data Storage Site",
          host="University of Pennsylvania; NIA’s designated repository for Alzheimer’s genetic data",
@@ -379,22 +396,6 @@ RESOURCES = [
          apoe="Stored samples from people with known genotype and outcomes, for measuring new biomarkers such as proteomic or epigenetic aging clocks.",
          access="Biosample request reviewed by NCRAD and the contributing studies",
          best="New biomarker measurements on existing cohorts"),
-    dict(id="adni", name="ADNI", url="https://adni.loni.usc.edu/",
-         full="Alzheimer’s Disease Neuroimaging Initiative",
-         host="Multi-site North American study; data shared through LONI at the University of Southern California",
-         size="Several thousand participants across study phases since 2004",
-         data="Repeated MRI, amyloid and tau PET, spinal fluid and plasma biomarkers, cognition and genetics",
-         apoe="Repeated imaging lets you compare when amyloid, tau and small bleeds appear in ε4/ε4 versus other genotypes.",
-         access="Online application and data use agreement through LONI’s Image and Data Archive",
-         best="Biomarker and imaging timelines"),
-    dict(id="a4", name="A4 Study", url="https://www.a4studydata.org/",
-         full="Anti-Amyloid Treatment in Asymptomatic Alzheimer’s study, with the companion LEARN study",
-         host="Alzheimer’s Therapeutic Research Institute (USC)",
-         size="More than 1,100 randomized amyloid-positive adults aged 65–85 without symptoms, plus amyloid-negative LEARN participants",
-         data="Amyloid PET at screening, tau PET in a subset, repeated MRI including microbleeds, cognition, plasma biomarkers and APOE genotype",
-         apoe="Shows how small brain bleeds accumulate in ε4/ε4 adults without symptoms (odds ratio 4.8 in a 2025 analysis).",
-         access="Data use agreement through the A4 data portal",
-         best="Preclinical ε4/ε4 biology and ARIA risk"),
     dict(id="adkp", name="AD Knowledge Portal", url="https://adknowledgeportal.synapse.org/",
          full="AMP-AD and MODEL-AD data portal",
          host="Sage Bionetworks (Synapse); funded by NIA",
@@ -403,6 +404,14 @@ RESOURCES = [
          apoe="Compare brain molecular changes by genotype in humans, and test APOE4 effects with age in mice.",
          access="Synapse account and certification, plus a data use certificate signed by your institution for controlled data",
          best="Brain molecular mechanisms"),
+    dict(id="seaad", name="SEA-AD", url="https://portal.brain-map.org/explore/seattle-alzheimers-disease",
+         full="Seattle Alzheimer’s Disease Brain Cell Atlas",
+         host="Allen Institute, University of Washington and Kaiser Permanente Washington",
+         size="Middle temporal gyrus from 84 donors spanning the Alzheimer’s spectrum, plus neurotypical reference brains",
+         data="Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology",
+         apoe="Cell-type-resolved brain changes across disease stages; check donor metadata for APOE genotype.",
+         access="Open access; also distributed through the AD Knowledge Portal and a public AWS bucket",
+         best="Cell-type brain atlas"),
     dict(id="ukb", name="UK Biobank", url="https://www.ukbiobank.ac.uk/",
          full="UK Biobank",
          host="UK charity; data analysed on its cloud Research Analysis Platform",
@@ -435,14 +444,6 @@ RESOURCES = [
          apoe="One place to find and analyse several APOE-genotyped cohorts side by side in a secure cloud workspace.",
          access="Free workspace with R and Python; each dataset keeps its own access rules",
          best="Finding and combining datasets"),
-    dict(id="seaad", name="SEA-AD", url="https://portal.brain-map.org/explore/seattle-alzheimers-disease",
-         full="Seattle Alzheimer’s Disease Brain Cell Atlas",
-         host="Allen Institute, University of Washington and Kaiser Permanente Washington",
-         size="Middle temporal gyrus from 84 donors spanning the Alzheimer’s spectrum, plus neurotypical reference brains",
-         data="Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology",
-         apoe="Cell-type-resolved brain changes across disease stages; check donor metadata for APOE genotype.",
-         access="Open access; also distributed through the AD Knowledge Portal and a public AWS bucket",
-         best="Cell-type brain atlas"),
 ]
 
 summary_rows = "\n".join(
@@ -463,7 +464,7 @@ detail = "\n".join(f"""      <article class="resource" id="{r['id']}">
       </article>""" for r in RESOURCES)
 
 pages["resources.html"] = head("Resources", "Where to find ε4/ε4 data",
-    "Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Sizes are approximate; check each resource for current numbers and terms.") + f"""
+    "Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Listed from clinical and imaging cohorts, to genetic and biosample repositories, brain molecular data, population biobanks, and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.") + f"""
     <section>
       <div class="alleles" role="region" aria-label="Resources at a glance" tabindex="0">
         <table class="data">
@@ -568,7 +569,14 @@ groups = [
     ]),
 ]
 body = head("Key papers", "The studies that define what we know",
-    "Grouped by topic. Each link opens the paper.") + "\n    <section>\n"
+    "Grouped by topic, from foundational genetics to treatment. Within each topic, papers are listed oldest first. ↗ opens the paper.") + "\n    <section>\n"
+PAPER_ORDER = ["Genetics and risk", "Amyloid, blood vessels and bleeding", "Blood biomarkers", "Mechanisms",
+               "Protection and resilience", "Targeting APOE", "Trial results by genotype", "Reviews", "Community and policy"]
+assert sorted(PAPER_ORDER) == sorted(g for g, _ in groups)
+def _year(item):
+    ys = re.findall(r"(?:19|20)\d\d", re.sub(r"<[^>]+>", "", item[0]))
+    return int(ys[-1]) if ys else 0
+groups = sorted(((g, sorted(items, key=_year)) for g, items in groups), key=lambda gi: PAPER_ORDER.index(gi[0]))
 for g, items in groups:
     body += f'    <div class="group">\n      <h2>{g}</h2>\n{refs(items)}\n    </div>\n'
 body += "    </section>"
@@ -613,10 +621,15 @@ trials = [
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
      pill("run", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
+    ("Blood Sample Study in Adults with Known APOE Genetic Results", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
+     pill("run", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems. Brigham and Women’s Hospital, Boston; payment up to $100. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
+    ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the BWH APOE study",
+     pill("run", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin. Results are not returned to participants. Brigham and Women’s Hospital, Boston; payment up to $50. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026'}
+TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026', 'Blood Sample Study in Adults with Known APOE Genetic Results': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
-    ("Run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
+    ("Drug trials run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
+    ("Observational studies in people with known APOE genotype", ["Harvard Alzheimer’s Risk Study", "Blood Sample Study in Adults with Known APOE Genetic Results"]),
     ("Major trials that report results by genotype", ["AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
@@ -624,13 +637,13 @@ assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr><td data-label="Trial"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
       <div class="alleles" role="region" aria-label="{g}" tabindex="0">
         <table class="data">
-          <thead><tr><th>Trial</th><th>Intervention</th><th>Who</th><th>Status and result</th><th>As of</th></tr></thead>
+          <thead><tr><th>Study</th><th>Intervention</th><th>Who</th><th>Status and result</th><th>As of</th></tr></thead>
           <tbody>
 {rows}
           </tbody>
@@ -638,10 +651,10 @@ for g, names in TRIAL_GROUPS:
       </div>
     </div>
 """
-pages["trials.html"] = head("Clinical trials", "Trials in ε4/ε4 carriers",
-    "Trials run only in ε4 homozygotes or carriers, and major trials that report safety and results by genotype. Within each group, ongoing trials come first, then the most recent results.") + f"""
+pages["trials.html"] = head("Clinical trials and studies", "Trials and studies in ε4/ε4 carriers",
+    "Drug trials run only in ε4 carriers, observational studies that enroll people by APOE genotype, and major trials that report safety and results by genotype. Within each group, ongoing studies come first, then the most recent results.") + f"""
     <section>
-{trial_sections}      <p class="note">Trial status changes often. “As of” is the date of the result or status shown; check each registry entry for the latest. To find trials enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
+{trial_sections}      <p class="note">The two observational studies at Brigham and Women’s Hospital are led by this site’s maintainer. Study status changes often. “As of” is the date of the result or status shown; check each registry entry for the latest. To find studies enrolling now, search <a href="{ct('APOE4')}">ClinicalTrials.gov for APOE4</a>.</p>
     </section>"""
 
 # ---------- Drugs ----------
@@ -657,10 +670,10 @@ drugs = [
     ("Investigational, aimed at ε4/ε4", [
         ("<a href=\"https://clinicaltrials.gov/study/NCT04770220\">Valiltramiprosate (ALZ-801)</a>", "Oral; blocks formation of toxic amyloid oligomers",
          "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
-        ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a>", "Gene therapy that adds the protective APOE2 form",
-         "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
         ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
          "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a> in Abu Dhabi, UAE."),
+        ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a>", "Gene therapy that adds the protective APOE2 form",
+         "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
     ]),
     ("Earlier-stage approaches", [
         ("Anti-APOE antibodies", "Antibodies against aggregated apoE, such as HAE-4",
@@ -679,7 +692,7 @@ drugs = [
     ]),
 ]
 body = head("Drugs", "Treatments and what they mean for ε4/ε4",
-    "APOE genotype matters most for the safety of anti-amyloid antibodies. Several newer approaches target APOE4 biology directly.")
+    "APOE genotype matters most for the safety of anti-amyloid antibodies. Several newer approaches target APOE4 biology directly. Within each group, the most advanced or most recent come first.")
 body += "\n    <section>\n"
 for g, items in drugs:
     rows = "\n".join(f'            <tr><td data-label="Drug">{n}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>' for n, t, x in items)

@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -44,7 +44,7 @@
     <div class="page-head">
       <p class="label">Resources</p>
       <h1>Where to find ε4/ε4 data</h1>
-      <p class="lede">Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Sizes are approximate; check each resource for current numbers and terms.</p>
+      <p class="lede">Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Listed from clinical and imaging cohorts, to genetic and biosample repositories, brain molecular data, population biobanks, and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.</p>
     </div>
     <section>
       <div class="alleles" role="region" aria-label="Resources at a glance" tabindex="0">
@@ -52,17 +52,17 @@
           <thead><tr><th>Resource</th><th>Best for</th><th>Access</th></tr></thead>
           <tbody>
             <tr><td data-label="Resource"><a href="#nacc">NACC</a></td><td data-label="Best for">Clinical trajectories, age at onset and pathology</td><td data-label="Access">Online data request form</td></tr>
+            <tr><td data-label="Resource"><a href="#adni">ADNI</a></td><td data-label="Best for">Biomarker and imaging timelines</td><td data-label="Access">Online application and data use agreement through LONI’s Image and Data Archive</td></tr>
+            <tr><td data-label="Resource"><a href="#a4">A4 Study</a></td><td data-label="Best for">Preclinical ε4/ε4 biology and ARIA risk</td><td data-label="Access">Data use agreement through the A4 data portal</td></tr>
             <tr><td data-label="Resource"><a href="#niagads">NIAGADS</a></td><td data-label="Best for">Genetic modifiers, ancestry effects</td><td data-label="Access">Formal data access request with a research use statement</td></tr>
             <tr><td data-label="Resource"><a href="#adsp">ADSP</a></td><td data-label="Best for">Protective and risk variants within ε4/ε4</td><td data-label="Access">Through NIAGADS</td></tr>
             <tr><td data-label="Resource"><a href="#ncrad">NCRAD</a></td><td data-label="Best for">New biomarker measurements on existing cohorts</td><td data-label="Access">Biosample request reviewed by NCRAD and the contributing studies</td></tr>
-            <tr><td data-label="Resource"><a href="#adni">ADNI</a></td><td data-label="Best for">Biomarker and imaging timelines</td><td data-label="Access">Online application and data use agreement through LONI’s Image and Data Archive</td></tr>
-            <tr><td data-label="Resource"><a href="#a4">A4 Study</a></td><td data-label="Best for">Preclinical ε4/ε4 biology and ARIA risk</td><td data-label="Access">Data use agreement through the A4 data portal</td></tr>
             <tr><td data-label="Resource"><a href="#adkp">AD Knowledge Portal</a></td><td data-label="Best for">Brain molecular mechanisms</td><td data-label="Access">Synapse account and certification</td></tr>
+            <tr><td data-label="Resource"><a href="#seaad">SEA-AD</a></td><td data-label="Best for">Cell-type brain atlas</td><td data-label="Access">Open access</td></tr>
             <tr><td data-label="Resource"><a href="#ukb">UK Biobank</a></td><td data-label="Best for">Large-scale prediction and outcomes</td><td data-label="Access">Project application with a fee</td></tr>
             <tr><td data-label="Resource"><a href="#aou">All of Us</a></td><td data-label="Best for">Diverse ancestries and health records</td><td data-label="Access">Institutional data use agreement</td></tr>
             <tr><td data-label="Resource"><a href="#mgbb">MGB Biobank</a></td><td data-label="Best for">Health-record outcomes and genotype-based recontact</td><td data-label="Access">Sample and data requests through the Biobank team</td></tr>
             <tr><td data-label="Resource"><a href="#addi">AD Workbench</a></td><td data-label="Best for">Finding and combining datasets</td><td data-label="Access">Free workspace with R and Python</td></tr>
-            <tr><td data-label="Resource"><a href="#seaad">SEA-AD</a></td><td data-label="Best for">Cell-type brain atlas</td><td data-label="Access">Open access</td></tr>
           </tbody>
         </table>
       </div>
@@ -79,6 +79,32 @@
           <div><dt>Data</dt><dd>Yearly clinical and cognitive assessments, diagnoses, medications, neuropathology for brain donors, and linked imaging and biomarker data</dd></div>
           <div><dt>For ε4/ε4</dt><dd>APOE genotype for most participants. The Fortea 2024 study used 3,297 genotyped NACC brain donors to show near-full penetrance of pathology in ε4/ε4.</dd></div>
           <div><dt>Access</dt><dd>Online data request form; free; usually days to a few weeks. Also analysable in the AD Workbench</dd></div>
+        </dl>
+      </article>
+      <article class="resource" id="adni">
+        <div class="resource-head">
+          <h2><a href="https://adni.loni.usc.edu/">ADNI</a></h2>
+          <p class="label">Alzheimer’s Disease Neuroimaging Initiative</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Run by</dt><dd>Multi-site North American study; data shared through LONI at the University of Southern California</dd></div>
+          <div><dt>Size</dt><dd>Several thousand participants across study phases since 2004</dd></div>
+          <div><dt>Data</dt><dd>Repeated MRI, amyloid and tau PET, spinal fluid and plasma biomarkers, cognition and genetics</dd></div>
+          <div><dt>For ε4/ε4</dt><dd>Repeated imaging lets you compare when amyloid, tau and small bleeds appear in ε4/ε4 versus other genotypes.</dd></div>
+          <div><dt>Access</dt><dd>Online application and data use agreement through LONI’s Image and Data Archive</dd></div>
+        </dl>
+      </article>
+      <article class="resource" id="a4">
+        <div class="resource-head">
+          <h2><a href="https://www.a4studydata.org/">A4 Study</a></h2>
+          <p class="label">Anti-Amyloid Treatment in Asymptomatic Alzheimer’s study, with the companion LEARN study</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Run by</dt><dd>Alzheimer’s Therapeutic Research Institute (USC)</dd></div>
+          <div><dt>Size</dt><dd>More than 1,100 randomized amyloid-positive adults aged 65–85 without symptoms, plus amyloid-negative LEARN participants</dd></div>
+          <div><dt>Data</dt><dd>Amyloid PET at screening, tau PET in a subset, repeated MRI including microbleeds, cognition, plasma biomarkers and APOE genotype</dd></div>
+          <div><dt>For ε4/ε4</dt><dd>Shows how small brain bleeds accumulate in ε4/ε4 adults without symptoms (odds ratio 4.8 in a 2025 analysis).</dd></div>
+          <div><dt>Access</dt><dd>Data use agreement through the A4 data portal</dd></div>
         </dl>
       </article>
       <article class="resource" id="niagads">
@@ -120,32 +146,6 @@
           <div><dt>Access</dt><dd>Biosample request reviewed by NCRAD and the contributing studies</dd></div>
         </dl>
       </article>
-      <article class="resource" id="adni">
-        <div class="resource-head">
-          <h2><a href="https://adni.loni.usc.edu/">ADNI</a></h2>
-          <p class="label">Alzheimer’s Disease Neuroimaging Initiative</p>
-        </div>
-        <dl class="facts">
-          <div><dt>Run by</dt><dd>Multi-site North American study; data shared through LONI at the University of Southern California</dd></div>
-          <div><dt>Size</dt><dd>Several thousand participants across study phases since 2004</dd></div>
-          <div><dt>Data</dt><dd>Repeated MRI, amyloid and tau PET, spinal fluid and plasma biomarkers, cognition and genetics</dd></div>
-          <div><dt>For ε4/ε4</dt><dd>Repeated imaging lets you compare when amyloid, tau and small bleeds appear in ε4/ε4 versus other genotypes.</dd></div>
-          <div><dt>Access</dt><dd>Online application and data use agreement through LONI’s Image and Data Archive</dd></div>
-        </dl>
-      </article>
-      <article class="resource" id="a4">
-        <div class="resource-head">
-          <h2><a href="https://www.a4studydata.org/">A4 Study</a></h2>
-          <p class="label">Anti-Amyloid Treatment in Asymptomatic Alzheimer’s study, with the companion LEARN study</p>
-        </div>
-        <dl class="facts">
-          <div><dt>Run by</dt><dd>Alzheimer’s Therapeutic Research Institute (USC)</dd></div>
-          <div><dt>Size</dt><dd>More than 1,100 randomized amyloid-positive adults aged 65–85 without symptoms, plus amyloid-negative LEARN participants</dd></div>
-          <div><dt>Data</dt><dd>Amyloid PET at screening, tau PET in a subset, repeated MRI including microbleeds, cognition, plasma biomarkers and APOE genotype</dd></div>
-          <div><dt>For ε4/ε4</dt><dd>Shows how small brain bleeds accumulate in ε4/ε4 adults without symptoms (odds ratio 4.8 in a 2025 analysis).</dd></div>
-          <div><dt>Access</dt><dd>Data use agreement through the A4 data portal</dd></div>
-        </dl>
-      </article>
       <article class="resource" id="adkp">
         <div class="resource-head">
           <h2><a href="https://adknowledgeportal.synapse.org/">AD Knowledge Portal</a></h2>
@@ -157,6 +157,19 @@
           <div><dt>Data</dt><dd>Brain genomics, transcriptomics, single-cell, proteomics, metabolomics and epigenomics; humanized APOE4 knock-in mice from MODEL-AD</dd></div>
           <div><dt>For ε4/ε4</dt><dd>Compare brain molecular changes by genotype in humans, and test APOE4 effects with age in mice.</dd></div>
           <div><dt>Access</dt><dd>Synapse account and certification, plus a data use certificate signed by your institution for controlled data</dd></div>
+        </dl>
+      </article>
+      <article class="resource" id="seaad">
+        <div class="resource-head">
+          <h2><a href="https://portal.brain-map.org/explore/seattle-alzheimers-disease">SEA-AD</a></h2>
+          <p class="label">Seattle Alzheimer’s Disease Brain Cell Atlas</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Run by</dt><dd>Allen Institute, University of Washington and Kaiser Permanente Washington</dd></div>
+          <div><dt>Size</dt><dd>Middle temporal gyrus from 84 donors spanning the Alzheimer’s spectrum, plus neurotypical reference brains</dd></div>
+          <div><dt>Data</dt><dd>Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology</dd></div>
+          <div><dt>For ε4/ε4</dt><dd>Cell-type-resolved brain changes across disease stages; check donor metadata for APOE genotype.</dd></div>
+          <div><dt>Access</dt><dd>Open access; also distributed through the AD Knowledge Portal and a public AWS bucket</dd></div>
         </dl>
       </article>
       <article class="resource" id="ukb">
@@ -209,19 +222,6 @@
           <div><dt>Data</dt><dd>Cohort, clinical trial and biomarker datasets from many contributors, including NACC and the ALFA study</dd></div>
           <div><dt>For ε4/ε4</dt><dd>One place to find and analyse several APOE-genotyped cohorts side by side in a secure cloud workspace.</dd></div>
           <div><dt>Access</dt><dd>Free workspace with R and Python; each dataset keeps its own access rules</dd></div>
-        </dl>
-      </article>
-      <article class="resource" id="seaad">
-        <div class="resource-head">
-          <h2><a href="https://portal.brain-map.org/explore/seattle-alzheimers-disease">SEA-AD</a></h2>
-          <p class="label">Seattle Alzheimer’s Disease Brain Cell Atlas</p>
-        </div>
-        <dl class="facts">
-          <div><dt>Run by</dt><dd>Allen Institute, University of Washington and Kaiser Permanente Washington</dd></div>
-          <div><dt>Size</dt><dd>Middle temporal gyrus from 84 donors spanning the Alzheimer’s spectrum, plus neurotypical reference brains</dd></div>
-          <div><dt>Data</dt><dd>Single-nucleus RNA and chromatin data, spatial transcriptomics and quantitative neuropathology</dd></div>
-          <div><dt>For ε4/ε4</dt><dd>Cell-type-resolved brain changes across disease stages; check donor metadata for APOE genotype.</dd></div>
-          <div><dt>Access</dt><dd>Open access; also distributed through the AD Knowledge Portal and a public AWS bucket</dd></div>
         </dl>
       </article>
     </section>
