@@ -84,10 +84,10 @@ PAGES = [  # (file, nav label, title)
     ("index.html", "Home", "APOE4 Science"),
     ("start.html", "Start here", "Start here: if you are ε4/ε4"),
     ("gene.html", "Gene and evidence", "The APOE gene and the evidence"),
+    ("drugs.html", "Drugs", "Drugs"),
+    ("trials.html", "Trials", "Clinical trials and studies"),
     ("resources.html", "Resources", "Resources"),
     ("papers.html", "Papers", "Key papers"),
-    ("trials.html", "Trials", "Clinical trials and studies"),
-    ("drugs.html", "Drugs", "Drugs"),
     ("glossary.html", "Glossary", "Glossary"),
     ("newsletter.html", "Newsletter", "Newsletter"),
 ]
@@ -210,10 +210,10 @@ UPDATES = [  # newest first; keep to about five
 ]
 cards = [
     ("gene.html", "Gene and evidence", "Three forms of APOE, one amino acid apart, and what two copies of ε4 do to timing, amyloid and blood vessels."),
+    ("drugs.html", "Drugs", "Approved and investigational treatments, and what they mean for ε4/ε4."),
+    ("trials.html", "Trials and studies", "Drug trials and observational studies in ε4/ε4 carriers, and trials that report results by genotype."),
     ("resources.html", "Resources", "Cohorts and repositories with ε4/ε4 data, and how to access them."),
     ("papers.html", "Key papers", "The studies that define what we know, grouped by topic."),
-    ("trials.html", "Trials and studies", "Drug trials and observational studies in ε4/ε4 carriers, and trials that report results by genotype."),
-    ("drugs.html", "Drugs", "Approved and investigational treatments, and what they mean for ε4/ε4."),
     ("newsletter.html", "Newsletter", "Research updates on APOE4 in your inbox."),
 ]
 pages["index.html"] = f"""    <div class="hero">
@@ -809,7 +809,7 @@ NOT_FOUND = head("Page not found", "This page doesn’t exist",
     "It may have moved when the site was reorganized.") + """
     <section>
       <div class="prose">
-        <p>Try the <a href="index.html">home page</a>, or go straight to <a href="gene.html">Gene and evidence</a>, <a href="resources.html">Resources</a>, <a href="papers.html">Papers</a>, <a href="trials.html">Trials</a> or <a href="drugs.html">Drugs</a>.</p>
+        <p>Try the <a href="index.html">home page</a>, or go straight to <a href="gene.html">Gene and evidence</a>, <a href="drugs.html">Drugs</a>, <a href="trials.html">Trials</a>, <a href="resources.html">Resources</a> or <a href="papers.html">Papers</a>.</p>
       </div>
     </section>"""
 OUT.joinpath("robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n")
