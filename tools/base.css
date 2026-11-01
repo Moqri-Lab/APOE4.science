@@ -2,17 +2,17 @@
 /* Layout: one left-aligned reading column with wide data bands; the allele strip (codons 112/158) is the signature element. */
 :root{
   --bg:#f6f7f9; --surface:#ffffff; --ink:#14181f; --muted:#4a5260; --rule:#d9dde4;
-  --e2:#2f7d6d; --e3:#5b6b86; --e4:#b0234f; --e4-soft:#f6e3ea;
+  --e2:#2f7d6d; --e3:#5b6b86; --e4:#b0234f; --e4-soft:#f6e3ea; --green:#1f7a3d; --blue:#2458a6;
   --display:'Spectral', Georgia, 'Times New Roman', serif;
   --body:'Public Sans', 'Helvetica Neue', Arial, sans-serif;
   --mono:'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1217; --surface:#171b22; --ink:#e8ebf0; --muted:#a3abb8; --rule:#2a303a;
-  --e2:#5cc0a8; --e3:#93a3bf; --e4:#ec6b93; --e4-soft:#3a1a26; color-scheme:dark}}
+  --e2:#5cc0a8; --e3:#93a3bf; --e4:#ec6b93; --e4-soft:#3a1a26; --green:#5fd08a; --blue:#7fa9ec; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1217; --surface:#171b22; --ink:#e8ebf0; --muted:#a3abb8; --rule:#2a303a;
-  --e2:#5cc0a8; --e3:#93a3bf; --e4:#ec6b93; --e4-soft:#3a1a26; color-scheme:dark}
+  --e2:#5cc0a8; --e3:#93a3bf; --e4:#ec6b93; --e4-soft:#3a1a26; --green:#5fd08a; --blue:#7fa9ec; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;

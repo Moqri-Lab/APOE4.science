@@ -29,7 +29,7 @@ table.data th,table.data td{padding:14px 16px;text-align:left;vertical-align:top
 table.data th{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
 table.data td:first-child{font-weight:600;white-space:nowrap}
 .pill{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;padding:2px 8px;border:1px solid currentColor;white-space:nowrap}
-.pill.ok{color:var(--e2)} .pill.stop{color:var(--e4)} .pill.run{color:var(--e3)}
+.pill.recruit{color:var(--green)} .pill.done{color:var(--blue)} .pill.stop{color:var(--e4)} .pill.run{color:var(--e3)}
 .signup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;align-items:center}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
@@ -635,24 +635,24 @@ trials = [
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
      "https://clinicaltrials.gov/study/NCT03131453"),
     ("LX1001", "AAV gene therapy delivering APOE2", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
-     pill("ok", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
+     pill("done", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT03634007"),
     ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
+     pill("done", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
     ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("ok", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a class=\"cite\" href=\"https://doi.org/10.1001/jama.2023.13239\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT04437511"),
+     pill("done", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a class=\"cite\" href=\"https://doi.org/10.1001/jama.2023.13239\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
-     pill("ok", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
+     pill("done", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
      pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2305032\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT02008357"),
     ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
-     pill("run", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("recruit", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
     ("Mass General Brigham APOE Study", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
-     pill("run", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems. Brigham and Women’s Hospital, Boston; payment up to $100. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
+     pill("recruit", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the Mass General Brigham APOE Study",
-     pill("run", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin. Results are not returned to participants. Brigham and Women’s Hospital, Boston; payment up to $50. Enrollment expected to close February 2027.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
+     pill("recruit", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
 TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
@@ -742,7 +742,7 @@ body += """    <div class="group" id="access">
         <table class="data">
           <thead><tr><th>Region</th><th>Lecanemab</th><th>Donanemab</th></tr></thead>
           <tbody>
-            <tr><td data-label="Region">US</td><td data-label="Lecanemab">Yes, with boxed warning; APOE testing advised</td><td data-label="Donanemab">Yes, with boxed warning; APOE testing advised</td></tr>\n            <tr><td data-label="Region">EU</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No (non-carriers and heterozygotes only)</td></tr>\n            <tr><td data-label="Region">UK</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No; regulator advises testing and not treating two-copy carriers</td></tr>\n            <tr><td data-label="Region">Australia</td><td data-label="Lecanemab">Not approved for anyone</td><td data-label="Donanemab">No; APOE4 testing required before treatment</td></tr>\n            <tr><td data-label="Region">Japan, China</td><td data-label="Lecanemab">Not checked</td><td data-label="Donanemab">Yes, regardless of APOE4 status</td></tr>
+            <tr><td data-label="Region">US</td><td data-label="Lecanemab">Yes, with boxed warning; APOE testing advised</td><td data-label="Donanemab">Yes, with boxed warning; APOE testing advised</td></tr>\n            <tr><td data-label="Region">EU</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No (non-carriers and heterozygotes only)</td></tr>\n            <tr><td data-label="Region">UK</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No; regulator advises testing and not treating two-copy carriers</td></tr>\n            <tr><td data-label="Region">Australia</td><td data-label="Lecanemab">Not approved for anyone</td><td data-label="Donanemab">No; APOE4 testing required before treatment</td></tr>\n            <tr><td data-label="Region">Japan, China</td><td data-label="Lecanemab">Yes (Japan 2023, China 2024); no genotype restriction reported</td><td data-label="Donanemab">Yes, regardless of APOE4 status</td></tr>
           </tbody>
         </table>
       </div>
