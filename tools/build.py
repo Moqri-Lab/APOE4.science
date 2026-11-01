@@ -578,6 +578,8 @@ groups = [
          "Mechanisms and therapeutic approaches.", "https://doi.org/10.1038/s41582-019-0228-7"),
         ("Hampel H, Elhage A, Cho M, Apostolova LG, Nicoll JAR, Atri A. Amyloid-related imaging abnormalities (ARIA): radiological, biological and clinical characteristics. <i>Brain</i> 2023.",
          "What ARIA is, how it is detected, and why ε4/ε4 raises risk.", "https://doi.org/10.1093/brain/awad188"),
+        ("The Alzheimer’s Disease Sequencing Project: progress and update. 2025.",
+         "What ADSP has sequenced so far and how to use it, including diverse-ancestry data relevant to ε4/ε4.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11710089/"),
     ]),
     ("Community and policy", [
         ("UsAgainstAlzheimer’s. FDA Patient Listening Session: Alzheimer’s disease and APOE ε4 homozygotes. Summary, July 2025.",
