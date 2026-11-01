@@ -595,7 +595,7 @@ trials = [
     ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
-     pill("run", "Recruiting") + " 112 planned. Aims to lower an amyloid risk score in blood.", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("run", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\">Announcement</a>", "https://clinicaltrials.gov/study/NCT07399171"),
 ]
 TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
@@ -643,7 +643,7 @@ drugs = [
         ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a>", "Gene therapy that adds the protective APOE2 form",
          "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\">Results</a>"),
         ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
-         "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a>."),
+         "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a> in Abu Dhabi, UAE."),
     ]),
     ("Earlier-stage approaches", [
         ("Anti-APOE antibodies", "Antibodies against aggregated apoE, such as HAE-4",
