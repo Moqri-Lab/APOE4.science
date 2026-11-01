@@ -737,16 +737,21 @@ for g, items in drugs:
     </div>
 """
 body += """    <div class="group" id="access">
-      <h2>Can ε4/ε4 be treated?</h2>
+      <h2>Are lecanemab and donanemab approved for ε4/ε4?</h2>
+      <p class="note" style="margin-top:0">Whether a person with two copies of APOE4 can be prescribed either anti-amyloid antibody depends on the country. Where approved, it is with a boxed warning about the higher risk of ARIA; where not, approval covers only people with zero or one copy.</p>
       <div class="alleles" role="region" aria-label="Approval for ε4/ε4 by region" tabindex="0">
         <table class="data">
-          <thead><tr><th>Region</th><th>Lecanemab</th><th>Donanemab</th></tr></thead>
+          <thead><tr><th>Region</th><th>Lecanemab for ε4/ε4</th><th>Donanemab for ε4/ε4</th></tr></thead>
           <tbody>
-            <tr><td data-label="Region">US</td><td data-label="Lecanemab">Yes, with boxed warning; APOE testing advised</td><td data-label="Donanemab">Yes, with boxed warning; APOE testing advised</td></tr>\n            <tr><td data-label="Region">EU</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No (non-carriers and heterozygotes only)</td></tr>\n            <tr><td data-label="Region">UK</td><td data-label="Lecanemab">No (non-carriers and heterozygotes only)</td><td data-label="Donanemab">No; regulator advises testing and not treating two-copy carriers</td></tr>\n            <tr><td data-label="Region">Australia</td><td data-label="Lecanemab">Not approved for anyone</td><td data-label="Donanemab">No; APOE4 testing required before treatment</td></tr>\n            <tr><td data-label="Region">Japan, China</td><td data-label="Lecanemab">Yes (Japan 2023, China 2024); no genotype restriction reported</td><td data-label="Donanemab">Yes, regardless of APOE4 status</td></tr>
+            <tr><td data-label="Region">US</td><td data-label="Lecanemab">Approved</td><td data-label="Donanemab">Approved</td></tr>
+            <tr><td data-label="Region">Japan, China</td><td data-label="Lecanemab">Approved (no genotype restriction reported)</td><td data-label="Donanemab">Approved</td></tr>
+            <tr><td data-label="Region">EU</td><td data-label="Lecanemab">Not approved for ε4/ε4</td><td data-label="Donanemab">Not approved for ε4/ε4</td></tr>
+            <tr><td data-label="Region">UK</td><td data-label="Lecanemab">Not approved for ε4/ε4</td><td data-label="Donanemab">Not approved for ε4/ε4</td></tr>
+            <tr><td data-label="Region">Australia</td><td data-label="Lecanemab">Not approved for anyone</td><td data-label="Donanemab">Not approved for ε4/ε4</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="note">In the US, testing is advised but not required; patients who decline can still be treated without knowing their ARIA risk. Confirmed amyloid (PET or spinal fluid) is required everywhere. """ + cite("https://www.alzheimer-europe.org/news/donanemab-licensed-uks-mhra-drug-will-not-be-covered-nhs-according-draft-nice-guidance", "UK MHRA") + cite("https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2025-07/files/donanemab-psd-july-2025.docx", "Australia PBS") + cite("https://investor.lilly.com/node/52961", "Lilly EU approval") + """</p>
+      <p class="note">In the US, APOE testing is advised before treatment but not required; patients who decline testing can still be treated, without knowing their ARIA risk. Where the drugs are not approved for ε4/ε4, testing is effectively needed to establish eligibility. Confirmed amyloid on a PET scan or spinal fluid test is required everywhere. """ + cite("https://www.alzheimer-europe.org/news/donanemab-licensed-uks-mhra-drug-will-not-be-covered-nhs-according-draft-nice-guidance", "UK MHRA") + cite("https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2025-07/files/donanemab-psd-july-2025.docx", "Australia PBS") + cite("https://investor.lilly.com/node/52961", "Lilly EU approval") + """</p>
     </div>
     <div class="group" id="cost">
       <h2>Cost in the US</h2>
