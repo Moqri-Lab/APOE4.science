@@ -199,6 +199,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Nov 2026", '<a href="drugs.html#access">Drugs</a>: where lecanemab and donanemab are approved for ε4/ε4, and US costs.'),
     ("Oct 2026", '<a href="trials.html">Trials and studies</a> now include observational studies enrolling by APOE genotype.'),
     ("Oct 2026", 'MGB Biobank added to <a href="resources.html">Resources</a>; sources now shown as ↗ links.'),
     ("Oct 2026", 'New <a href="start.html">Start here</a> page for people who have just learned they are ε4/ε4.'),
