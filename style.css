@@ -126,6 +126,16 @@ table.data td:first-child{font-weight:600;white-space:nowrap}
 .signup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;align-items:center}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
+h2.res-kind{font-size:22px;padding:28px 0 4px;border-bottom:2px solid var(--e4);margin-bottom:8px}
+.resources h2.res-kind:first-child{padding-top:0}
+sup.ref{font-size:.7em;line-height:0;vertical-align:super;margin-left:.08em;font-weight:600;white-space:nowrap}
+sup.ref a{text-decoration:none}
+sup.ref a:hover,sup.ref a:focus-visible{text-decoration:underline}
+ol.reflist{margin:0;padding-left:28px;display:grid;gap:8px;font-size:14.5px;color:var(--muted);max-width:80ch}
+ol.reflist li{scroll-margin-top:24px}
+ol.reflist li:target{color:var(--ink)}
+ul.refs li a.paper{color:var(--ink);text-decoration-color:var(--rule)}
+ul.refs li a.paper:hover{text-decoration-color:var(--e4)}
 a.cite{text-decoration:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.95em;font-weight:600;line-height:1;padding:0 .12em;margin-left:.08em;border-radius:3px;white-space:nowrap}
 a.cite:hover,a.cite:focus-visible{background:var(--surface);text-decoration:none}
 td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}

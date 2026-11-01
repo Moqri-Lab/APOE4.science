@@ -33,6 +33,16 @@ table.data td:first-child{font-weight:600;white-space:nowrap}
 .signup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:40px;align-items:center}
 .signup iframe{width:100%;max-width:480px;height:320px;border:1px solid var(--rule);background:#fff}
 @media (max-width:820px){.signup{grid-template-columns:minmax(0,1fr)}}
+h2.res-kind{font-size:22px;padding:28px 0 4px;border-bottom:2px solid var(--e4);margin-bottom:8px}
+.resources h2.res-kind:first-child{padding-top:0}
+sup.ref{font-size:.7em;line-height:0;vertical-align:super;margin-left:.08em;font-weight:600;white-space:nowrap}
+sup.ref a{text-decoration:none}
+sup.ref a:hover,sup.ref a:focus-visible{text-decoration:underline}
+ol.reflist{margin:0;padding-left:28px;display:grid;gap:8px;font-size:14.5px;color:var(--muted);max-width:80ch}
+ol.reflist li{scroll-margin-top:24px}
+ol.reflist li:target{color:var(--ink)}
+ul.refs li a.paper{color:var(--ink);text-decoration-color:var(--rule)}
+ul.refs li a.paper:hover{text-decoration-color:var(--e4)}
 a.cite{text-decoration:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.95em;font-weight:600;line-height:1;padding:0 .12em;margin-left:.08em;border-radius:3px;white-space:nowrap}
 a.cite:hover,a.cite:focus-visible{background:var(--surface);text-decoration:none}
 td.asof{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
@@ -129,7 +139,7 @@ def shell(fname, title, body, extra_head=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -165,8 +175,7 @@ def head(label, h1, lede):
 def refs(items):
     out = []
     for cite, why, link in items:
-        label = re.sub(r"<[^>]+>", "", cite).split(". ")[0]
-        out.append(f'        <li>{cite} <a class="cite" href="{link}" title="Open paper" aria-label="Open paper: {label}">↗</a><p class="why">{why}</p></li>')
+        out.append(f'        <li><a class="paper" href="{link}">{cite}</a><p class="why">{why}</p></li>')
     return '      <ul class="refs">\n' + "\n".join(out) + "\n      </ul>"
 
 
@@ -446,10 +455,22 @@ RESOURCES = [
          best="Finding and combining datasets"),
 ]
 
+RESOURCE_KINDS = [  # ordered from deepest ε4/ε4 phenotyping to broadest scale
+    ("Clinical and imaging cohorts", ["nacc", "adni", "a4"]),
+    ("Genetic data and biosamples", ["niagads", "adsp", "ncrad"]),
+    ("Brain molecular data", ["adkp", "seaad"]),
+    ("Population and health-system biobanks", ["ukb", "aou", "mgbb"]),
+    ("Analysis platforms", ["addi"]),
+]
+_by_id = {r["id"]: r for r in RESOURCES}
+assert sorted(_by_id) == sorted(i for _, ids in RESOURCE_KINDS for i in ids)
+KIND_OF = {i: k for k, ids in RESOURCE_KINDS for i in ids}
+RESOURCES = [_by_id[i] for _, ids in RESOURCE_KINDS for i in ids]
 summary_rows = "\n".join(
-    f'            <tr><td data-label="Resource"><a href="#{r["id"]}">{r["name"]}</a></td><td data-label="Best for">{r["best"]}</td><td data-label="Access">{r["access"].split(";")[0].split(",")[0]}</td></tr>'
+    f'            <tr><td data-label="Resource"><a href="#{r["id"]}">{r["name"]}</a></td><td data-label="Type">{KIND_OF[r["id"]]}</td><td data-label="Best for">{r["best"]}</td><td data-label="Access">{r["access"].split(";")[0].split(",")[0]}</td></tr>'
     for r in RESOURCES)
-detail = "\n".join(f"""      <article class="resource" id="{r['id']}">
+def _res_article(r):
+    return f"""      <article class="resource" id="{r['id']}">
         <div class="resource-head">
           <h2><a href="{r['url']}">{r['name']}</a></h2>
           <p class="label">{r['full']}</p>
@@ -461,14 +482,17 @@ detail = "\n".join(f"""      <article class="resource" id="{r['id']}">
           <div><dt>For ε4/ε4</dt><dd>{r['apoe']}</dd></div>
           <div><dt>Access</dt><dd>{r['access']}</dd></div>
         </dl>
-      </article>""" for r in RESOURCES)
+      </article>"""
+detail = "\n".join(
+    f'      <h2 class="res-kind">{k}</h2>\n' + "\n".join(_res_article(_by_id[i]) for i in ids)
+    for k, ids in RESOURCE_KINDS)
 
 pages["resources.html"] = head("Resources", "Where to find ε4/ε4 data",
-    "Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Listed from clinical and imaging cohorts, to genetic and biosample repositories, brain molecular data, population biobanks, and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.") + f"""
+    "Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Grouped by type, from cohorts with the deepest clinical, imaging and pathology data on ε4/ε4, to genetic and biosample repositories, brain molecular data, large biobanks and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.") + f"""
     <section>
       <div class="alleles" role="region" aria-label="Resources at a glance" tabindex="0">
         <table class="data">
-          <thead><tr><th>Resource</th><th>Best for</th><th>Access</th></tr></thead>
+          <thead><tr><th>Resource</th><th>Type</th><th>Best for</th><th>Access</th></tr></thead>
           <tbody>
 {summary_rows}
           </tbody>
@@ -569,7 +593,7 @@ groups = [
     ]),
 ]
 body = head("Key papers", "The studies that define what we know",
-    "Grouped by topic, from foundational genetics to treatment. Within each topic, papers are listed oldest first. ↗ opens the paper.") + "\n    <section>\n"
+    "Grouped by topic, from foundational genetics to treatment. Within each topic, papers are listed oldest first. Click a citation to open the paper.") + "\n    <section>\n"
 PAPER_ORDER = ["Genetics and risk", "Amyloid, blood vessels and bleeding", "Blood biomarkers", "Mechanisms",
                "Protection and resilience", "Targeting APOE", "Trial results by genotype", "Reviews", "Community and policy"]
 assert sorted(PAPER_ORDER) == sorted(g for g, _ in groups)
@@ -663,7 +687,7 @@ drugs = [
         ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">Lecanemab (Leqembi)</a>", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
          "Higher risk of ARIA, including symptomatic and serious ARIA, in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment; patients who decline testing can still be treated. In the EU (April 2025), approved only for people who are not ε4 homozygotes. <a class=\"cite\" href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\" title=\"US prescribing label\" aria-label=\"Source: US prescribing label\">↗</a> <a class=\"cite\" href=\"https://www.alzheimer-europe.org/news/alzheimer-europe-welcomes-news-european-commission-has-authorised-lecanemab-treatment-early\" title=\"EU authorisation\" aria-label=\"Source: EU authorisation\">↗</a>"),
         ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">Donanemab (Kisunla)</a>", "Anti-amyloid antibody, IV",
-         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes. <a class=\"cite\" href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\" title=\"US prescribing label\" aria-label=\"Source: US prescribing label\">↗</a> <a class=\"cite\" href=\"https://clinicaltrials.gov/study/NCT05738486\" title=\"TRAILBLAZER-ALZ 6 results\" aria-label=\"Source: TRAILBLAZER-ALZ 6 results\">↗</a> <a class=\"cite\" href=\"https://investor.lilly.com/node/52961\" title=\"EU authorisation\" aria-label=\"Source: EU authorisation\">↗</a>"),
+         "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes. <a class=\"cite\" href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\" title=\"US prescribing label\" aria-label=\"Source: US prescribing label\">↗</a> <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"TRAILBLAZER-ALZ 6 results\" aria-label=\"Source: TRAILBLAZER-ALZ 6 results\">↗</a> <a class=\"cite\" href=\"https://investor.lilly.com/node/52961\" title=\"EU authorisation\" aria-label=\"Source: EU authorisation\">↗</a>"),
         ("Donepezil, rivastigmine, galantamine, memantine", "Symptomatic treatments",
          "Treat symptoms; do not slow the disease. Used regardless of APOE genotype. <a class=\"cite\" href=\"https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
     ]),
@@ -713,9 +737,73 @@ pages["drugs.html"] = body
 
 pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news on APOE ε4 homozygosity.") + "\n" + NEWSLETTER
 
+# Full citations for numbered references (keyed by URL)
+REFS = {
+    "https://www.eurekalert.org/news-releases/1043340": "Sant Pau Research Institute. APOE4 homozygosity a distinct genetic form of Alzheimer’s disease. Press release, EurekAlert!, May 2024.",
+    "https://doi.org/10.1038/s41591-024-02931-w": "Fortea J, et al. APOE4 homozygosity represents a distinct genetic form of Alzheimer’s disease. <i>Nature Medicine</i> 2024.",
+    "https://doi.org/10.1038/mp.2011.52": "Genin E, et al. APOE and Alzheimer disease: a major gene with semi-dominant inheritance. <i>Molecular Psychiatry</i> 2011.",
+    "https://doi.org/10.1001/jamaneurol.2023.3599": "Belloy ME, et al. APOE genotype and Alzheimer disease risk across age, sex, and population ancestry. <i>JAMA Neurology</i> 2023.",
+    "https://doi.org/10.1001/jamaneurol.2022.1166": "Le Guen Y, et al. Association of rare APOE missense variants V236E and R251G with risk of Alzheimer disease. <i>JAMA Neurology</i> 2022.",
+    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975": "Leqembi (lecanemab) US prescribing information. DailyMed, National Library of Medicine.",
+    "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla": "Kisunla (donanemab) US prescribing information. DailyMed, National Library of Medicine.",
+    "https://doi.org/10.1016/S0140-6736(24)01296-0": "Livingston G, et al. Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission. <i>Lancet</i> 2024.",
+    "https://www.genome.gov/genetics-glossary/Genetic-Information-Nondiscrimination-Act-GINA": "National Human Genome Research Institute. Genetic Information Nondiscrimination Act (GINA). Genetics glossary.",
+    "https://www.alzheimer-europe.org/news/alzheimer-europe-welcomes-news-european-commission-has-authorised-lecanemab-treatment-early": "Alzheimer Europe. European Commission authorises lecanemab for early Alzheimer’s disease. News, April 2025.",
+    "https://investor.lilly.com/node/52961": "Eli Lilly and Company. European Commission approves Kisunla (donanemab). Press release, September 2025.",
+    "https://clinicaltrials.gov/study/NCT05738486": "TRAILBLAZER-ALZ 6 (donanemab dosing regimens). ClinicalTrials.gov NCT05738486.",
+    "https://doi.org/10.1002/alz.70062": "Modified titration of donanemab reduces ARIA risk and maintains amyloid reduction (TRAILBLAZER-ALZ 6). <i>Alzheimer’s &amp; Dementia</i> 2025.",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/": "Efficacy and safety of oral valiltramiprosate in APOE4/4 homozygotes with early AD: topline results from the APOLLOE4 Phase 3 trial. 2025.",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/": "Topline results from Phase 1/2 AAV gene therapy (LX1001) in APOE4/4 homozygotes with Alzheimer’s disease. 2025.",
+    "https://doi.org/10.1172/JCI96429": "Liao F, et al. Targeting of nonlipidated, aggregated apoE with antibodies inhibits amyloid accumulation. <i>Journal of Clinical Investigation</i> 2018.",
+    "https://doi.org/10.1016/j.neuron.2017.11.014": "Huynh TV, et al. Age-dependent effects of apoE reduction using antisense oligonucleotides in a model of β-amyloidosis. <i>Neuron</i> 2017.",
+    "https://www.lexeotx.com/programs/cns-programs/": "Lexeo Therapeutics. CNS programs: LX1020. Company website.",
+    "https://doi.org/10.1177/10430342251401888": "Prime editing of Alzheimer’s disease high-risk APOE4 allele by brain-directed adeno-associated virus vectors. <i>Human Gene Therapy</i> 2026.",
+    "https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline": "Biogen walks away from aducanumab to prioritize lecanemab. NeurologyLive, January 2024.",
+    "https://clinicaltrials.gov/study/NCT02565511": "Generation Study 1 (umibecestat and CAD106). ClinicalTrials.gov NCT02565511.",
+    "https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated": "National Institute on Aging. How is Alzheimer’s disease treated?",
+    "https://doi.org/10.1056/NEJMoa2212948": "van Dyck CH, et al. Lecanemab in early Alzheimer’s disease. <i>New England Journal of Medicine</i> 2023.",
+    "https://doi.org/10.1001/jama.2023.13239": "Sims JR, et al. Donanemab in early symptomatic Alzheimer disease: the TRAILBLAZER-ALZ 2 randomized clinical trial. <i>JAMA</i> 2023.",
+    "https://doi.org/10.1056/NEJMoa2305032": "Sperling RA, et al. Trial of solanezumab in preclinical Alzheimer’s disease. <i>New England Journal of Medicine</i> 2023.",
+    "https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/": "Abu Dhabi Media Office. M42’s IROS launches genomics clinical trial to prevent Alzheimer’s disease. June 2026.",
+    "https://research.massgeneralbrigham.org/en/researchers-and-collaborators/personalized-medicine/biobank/for-researchers": "Mass General Brigham Biobank. For researchers. Website.",
+    "https://doi.org/10.3390/jpm12081323": "Boy C, et al. The evolution of a large biobank at Mass General Brigham. <i>Journal of Personalized Medicine</i> 2022.",
+}
+
+CITE_RE = re.compile(r'\s*<a class="cite" href="([^"]+)"[^>]*>↗</a>')
+
+
+def number_refs(html):
+    """Turn ↗ cite links into numbered superscripts and append a References list."""
+    order = []
+    def repl(m):
+        url = m.group(1)
+        if url not in REFS:
+            raise KeyError("No full citation for " + url)
+        if url not in order:
+            order.append(url)
+        n = order.index(url) + 1
+        return f'<sup class="ref"><a href="#ref-{n}" aria-label="Reference {n}">{n}</a></sup>'
+    html = CITE_RE.sub(repl, html)
+    html = re.sub(r'</sup>\s*<sup class="ref">', '<span aria-hidden="true">,</span>', html)
+    if not order:
+        return html
+    items = "\n".join(f'        <li id="ref-{i}">{REFS[u]} <a href="{u}">Link</a></li>' for i, u in enumerate(order, 1))
+    section = f"""    <section id="references">
+      <div class="sec-head">
+        <p class="label">Sources</p>
+        <h2>References</h2>
+      </div>
+      <ol class="reflist">
+{items}
+      </ol>
+    </section>
+"""
+    return html.replace("\n  </main>", "\n" + section + "  </main>", 1)
+
+
 OUT.joinpath("style.css").write_text(BASE_CSS.strip() + "\n" + EXTRA_CSS)
 for fname, label, title in PAGES:
-    OUT.joinpath(fname).write_text(shell(fname, title, pages[fname]))
+    OUT.joinpath(fname).write_text(number_refs(shell(fname, title, pages[fname])))
 
 NOT_FOUND = head("Page not found", "This page doesn’t exist",
     "It may have moved when the site was reorganized.") + """
@@ -750,6 +838,6 @@ ABOUT = head("About", "About this site and its sources",
         <p>Found an error or a missing study? <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a> on GitHub, where the full source and change history are public. For research updates, subscribe to the <a href="newsletter.html">newsletter</a>.</p>
       </div>
     </section>"""
-OUT.joinpath("about.html").write_text(shell("about.html", "About", ABOUT))
+OUT.joinpath("about.html").write_text(number_refs(shell("about.html", "About", ABOUT)))
 OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
 print("built", len(PAGES), "pages")

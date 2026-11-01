@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -44,30 +44,31 @@
     <div class="page-head">
       <p class="label">Resources</p>
       <h1>Where to find ε4/ε4 data</h1>
-      <p class="lede">Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Listed from clinical and imaging cohorts, to genetic and biosample repositories, brain molecular data, population biobanks, and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.</p>
+      <p class="lede">Cohorts, repositories and biobanks with APOE genotype linked to clinical, imaging, omic or autopsy data. Grouped by type, from cohorts with the deepest clinical, imaging and pathology data on ε4/ε4, to genetic and biosample repositories, brain molecular data, large biobanks and analysis platforms. Sizes are approximate; check each resource for current numbers and terms.</p>
     </div>
     <section>
       <div class="alleles" role="region" aria-label="Resources at a glance" tabindex="0">
         <table class="data">
-          <thead><tr><th>Resource</th><th>Best for</th><th>Access</th></tr></thead>
+          <thead><tr><th>Resource</th><th>Type</th><th>Best for</th><th>Access</th></tr></thead>
           <tbody>
-            <tr><td data-label="Resource"><a href="#nacc">NACC</a></td><td data-label="Best for">Clinical trajectories, age at onset and pathology</td><td data-label="Access">Online data request form</td></tr>
-            <tr><td data-label="Resource"><a href="#adni">ADNI</a></td><td data-label="Best for">Biomarker and imaging timelines</td><td data-label="Access">Online application and data use agreement through LONI’s Image and Data Archive</td></tr>
-            <tr><td data-label="Resource"><a href="#a4">A4 Study</a></td><td data-label="Best for">Preclinical ε4/ε4 biology and ARIA risk</td><td data-label="Access">Data use agreement through the A4 data portal</td></tr>
-            <tr><td data-label="Resource"><a href="#niagads">NIAGADS</a></td><td data-label="Best for">Genetic modifiers, ancestry effects</td><td data-label="Access">Formal data access request with a research use statement</td></tr>
-            <tr><td data-label="Resource"><a href="#adsp">ADSP</a></td><td data-label="Best for">Protective and risk variants within ε4/ε4</td><td data-label="Access">Through NIAGADS</td></tr>
-            <tr><td data-label="Resource"><a href="#ncrad">NCRAD</a></td><td data-label="Best for">New biomarker measurements on existing cohorts</td><td data-label="Access">Biosample request reviewed by NCRAD and the contributing studies</td></tr>
-            <tr><td data-label="Resource"><a href="#adkp">AD Knowledge Portal</a></td><td data-label="Best for">Brain molecular mechanisms</td><td data-label="Access">Synapse account and certification</td></tr>
-            <tr><td data-label="Resource"><a href="#seaad">SEA-AD</a></td><td data-label="Best for">Cell-type brain atlas</td><td data-label="Access">Open access</td></tr>
-            <tr><td data-label="Resource"><a href="#ukb">UK Biobank</a></td><td data-label="Best for">Large-scale prediction and outcomes</td><td data-label="Access">Project application with a fee</td></tr>
-            <tr><td data-label="Resource"><a href="#aou">All of Us</a></td><td data-label="Best for">Diverse ancestries and health records</td><td data-label="Access">Institutional data use agreement</td></tr>
-            <tr><td data-label="Resource"><a href="#mgbb">MGB Biobank</a></td><td data-label="Best for">Health-record outcomes and genotype-based recontact</td><td data-label="Access">Sample and data requests through the Biobank team</td></tr>
-            <tr><td data-label="Resource"><a href="#addi">AD Workbench</a></td><td data-label="Best for">Finding and combining datasets</td><td data-label="Access">Free workspace with R and Python</td></tr>
+            <tr><td data-label="Resource"><a href="#nacc">NACC</a></td><td data-label="Type">Clinical and imaging cohorts</td><td data-label="Best for">Clinical trajectories, age at onset and pathology</td><td data-label="Access">Online data request form</td></tr>
+            <tr><td data-label="Resource"><a href="#adni">ADNI</a></td><td data-label="Type">Clinical and imaging cohorts</td><td data-label="Best for">Biomarker and imaging timelines</td><td data-label="Access">Online application and data use agreement through LONI’s Image and Data Archive</td></tr>
+            <tr><td data-label="Resource"><a href="#a4">A4 Study</a></td><td data-label="Type">Clinical and imaging cohorts</td><td data-label="Best for">Preclinical ε4/ε4 biology and ARIA risk</td><td data-label="Access">Data use agreement through the A4 data portal</td></tr>
+            <tr><td data-label="Resource"><a href="#niagads">NIAGADS</a></td><td data-label="Type">Genetic data and biosamples</td><td data-label="Best for">Genetic modifiers, ancestry effects</td><td data-label="Access">Formal data access request with a research use statement</td></tr>
+            <tr><td data-label="Resource"><a href="#adsp">ADSP</a></td><td data-label="Type">Genetic data and biosamples</td><td data-label="Best for">Protective and risk variants within ε4/ε4</td><td data-label="Access">Through NIAGADS</td></tr>
+            <tr><td data-label="Resource"><a href="#ncrad">NCRAD</a></td><td data-label="Type">Genetic data and biosamples</td><td data-label="Best for">New biomarker measurements on existing cohorts</td><td data-label="Access">Biosample request reviewed by NCRAD and the contributing studies</td></tr>
+            <tr><td data-label="Resource"><a href="#adkp">AD Knowledge Portal</a></td><td data-label="Type">Brain molecular data</td><td data-label="Best for">Brain molecular mechanisms</td><td data-label="Access">Synapse account and certification</td></tr>
+            <tr><td data-label="Resource"><a href="#seaad">SEA-AD</a></td><td data-label="Type">Brain molecular data</td><td data-label="Best for">Cell-type brain atlas</td><td data-label="Access">Open access</td></tr>
+            <tr><td data-label="Resource"><a href="#ukb">UK Biobank</a></td><td data-label="Type">Population and health-system biobanks</td><td data-label="Best for">Large-scale prediction and outcomes</td><td data-label="Access">Project application with a fee</td></tr>
+            <tr><td data-label="Resource"><a href="#aou">All of Us</a></td><td data-label="Type">Population and health-system biobanks</td><td data-label="Best for">Diverse ancestries and health records</td><td data-label="Access">Institutional data use agreement</td></tr>
+            <tr><td data-label="Resource"><a href="#mgbb">MGB Biobank</a></td><td data-label="Type">Population and health-system biobanks</td><td data-label="Best for">Health-record outcomes and genotype-based recontact</td><td data-label="Access">Sample and data requests through the Biobank team</td></tr>
+            <tr><td data-label="Resource"><a href="#addi">AD Workbench</a></td><td data-label="Type">Analysis platforms</td><td data-label="Best for">Finding and combining datasets</td><td data-label="Access">Free workspace with R and Python</td></tr>
           </tbody>
         </table>
       </div>
     </section>
     <section class="resources">
+      <h2 class="res-kind">Clinical and imaging cohorts</h2>
       <article class="resource" id="nacc">
         <div class="resource-head">
           <h2><a href="https://naccdata.org/">NACC</a></h2>
@@ -107,6 +108,7 @@
           <div><dt>Access</dt><dd>Data use agreement through the A4 data portal</dd></div>
         </dl>
       </article>
+      <h2 class="res-kind">Genetic data and biosamples</h2>
       <article class="resource" id="niagads">
         <div class="resource-head">
           <h2><a href="https://www.niagads.org/">NIAGADS</a></h2>
@@ -146,6 +148,7 @@
           <div><dt>Access</dt><dd>Biosample request reviewed by NCRAD and the contributing studies</dd></div>
         </dl>
       </article>
+      <h2 class="res-kind">Brain molecular data</h2>
       <article class="resource" id="adkp">
         <div class="resource-head">
           <h2><a href="https://adknowledgeportal.synapse.org/">AD Knowledge Portal</a></h2>
@@ -172,6 +175,7 @@
           <div><dt>Access</dt><dd>Open access; also distributed through the AD Knowledge Portal and a public AWS bucket</dd></div>
         </dl>
       </article>
+      <h2 class="res-kind">Population and health-system biobanks</h2>
       <article class="resource" id="ukb">
         <div class="resource-head">
           <h2><a href="https://www.ukbiobank.ac.uk/">UK Biobank</a></h2>
@@ -205,12 +209,13 @@
         </div>
         <dl class="facts">
           <div><dt>Run by</dt><dd>Mass General Brigham, Boston; established 2009</dd></div>
-          <div><dt>Size</dt><dd>More than 160,000 consented patients<a class="cite" href="https://research.massgeneralbrigham.org/en/researchers-and-collaborators/personalized-medicine/biobank/for-researchers" title="MGB Biobank for researchers" aria-label="Source: MGB Biobank for researchers">↗</a>, with genomic data on more than 65,000 as of 2022<a class="cite" href="https://doi.org/10.3390/jpm12081323" title="Boy et al., J Pers Med 2022" aria-label="Source: Boy et al., J Pers Med 2022">↗</a></dd></div>
+          <div><dt>Size</dt><dd>More than 160,000 consented patients<sup class="ref"><a href="#ref-1" aria-label="Reference 1">1</a></sup>, with genomic data on more than 65,000 as of 2022<sup class="ref"><a href="#ref-2" aria-label="Reference 2">2</a></sup></dd></div>
           <div><dt>Data</dt><dd>Blood and tissue samples linked to electronic health records, curated phenotypes, and genomic, biomarker and survey data</dd></div>
           <div><dt>For ε4/ε4</dt><dd>Genotyped participants with years of linked health records. Could support studies that identify and recontact ε4/ε4 carriers, subject to participant consent and IRB approval.</dd></div>
           <div><dt>Access</dt><dd>Sample and data requests through the Biobank team; contact them about eligibility and approvals</dd></div>
         </dl>
       </article>
+      <h2 class="res-kind">Analysis platforms</h2>
       <article class="resource" id="addi">
         <div class="resource-head">
           <h2><a href="https://www.alzheimersdata.org/ad-workbench">AD Workbench</a></h2>
@@ -236,6 +241,16 @@
         <li><b>ADNI or A4 + UK Biobank:</b> deep imaging timelines alongside large-scale prediction and outcomes.</li>
       </ul>
       <p class="note">Each resource sets its own terms. NIH rules on controlled-access genomic data also limit the use of public generative AI tools with individual-level data, and require data to be held in approved secure environments.</p>
+    </section>
+    <section id="references">
+      <div class="sec-head">
+        <p class="label">Sources</p>
+        <h2>References</h2>
+      </div>
+      <ol class="reflist">
+        <li id="ref-1">Mass General Brigham Biobank. For researchers. Website. <a href="https://research.massgeneralbrigham.org/en/researchers-and-collaborators/personalized-medicine/biobank/for-researchers">Link</a></li>
+        <li id="ref-2">Boy C, et al. The evolution of a large biobank at Mass General Brigham. <i>Journal of Personalized Medicine</i> 2022. <a href="https://doi.org/10.3390/jpm12081323">Link</a></li>
+      </ol>
     </section>
   </main>
   <footer>
