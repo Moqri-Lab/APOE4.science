@@ -199,6 +199,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Nov 2026", 'Trials checked again: TRAILBLAZER-ALZ 3 added, HT-4253 now recruiting, lecanemab ARIA rates by genotype (45% in ε4/ε4).'),
     ("Nov 2026", 'The site is now live at <a href="https://apoe4.science">apoe4.science</a>, with a monthly <a href="newsletter.html">newsletter</a>.'),
     ("Nov 2026", '<a href="drugs.html#access">Drugs</a>: where lecanemab and donanemab are approved for ε4/ε4, and US costs.'),
     ("Oct 2026", '<a href="trials.html">Trials and studies</a> now include observational studies enrolling by APOE genotype.'),
@@ -558,6 +559,8 @@ groups = [
          "Cholesterol handling and myelin loss in human ε4 brains and cells.", "https://doi.org/10.1038/s41586-022-05439-w"),
         ("Haney MS, Pálovics R, Munson CN, et al. APOE4/4 is linked to damaging lipid droplets in Alzheimer’s disease microglia. <i>Nature</i> 2024.",
          "Lipid-laden microglia in ε4/ε4 brains.", "https://doi.org/10.1038/s41586-024-07185-7"),
+        ("Akay L, …, Tsai LH. Genome-wide CRISPR screen reveals Wnt signaling as a potential therapeutic target for lipid accumulation and impaired myelination in APOE4 oligodendrocytes. <i>Cell Stem Cell</i> 2026.",
+         "APOE4 suppresses Wnt signaling in myelin-making cells; blocking GSK3β cleared lipid droplets and restored myelination in human brain organoids and mice.", "https://doi.org/10.1016/j.stem.2026.09.012"),
     ]),
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
@@ -594,6 +597,10 @@ groups = [
          "ARIA rates reported by APOE genotype.", "https://doi.org/10.1001/jama.2023.13239"),
         ("Efficacy and safety of oral valiltramiprosate in APOE4/4 homozygotes with early AD: topline results from the APOLLOE4 Phase 3 trial. 2025.",
          "The first completed Phase 3 trial run only in ε4/ε4.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/"),
+        ("Safety and ARIA results of the oral anti-amyloid agent valiltramiprosate from the Phase 3 APOLLOE4 trial in APOE4/4 homozygotes with early AD. 2025.",
+         "ARIA-E about 3% on drug and placebo, with no symptomatic ARIA over 78 weeks, in a group with high amyloid-angiopathy burden.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12724803/"),
+        ("Real-world use of lecanemab in APOE ε4 homozygotes and in patients on antithrombotic therapy. 2025.",
+         "Interim clinic data: ARIA-E in 17% of ε4/ε4 patients treated outside trials.", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12724762/"),
         ("Abushakra S, …, Tolar M. Full peer-reviewed results of the APOLLOE4 Phase 3 trial of oral valiltramiprosate in APOE4/4 homozygotes with early Alzheimer’s disease. <i>Drugs</i> 2025.",
          "No significant clinical benefit at 78 weeks overall, but slower brain atrophy; MCI-subgroup benefits were not the primary analysis.", "https://doi.org/10.1007/s40265-025-02250-5"),
     ]),
@@ -640,27 +647,29 @@ trials = [
      pill("done", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT03634007"),
     ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
-     pill("done", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
+     pill("done", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. Any ARIA in 45% of ε4/ε4 on lecanemab versus 22% on placebo (heterozygotes 19% vs 9%; non-carriers 13% vs 4%). <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a><a class=\"cite\" href=\"https://media-us.eisai.com/2025-12-03-Eisai-Presents-New-Data-on-the-Continued-and-Expanding-Benefit-of-LEQEMBI-R-lecanemab-irmb-Maintenance-Treatment-in-Early-Alzheimers-Disease-at-the-Clinical-Trials-on-Alzheimers-Disease-CTAD-Conference-2025\" title=\"Eisai CTAD 2025\" aria-label=\"Source: Eisai CTAD 2025\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
     ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("done", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a class=\"cite\" href=\"https://doi.org/10.1001/jama.2023.13239\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
      pill("done", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
      pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2305032\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT02008357"),
+    ("TRAILBLAZER-ALZ 3", "Donanemab", "Preclinical Alzheimer’s (cognitively unimpaired with Alzheimer’s pathology)",
+     pill("run", "Fully enrolled") + " About 3,000 participants; primary completion expected October 2027. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12439032/\" title=\"Baseline data\" aria-label=\"Source: Baseline data\">↗</a>", "https://clinicaltrials.gov/study/NCT05026866"),
     ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
-     pill("recruit", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("recruit", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Started May 2026: 48 weeks of once-daily HT-4253 or placebo (placebo switches to the drug at week 24); aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
     ("Mass General Brigham APOE Study", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
      pill("recruit", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the Mass General Brigham APOE Study",
      pill("recruit", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': '2023', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'HT-4253': 'Oct 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
+TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': 'Dec 2025', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'TRAILBLAZER-ALZ 3': 'Jan 2026', 'HT-4253': 'Oct 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
     ("Drug trials run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
     ("Observational studies in people with known APOE genotype", ["Harvard Alzheimer’s Risk Study", "Mass General Brigham APOE Study"]),
-    ("Major trials that report results by genotype", ["AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
+    ("Major trials that report results by genotype", ["TRAILBLAZER-ALZ 3", "AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
 assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
@@ -771,6 +780,8 @@ pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news 
 
 # Full citations for numbered references (keyed by URL)
 REFS = {
+    'https://media-us.eisai.com/2025-12-03-Eisai-Presents-New-Data-on-the-Continued-and-Expanding-Benefit-of-LEQEMBI-R-lecanemab-irmb-Maintenance-Treatment-in-Early-Alzheimers-Disease-at-the-Clinical-Trials-on-Alzheimers-Disease-CTAD-Conference-2025': "Eisai. New data on LEQEMBI maintenance treatment presented at CTAD 2025. Press release, December 3, 2025.",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12439032/": "Donanemab in preclinical Alzheimer’s disease: screening and baseline data from TRAILBLAZER-ALZ 3. 2025.",
     'https://www.alzheimer-europe.org/news/donanemab-licensed-uks-mhra-drug-will-not-be-covered-nhs-according-draft-nice-guidance': 'Alzheimer Europe. Donanemab is licensed by the UK’s MHRA, but will not be covered by the NHS, according to draft NICE guidance. News, October 2024.',
     'https://www.pbs.gov.au/industry/listing/elements/pbac-meetings/psd/2025-07/files/donanemab-psd-july-2025.docx': 'Pharmaceutical Benefits Scheme (Australia). Donanemab public summary document, July 2025.',
     'https://www.cbsnews.com/news/leqembi-price-insurance-medicare-coverage-heres-how-it-works': 'CBS News. Leqembi price, insurance and Medicare coverage: here’s how it works.',
