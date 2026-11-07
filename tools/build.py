@@ -155,7 +155,7 @@ def shell(fname, title, body, extra_head=""):
   </main>
   <footer>
     <span>apoe4.science · Maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. An educational resource, not medical advice.</span>
-    <span class="updated">Last reviewed October 2026 · <a href="about.html">About and sources</a> · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
+    <span class="updated">Last reviewed November 2026 · <a href="about.html">About and sources</a> · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
   </footer>
 </div>
 <script>var c=document.querySelector('nav a[aria-current]');if(c&&c.scrollIntoView&&window.innerWidth<640)c.scrollIntoView({{inline:"center",block:"nearest"}});</script>
@@ -199,6 +199,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Nov 2026", 'The site is now live at <a href="https://apoe4.science">apoe4.science</a>, with a monthly <a href="newsletter.html">newsletter</a>.'),
     ("Nov 2026", '<a href="drugs.html#access">Drugs</a>: where lecanemab and donanemab are approved for ε4/ε4, and US costs.'),
     ("Oct 2026", '<a href="trials.html">Trials and studies</a> now include observational studies enrolling by APOE genotype.'),
     ("Oct 2026", 'MGB Biobank added to <a href="resources.html">Resources</a>; sources now shown as ↗ links.'),
