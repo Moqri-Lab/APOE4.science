@@ -819,7 +819,7 @@ assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{link_drug_names(name, drug)}</td><td data-label="Who">{pop}</td><td data-label="Participants" class="e44">{TRIAL_N[name]}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(None, "", link, ext_label(link))}</td><td data-label="Intervention">{link_drug_names(name, drug)}</td><td data-label="Who">{pop}</td><td data-label="Participants" class="e44">{TRIAL_N[name]}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
