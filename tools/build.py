@@ -270,7 +270,7 @@ cards = [
     ("trials.html", "Trials and studies", "Drug trials and observational studies in ε4/ε4 carriers, and trials that report results by genotype."),
     ("resources.html", "Resources", "Cohorts and repositories with ε4/ε4 data, and how to access them."),
     ("papers.html", "Key papers", "The studies that define what we know, grouped by topic."),
-    ("newsletter.html", "Newsletter", "Research updates on APOE4 in your inbox."),
+    ("https://alzprevent.org", "Prevention ↗", "Sister site alzprevent.org: risk factors, what works, and prevention trials for everyone."),
 ]
 pages["index.html"] = f"""    <div class="hero">
       <div>
