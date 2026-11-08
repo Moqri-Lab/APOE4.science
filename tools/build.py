@@ -78,6 +78,7 @@ span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .maker{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
 table.data tr[id]{scroll-margin-top:24px}
 table.data tr:target td{background:var(--e4-soft)}
+td.e44{font-size:14px;white-space:normal;min-width:110px}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -654,7 +655,7 @@ trials = [
     ("TRAILBLAZER-ALZ 2", "Donanemab (Eli Lilly)", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("done", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a class=\"cite\" href=\"https://doi.org/10.1001/jama.2023.13239\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT04437511"),
     ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration (Eli Lilly)", "Early Alzheimer’s (Phase 3b)",
-     pill("done", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
+     pill("done", "Reported") + " ARIA-E 14% versus 24% with standard dosing; in ε4/ε4, 19% versus 57%. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
     ("A4 Study", "Solanezumab (Eli Lilly)", "Cognitively unimpaired with elevated amyloid",
      pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2305032\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT02008357"),
     ("TRAILBLAZER-ALZ 3", "Donanemab (Eli Lilly)", "Preclinical Alzheimer’s (cognitively unimpaired with Alzheimer’s pathology)",
@@ -676,6 +677,24 @@ TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
 
+# Number of ε4/ε4 participants, shown in its own column for every study.
+TRIAL_E44 = {
+    "APOLLOE4": "All 325",
+    "LX1001": "All 15",
+    "Generation Study 1": "All 478",
+    "Generation Study 2": "Some (count not reported)",
+    "HT-4253": "Not reported (enrolls ε4 carriers)",
+    "Clarity AD": "About 16%; 141 on lecanemab",
+    "TRAILBLAZER-ALZ 2": "Not reported",
+    "TRAILBLAZER-ALZ 6": "Not reported",
+    "TRAILBLAZER-ALZ 3": "Not reported",
+    "AHEAD 3-45": "Not reported",
+    "A4 Study": "Not reported",
+    "Mass General Brigham APOE Study": "Enrolls by genotype; target not stated",
+    "Harvard Alzheimer’s Risk Study": "Enrolls by genotype; target not stated",
+}
+assert sorted(TRIAL_E44) == sorted(TRIAL_BY_NAME)
+
 
 def trial_id(name):
     return "trial-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
@@ -686,13 +705,13 @@ assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr id="{trial_id(name)}"><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
       <div class="alleles" role="region" aria-label="{g}" tabindex="0">
         <table class="data">
-          <thead><tr><th>Study</th><th>Intervention</th><th>Who</th><th>Status and result</th><th>As of</th></tr></thead>
+          <thead><tr><th>Study</th><th>Intervention</th><th>Who</th><th>ε4/ε4</th><th>Status and result</th><th>As of</th></tr></thead>
           <tbody>
 {rows}
           </tbody>
