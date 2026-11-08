@@ -75,6 +75,7 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
 .bar{display:block;height:10px;background:var(--e4);min-width:4px}
 .num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
 span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.maker{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -634,29 +635,29 @@ def pill(kind, text):
     return f'<span class="pill {kind}">{text}</span>'
 
 trials = [
-    ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral", "325 ε4/ε4 with early Alzheimer’s (Phase 3)",
+    ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "325 ε4/ε4 with early Alzheimer’s (Phase 3)",
      pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT04770220"),
-    ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine)", "Cognitively unimpaired ε4/ε4, aged 60–75",
+    ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine); Novartis and Amgen", "Cognitively unimpaired ε4/ε4, aged 60–75",
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
      "https://clinicaltrials.gov/study/NCT02565511"),
     ("Generation Study 2", "Umibecestat", "Cognitively unimpaired ε4 carriers at high risk",
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
      "https://clinicaltrials.gov/study/NCT03131453"),
-    ("LX1001", "AAV gene therapy delivering APOE2", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
+    ("LX1001", "AAV gene therapy delivering APOE2 (Lexeo Therapeutics)", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
      pill("done", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT03634007"),
-    ("Clarity AD", "Lecanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
+    ("Clarity AD", "Lecanemab (Eisai)", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("done", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. Any ARIA in 45% of ε4/ε4 on lecanemab versus 22% on placebo (heterozygotes 19% vs 9%; non-carriers 13% vs 4%). <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a><a class=\"cite\" href=\"https://media-us.eisai.com/2025-12-03-Eisai-Presents-New-Data-on-the-Continued-and-Expanding-Benefit-of-LEQEMBI-R-lecanemab-irmb-Maintenance-Treatment-in-Early-Alzheimers-Disease-at-the-Clinical-Trials-on-Alzheimers-Disease-CTAD-Conference-2025\" title=\"Eisai CTAD 2025\" aria-label=\"Source: Eisai CTAD 2025\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
-    ("TRAILBLAZER-ALZ 2", "Donanemab", "Early Alzheimer’s, all genotypes (Phase 3)",
+    ("TRAILBLAZER-ALZ 2", "Donanemab (Eli Lilly)", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("done", "Positive") + " Slowed decline. ARIA-E in 40.6% of ε4/ε4, 22.8% of heterozygotes and 15.7% of non-carriers on donanemab. <a class=\"cite\" href=\"https://doi.org/10.1001/jama.2023.13239\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT04437511"),
-    ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration", "Early Alzheimer’s (Phase 3b)",
+    ("TRAILBLAZER-ALZ 6", "Donanemab, modified dose titration (Eli Lilly)", "Early Alzheimer’s (Phase 3b)",
      pill("done", "Reported") + " ARIA-E 14% versus 24% with standard dosing; largest reduction in ε4/ε4. <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT05738486"),
-    ("A4 Study", "Solanezumab", "Cognitively unimpaired with elevated amyloid",
+    ("A4 Study", "Solanezumab (Eli Lilly)", "Cognitively unimpaired with elevated amyloid",
      pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2305032\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT02008357"),
-    ("TRAILBLAZER-ALZ 3", "Donanemab", "Preclinical Alzheimer’s (cognitively unimpaired with Alzheimer’s pathology)",
+    ("TRAILBLAZER-ALZ 3", "Donanemab (Eli Lilly)", "Preclinical Alzheimer’s (cognitively unimpaired with Alzheimer’s pathology)",
      pill("run", "Fully enrolled") + " About 3,000 participants; primary completion expected October 2027. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12439032/\" title=\"Baseline data\" aria-label=\"Source: Baseline data\">↗</a>", "https://clinicaltrials.gov/study/NCT05026866"),
-    ("AHEAD 3-45", "Lecanemab", "Preclinical Alzheimer’s (amyloid without symptoms)",
+    ("AHEAD 3-45", "Lecanemab (Eisai)", "Preclinical Alzheimer’s (amyloid without symptoms)",
      pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
      pill("recruit", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the Emirati Genome Programme. Started May 2026: 48 weeks of once-daily HT-4253 or placebo (placebo switches to the drug at week 24); aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
@@ -699,19 +700,21 @@ pages["trials.html"] = head("Clinical trials and studies", "Trials and studies i
 # ---------- Drugs ----------
 drugs = [
     ("Approved for early Alzheimer’s", [
-        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">Lecanemab (Leqembi)</a>", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
+        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\">Lecanemab (Leqembi)</a><span class=\"maker\">Eisai and Biogen</span>", "Anti-amyloid antibody; IV, with a weekly under-the-skin autoinjector (Leqembi Iqlik) approved in the US in 2025 for maintenance after 18 months",
          "Higher risk of ARIA, including symptomatic and serious ARIA, in ε4/ε4. In the US, a boxed warning applies and APOE testing is advised before treatment; patients who decline testing can still be treated. In the EU (April 2025), approved only for people who are not ε4 homozygotes. <a class=\"cite\" href=\"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975\" title=\"US prescribing label\" aria-label=\"Source: US prescribing label\">↗</a> <a class=\"cite\" href=\"https://www.alzheimer-europe.org/news/alzheimer-europe-welcomes-news-european-commission-has-authorised-lecanemab-treatment-early\" title=\"EU authorisation\" aria-label=\"Source: EU authorisation\">↗</a>"),
-        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">Donanemab (Kisunla)</a>", "Anti-amyloid antibody, IV",
+        ("<a href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\">Donanemab (Kisunla)</a><span class=\"maker\">Eli Lilly</span>", "Anti-amyloid antibody, IV",
          "Higher risk of ARIA in ε4/ε4. In the US, a boxed warning applies, APOE testing is advised before treatment, and extra vigilance for ARIA is advised in the first 24 weeks. The FDA approved a slower dose titration that lowered ARIA-E, most in ε4/ε4 (TRAILBLAZER-ALZ 6). In the EU (September 2025), approved only for people who are not ε4 homozygotes. <a class=\"cite\" href=\"https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=kisunla\" title=\"US prescribing label\" aria-label=\"Source: US prescribing label\">↗</a> <a class=\"cite\" href=\"https://doi.org/10.1002/alz.70062\" title=\"TRAILBLAZER-ALZ 6 results\" aria-label=\"Source: TRAILBLAZER-ALZ 6 results\">↗</a> <a class=\"cite\" href=\"https://investor.lilly.com/node/52961\" title=\"EU authorisation\" aria-label=\"Source: EU authorisation\">↗</a>"),
-        ("Donepezil, rivastigmine, galantamine, memantine", "Symptomatic treatments",
-         "Treat symptoms; do not slow the disease. Used regardless of APOE genotype. <a class=\"cite\" href=\"https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
+        ("Donepezil, rivastigmine, galantamine<span class=\"maker\">Generic; three separate drugs</span>", "Cholinesterase inhibitors: boost acetylcholine, a memory chemical messenger",
+         "Treat symptoms of mild to moderate Alzheimer’s (donepezil also severe); do not slow the disease. Used regardless of APOE genotype. <a class=\"cite\" href=\"https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
+        ("Memantine<span class=\"maker\">Generic</span>", "NMDA receptor antagonist: regulates glutamate signalling",
+         "Treats symptoms of moderate to severe Alzheimer’s, alone or with donepezil; does not slow the disease. Used regardless of APOE genotype. <a class=\"cite\" href=\"https://www.nia.nih.gov/health/alzheimers-treatment/how-alzheimers-disease-treated\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
     ]),
     ("Investigational, aimed at ε4/ε4", [
-        ("<a href=\"https://clinicaltrials.gov/study/NCT04770220\">Valiltramiprosate (ALZ-801)</a>", "Oral; blocks formation of toxic amyloid oligomers",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT04770220\">Valiltramiprosate (ALZ-801)</a><span class=\"maker\">Alzheon</span>", "Oral; blocks formation of toxic amyloid oligomers",
          "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
-        ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a><span class=\"maker\">Halia Therapeutics</span>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
          "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a> in Abu Dhabi, UAE."),
-        ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a>", "Gene therapy that adds the protective APOE2 form",
+        ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a><span class=\"maker\">Lexeo Therapeutics</span>", "Gene therapy that adds the protective APOE2 form",
          "Phase 1/2 in ε4/ε4; early biomarker signals, no ARIA reported. FDA Fast Track. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
     ]),
     ("Earlier-stage approaches", [
@@ -725,9 +728,9 @@ drugs = [
          "Proof-of-concept studies only, such as prime editing of APOE4 in mice with brain-directed AAV; efficiency must improve before clinical use. <a class=\"cite\" href=\"https://doi.org/10.1177/10430342251401888\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
     ]),
     ("Stopped or withdrawn", [
-        ("<a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Aducanumab (Aduhelm)</a>", "Anti-amyloid antibody", "Discontinued by the manufacturer in January 2024. <a class=\"cite\" href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
-        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">Umibecestat (CNP520)</a>", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening. <a class=\"cite\" href=\"https://clinicaltrials.gov/study/NCT02565511\" title=\"Trial registry\" aria-label=\"Source: Trial registry\">↗</a>"),
-        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">CAD106</a>", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program. <a class=\"cite\" href=\"https://clinicaltrials.gov/study/NCT02565511\" title=\"Trial registry\" aria-label=\"Source: Trial registry\">↗</a>"),
+        ("<a href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\">Aducanumab (Aduhelm)</a><span class=\"maker\">Biogen, with Eisai</span>", "Anti-amyloid antibody", "Discontinued by the manufacturer in January 2024. <a class=\"cite\" href=\"https://www.neurologylive.com/view/biogen-walks-away-from-aducanumab-prioritize-lecanemab-alzheimer-disease-pipeline\" title=\"Source\" aria-label=\"Source: Source\">↗</a>"),
+        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">Umibecestat (CNP520)</a><span class=\"maker\">Novartis and Amgen</span>", "BACE inhibitor", "Stopped in 2019 in Generation Studies after mild cognitive worsening. <a class=\"cite\" href=\"https://clinicaltrials.gov/study/NCT02565511\" title=\"Trial registry\" aria-label=\"Source: Trial registry\">↗</a>"),
+        ("<a href=\"https://clinicaltrials.gov/study/NCT02565511\">CAD106</a><span class=\"maker\">Novartis</span>", "Active amyloid vaccine", "Generation Study 1 arm halted in 2019 with the rest of the program. <a class=\"cite\" href=\"https://clinicaltrials.gov/study/NCT02565511\" title=\"Trial registry\" aria-label=\"Source: Trial registry\">↗</a>"),
     ]),
 ]
 body = head("Drugs", "Treatments and what they mean for ε4/ε4",
