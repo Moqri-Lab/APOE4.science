@@ -166,7 +166,7 @@ def shell(fname, title, body, extra_head=""):
 {body}
   </main>
   <footer>
-    <span>apoe4.science · Maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. An educational resource, not medical advice.</span>
+    <span>apoe4.science · Maintained by <a href="https://moqri.bwh.harvard.edu/">Mahdi Moqri, PhD</a>, in a personal capacity. An educational resource, not medical advice. Sister site: <a href="https://alzprevent.org">alzprevent.org</a></span>
     <span class="updated">Last reviewed November 2026 · <a href="about.html">About and sources</a> · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
   </footer>
 </div>
@@ -245,6 +245,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Nov 2026", 'Sister site <a href="https://alzprevent.org">alzprevent.org</a> launched, on preventing Alzheimer’s for everyone.'),
     ("Nov 2026", 'Trials checked again: TRAILBLAZER-ALZ 3 added, HT-4253 now recruiting, lecanemab ARIA rates by genotype (45% in ε4/ε4).'),
     ("Nov 2026", 'The site is now live at <a href="https://apoe4.science">apoe4.science</a>, with a monthly <a href="newsletter.html">newsletter</a>.'),
     ("Nov 2026", '<a href="drugs.html#access">Drugs</a>: where lecanemab and donanemab are approved for ε4/ε4, and US costs.'),
@@ -324,7 +325,7 @@ pages["start.html"] = head("Start here", "If you have just learned you are ε4/�
         <ul class="measures">
           <li><b>Talk to a genetic counselor.</b> They can explain your result, what it means for family members, and whether further testing makes sense. Search the {src("https://findageneticcounselor.nsgc.org/", "National Society of Genetic Counselors directory")}.</li>
           <li><b>Tell your doctors before any anti-amyloid treatment.</b> ε4/ε4 carries the highest risk of brain swelling and bleeding (ARIA) with lecanemab and donanemab. US labels advise APOE testing before treatment{cite("https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9d1ff786-e577-410a-a273-c4d7d0e4e975", "Leqembi label")}, and in the EU these drugs are not approved for ε4 homozygotes. See <a href="drugs.html">Drugs</a>.</li>
-          <li><b>Work on the risk factors you can change.</b> The 2024 Lancet Commission estimated that nearly half of dementia cases are linked to 14 modifiable factors, including high blood pressure, hearing loss, high LDL cholesterol, physical inactivity, smoking, diabetes and social isolation{cite("https://doi.org/10.1016/S0140-6736(24)01296-0", "Livingston et al., <i>Lancet</i> 2024")}. These estimates are for the general population; how much they shift risk specifically in ε4/ε4 is less certain.</li>
+          <li><b>Work on the risk factors you can change.</b> The 2024 Lancet Commission estimated that nearly half of dementia cases are linked to 14 modifiable factors, including high blood pressure, hearing loss, high LDL cholesterol, physical inactivity, smoking, diabetes and social isolation{cite("https://doi.org/10.1016/S0140-6736(24)01296-0", "Livingston et al., <i>Lancet</i> 2024")}. These estimates are for the general population; how much they shift risk specifically in ε4/ε4 is less certain. Our sister site <a href="https://alzprevent.org/risk.html">alzprevent.org</a> covers each factor and what can help.</li>
           <li><b>Consider research.</b> Some trials enroll only ε4 carriers. See <a href="trials.html">Trials</a>, or the Alzheimer’s Association’s free {src("https://www.alz.org/alzheimers-dementia/research_progress/clinical-trials/trialmatch", "TrialMatch")} service. {src("https://www.endalznow.org/genematch", "GeneMatch")}, run by Banner Alzheimer’s Institute, matches adults aged 55–75 without dementia to studies by APOE genotype using a cheek swab; it does not tell you your result.</li>
           <li><b>Know your legal protections.</b> In the US, the Genetic Information Nondiscrimination Act protects you in health insurance and employment, but not for life or long-term care insurance{cite("https://www.genome.gov/genetics-glossary/Genetic-Information-Nondiscrimination-Act-GINA", "NHGRI")}. Consider this before sharing your result.</li>
           <li><b>Find others.</b> {src("https://www.apoe4.info/", "ApoE4.Info")} is a long-running nonprofit community of ε4 carriers.</li>
