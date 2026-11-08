@@ -76,6 +76,8 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
 .num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
 span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .maker{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+table.data tr[id]{scroll-margin-top:24px}
+table.data tr:target td{background:var(--e4-soft)}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -673,11 +675,18 @@ TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
     ("Major trials that report results by genotype", ["TRAILBLAZER-ALZ 3", "AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
+
+
+def trial_id(name):
+    return "trial-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+TRIAL_PAGE_LINK = {t[4]: "trials.html#" + trial_id(t[0]) for t in trials if "clinicaltrials.gov/study/" in t[4]}
 assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
@@ -777,6 +786,8 @@ body += """    <div class="group" id="access">
     </div>
 """
 body += DISCLAIMER + "\n    </section>"
+for _ext, _int in TRIAL_PAGE_LINK.items():  # plain links in drug rows point to our trial entries; cited sources stay external
+    body = body.replace('<a href="' + _ext + '">', '<a href="' + _int + '">')
 pages["drugs.html"] = body
 
 pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news on APOE ε4 homozygosity.") + "\n" + NEWSLETTER
