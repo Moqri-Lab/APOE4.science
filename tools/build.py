@@ -79,6 +79,14 @@ span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
 table.data tr[id]{scroll-margin-top:24px}
 table.data tr:target td{background:var(--e4-soft)}
 td.e44{font-size:14px;white-space:normal;min-width:110px}
+.dname{font-weight:600;display:block}
+.xlinks{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:13px;font-weight:400}
+.xlinks a{white-space:nowrap}
+a.lnk-int{color:var(--e4);text-decoration:none;border-bottom:1px solid currentColor}
+a.lnk-ext{color:var(--muted);text-decoration:underline dotted;text-underline-offset:3px}
+table.data tr[id]{scroll-margin-top:24px}
+a.pill-link{text-decoration:none}
+a.pill-link:hover .pill{background:var(--surface)}
 .updated{font-size:13.5px;color:var(--muted)}
 @media (max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
@@ -176,10 +184,44 @@ def head(label, h1, lede):
     </div>"""
 
 
+# Papers that report on a trial, drug or data resource on this site get internal links to it.
+PAPER_LINKS = [  # (text to look for in citation or note, internal href, label)
+    ("APOLLOE4", "trials.html#trial-apolloe4", "Trial: APOLLOE4"),
+    ("valiltramiprosate", "drugs.html#drug-valiltramiprosate", "Drug: valiltramiprosate"),
+    ("Clarity AD", "trials.html#trial-clarity-ad", "Trial: Clarity AD"),
+    ("Lecanemab in early", "trials.html#trial-clarity-ad", "Trial: Clarity AD"),
+    ("lecanemab", "drugs.html#drug-lecanemab", "Drug: lecanemab"),
+    ("TRAILBLAZER-ALZ 2", "trials.html#trial-trailblazer-alz-2", "Trial: TRAILBLAZER-ALZ 2"),
+    ("TRAILBLAZER-ALZ 6", "trials.html#trial-trailblazer-alz-6", "Trial: TRAILBLAZER-ALZ 6"),
+    ("TRAILBLAZER-ALZ 3", "trials.html#trial-trailblazer-alz-3", "Trial: TRAILBLAZER-ALZ 3"),
+    ("donanemab", "drugs.html#drug-donanemab", "Drug: donanemab"),
+    ("LX1001", "trials.html#trial-lx1001", "Trial: LX1001"),
+    ("solanezumab", "trials.html#trial-a4-study", "Trial: A4 Study"),
+    ("A4 Study", "trials.html#trial-a4-study", "Trial: A4 Study"),
+    ("A4 Study", "resources.html#a4", "Resource: A4 data"),
+    ("NACC", "resources.html#nacc", "Resource: NACC"),
+    ("Alzheimer’s Disease Sequencing Project", "resources.html#adsp", "Resource: ADSP"),
+    ("UK Biobank", "resources.html#ukb", "Resource: UK Biobank"),
+    ("ADNI", "resources.html#adni", "Resource: ADNI"),
+]
+
+
+def paper_links(text):
+    seen, out = set(), []
+    low = text.lower()
+    for key, href, label in PAPER_LINKS:
+        if key.lower() in low and href not in seen and label not in {l for _, l in out}:
+            seen.add(href)
+            out.append((href, label))
+    if not out:
+        return ""
+    return '<span class="xlinks">' + "".join(f'<a class="lnk-int" href="{h}">→ {l}</a>' for h, l in out) + "</span>"
+
+
 def refs(items):
     out = []
     for cite, why, link in items:
-        out.append(f'        <li><a class="paper" href="{link}">{cite}</a><p class="why">{why}</p></li>')
+        out.append(f'        <li><a class="paper" href="{link}">{cite}</a><p class="why">{why}</p>{paper_links(cite + " " + why)}</li>')
     return '      <ul class="refs">\n' + "\n".join(out) + "\n      </ul>"
 
 
@@ -700,12 +742,46 @@ def trial_id(name):
     return "trial-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
-TRIAL_PAGE_LINK = {t[4]: "trials.html#" + trial_id(t[0]) for t in trials if "clinicaltrials.gov/study/" in t[4]}
+def drug_id(name):
+    return "drug-" + re.sub(r"[^a-z0-9]+", "-", re.sub(r"\s*\(.*", "", name).lower()).strip("-")
+
+
+# One internal link (to the matching row on the other page) and one external link per row.
+DRUG_TO_TRIAL = {"Lecanemab (Leqembi)": "Clarity AD", "Donanemab (Kisunla)": "TRAILBLAZER-ALZ 2",
+                 "Valiltramiprosate (ALZ-801)": "APOLLOE4", "HT-4253": "HT-4253", "LX1001": "LX1001",
+                 "Umibecestat (CNP520)": "Generation Study 1", "CAD106": "Generation Study 1"}
+TRIAL_TO_DRUG = {"Clarity AD": "Lecanemab (Leqembi)", "AHEAD 3-45": "Lecanemab (Leqembi)",
+                 "TRAILBLAZER-ALZ 2": "Donanemab (Kisunla)", "TRAILBLAZER-ALZ 3": "Donanemab (Kisunla)",
+                 "TRAILBLAZER-ALZ 6": "Donanemab (Kisunla)", "APOLLOE4": "Valiltramiprosate (ALZ-801)",
+                 "HT-4253": "HT-4253", "LX1001": "LX1001", "Generation Study 1": "Umibecestat (CNP520)",
+                 "Generation Study 2": "Umibecestat (CNP520)"}
+
+
+def link_pair(internal_href, internal_text, external_href, external_text):
+    out = '<span class="xlinks">'
+    if internal_href:
+        out += f'<a class="lnk-int" href="{internal_href}">→ {internal_text}</a>'
+    if external_href:
+        out += f'<a class="lnk-ext" href="{external_href}">↗ {external_text}</a>'
+    return out + "</span>"
+
+
+def pill_link(res, url):
+    """Make the status label link to the trial's external registry or study page."""
+    return re.sub(r'<span class="pill ([a-z]+)">([^<]*)</span>', lambda m: f'<a class="pill-link" href="{url}" title="Open external record"><span class="pill {m.group(1)}">{m.group(2)} ↗</span></a>', res, count=1)
+
+
+def ext_label(url):
+    if "clinicaltrials.gov" in url:
+        return "Registry"
+    if "dailymed" in url:
+        return "FDA label"
+    return "Study page" if "rally." in url else "Source"
 assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr id="{trial_id(name)}"><td data-label="Study"><a href="{link}">{name}</a></td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{res}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
@@ -765,7 +841,16 @@ body = head("Drugs", "Treatments and what they mean for ε4/ε4",
     "APOE genotype matters most for the safety of anti-amyloid antibodies. Several newer approaches target APOE4 biology directly. Within each group, the most advanced or most recent come first.")
 body += "\n    <section>\n"
 for g, items in drugs:
-    rows = "\n".join(f'            <tr><td data-label="Drug">{n}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>' for n, t, x in items)
+    def _drug_cell(n):
+        m = re.match(r'<a href="([^"]+)">([^<]+)</a>(.*)', n, re.S)
+        if not m:
+            return n, None
+        href, name, rest = m.groups()
+        tr = DRUG_TO_TRIAL.get(name)
+        return (f'<span class="dname">{name}</span>{rest}' + link_pair(("trials.html#" + trial_id(tr)) if tr else None, "Trial", href, ext_label(href)), drug_id(name))
+    rows = "\n".join(
+        (lambda c: f'            <tr{(" id=" + chr(34) + c[1] + chr(34)) if c[1] else ""}><td data-label="Drug">{c[0]}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>')(_drug_cell(n))
+        for n, t, x in items)
     body += f"""    <div class="group">
       <h2>{g}</h2>
       <div class="alleles" role="region" aria-label="{g}" tabindex="0">
@@ -805,8 +890,7 @@ body += """    <div class="group" id="access">
     </div>
 """
 body += DISCLAIMER + "\n    </section>"
-for _ext, _int in TRIAL_PAGE_LINK.items():  # plain links in drug rows point to our trial entries; cited sources stay external
-    body = body.replace('<a href="' + _ext + '">', '<a href="' + _int + '">')
+body = body.replace('<a href="https://clinicaltrials.gov/study/NCT07399171">now recruiting</a>', 'now recruiting')
 pages["drugs.html"] = body
 
 pages["newsletter.html"] = head("Newsletter", "Stay up to date", "Research news on APOE ε4 homozygosity.") + "\n" + NEWSLETTER
