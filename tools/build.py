@@ -114,6 +114,8 @@ def ct(q):
 
 
 SITE = "https://apoe4.science/"
+# Cloudflare Web Analytics site token (cookie-free). Leave empty to turn analytics off.
+CF_ANALYTICS_TOKEN = ""
 DESC = "A community resource on APOE ε4 homozygosity: evidence, data, trials and drugs."
 
 
@@ -170,6 +172,7 @@ def shell(fname, title, body, extra_head=""):
     <span class="updated">Last reviewed November 2026 · <a href="about.html">About and sources</a> · <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a></span>
   </footer>
 </div>
+{('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=' + chr(39) + '{"token": "' + CF_ANALYTICS_TOKEN + '"}' + chr(39) + '></script>') if CF_ANALYTICS_TOKEN else ''}
 <script>var c=document.querySelector('nav a[aria-current]');if(c&&c.scrollIntoView&&window.innerWidth<640)c.scrollIntoView({{inline:"center",block:"nearest"}});</script>
 </body>
 </html>
