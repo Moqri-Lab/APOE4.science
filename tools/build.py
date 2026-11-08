@@ -687,7 +687,7 @@ trials = [
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
      "https://clinicaltrials.gov/study/NCT02565511"),
     ("Generation Study 2", "Umibecestat", "Cognitively unimpaired ε4 carriers at high risk",
-     pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
+     pill("stop", "Stopped 2019") + " Ended with the rest of the <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10426731/\">API Generation Program</a>.",
      "https://clinicaltrials.gov/study/NCT03131453"),
     ("LX1001", "AAV gene therapy delivering APOE2 (Lexeo Therapeutics)", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
      pill("done", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
