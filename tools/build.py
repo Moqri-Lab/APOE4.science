@@ -766,6 +766,20 @@ def link_pair(internal_href, internal_text, external_href, external_text):
     return out + "</span>"
 
 
+def link_drug_names(trial_name, text):
+    """Link the drug named in a trial's intervention cell to its row on the Drugs page."""
+    drug = TRIAL_TO_DRUG.get(trial_name)
+    if not drug:
+        return text
+    base = re.sub(r"\s*\(.*", "", drug)
+    targets = [(base, "drugs.html#" + drug_id(drug))]
+    if trial_name == "Generation Study 1":
+        targets.append(("CAD106", "drugs.html#drug-cad106"))
+    for word, href in targets:
+        text = re.sub(r"(?<![\w-])(" + re.escape(word) + r")(?![\w-])", lambda m: f'<a href="{href}">{m.group(1)}</a>', text, count=1, flags=re.I)
+    return text
+
+
 def pill_link(res, url):
     """Make the status label link to the trial's external registry or study page."""
     return re.sub(r'<span class="pill ([a-z]+)">([^<]*)</span>', lambda m: f'<a class="pill-link" href="{url}" title="Open external record"><span class="pill {m.group(1)}">{m.group(2)} ↗</span></a>', res, count=1)
@@ -781,7 +795,7 @@ assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{drug}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{link_drug_names(name, drug)}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
