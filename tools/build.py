@@ -990,6 +990,16 @@ ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal targ
 _SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "nav", "header", "footer"}
 
 
+def new_tabs(html, own="apoe4.science"):
+    """Open links to other sites in a new tab."""
+    def fix(m):
+        tag, url = m.group(0), m.group(1)
+        if own in url or "target=" in tag:
+            return tag
+        return tag[:-1] + ' target="_blank" rel="noopener">'
+    return re.sub(r'<a\b[^>]*\bhref="(https?://[^"]+)"[^>]*>', fix, html)
+
+
 def autolink(fname, html):
     """Link the first unlinked mention of each drug, trial, study or resource on a page to its entry."""
     if fname in ("index.html", "papers.html", "404.html"):  # home already links each item; keep it uncluttered
@@ -1022,7 +1032,7 @@ def autolink(fname, html):
 
 
 for fname, label, title in PAGES:
-    OUT.joinpath(fname).write_text(autolink(fname, number_refs(shell(fname, title, pages[fname]))))
+    OUT.joinpath(fname).write_text(new_tabs(autolink(fname, number_refs(shell(fname, title, pages[fname])))))
 
 NOT_FOUND = head("Page not found", "This page doesn’t exist",
     "It may have moved when the site was reorganized.") + """
@@ -1057,6 +1067,6 @@ ABOUT = head("About", "About this site and its sources",
         <p>Found an error or a missing study? <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a> on GitHub, where the full source and change history are public. For research updates, subscribe to the <a href="newsletter.html">newsletter</a>.</p>
       </div>
     </section>"""
-OUT.joinpath("about.html").write_text(autolink("about.html", number_refs(shell("about.html", "About", ABOUT))))
-OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
+OUT.joinpath("about.html").write_text(new_tabs(autolink("about.html", number_refs(shell("about.html", "About", ABOUT)))))
+OUT.joinpath("404.html").write_text(new_tabs(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">')))
 print("built", len(PAGES), "pages")
