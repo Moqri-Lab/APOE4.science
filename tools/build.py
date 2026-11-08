@@ -251,6 +251,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; keep to about five
+    ("Nov 2026", 'New: <a href="trials.html#trial-alzevit">ALZEVIT</a>, a 50,000-person APOE study in France; two 2026 papers on how ε4 damages brain blood vessels in <a href="papers.html">Papers</a>; APOLLOE4 status updated.'),
     ("Nov 2026", 'Sister site <a href="https://alzprevent.org">alzprevent.org</a> launched, on preventing Alzheimer’s for everyone.'),
     ("Nov 2026", 'Trials checked again: TRAILBLAZER-ALZ 3 added, HT-4253 now recruiting, lecanemab ARIA rates by genotype (45% in ε4/ε4).'),
     ("Nov 2026", 'The site is now live at <a href="https://apoe4.science">apoe4.science</a>, with a monthly <a href="newsletter.html">newsletter</a>.'),
@@ -596,6 +597,10 @@ groups = [
          "A vascular route for APOE4 effects, independent of amyloid and tau.", "https://doi.org/10.1038/s41586-020-2247-3"),
         ("Independent effects of white matter lesion volume and APOE ε4 on ARIA-H in the A4 Study. <i>Alzheimer’s &amp; Dementia</i> 2025.",
          "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://doi.org/10.1002/alz.70751"),
+        ("A pericyte-to-myofibroblast transition links APOE4 to cerebrovascular degeneration. <i>Cell</i> 2026.",
+         "In APOE4 carriers, cells that support brain blood vessels turn into scar-forming cells that make fibronectin and promote amyloid around vessels; blocking TGF-β reversed this in aged mice.", "https://doi.org/10.1016/j.cell.2026.08.058"),
+        ("Bhattarai P, et al. Fibronectin mediates APOE4-driven blood–brain barrier dysfunction in Alzheimer’s disease. <i>Nature Aging</i> 2026.",
+         "Excess fibronectin at the blood–brain barrier makes it leak in ε4 models; lowering it improved barrier function. Builds on people who stay healthy despite ε4.", "https://doi.org/10.1038/s43587-026-01204-0"),
     ]),
     ("Blood biomarkers", [
         ("APOE ε4 carriership determines a faster plasma p-tau217 progression in Aβ-positive individuals. <i>Alzheimer’s &amp; Dementia</i> 2025.",
@@ -688,7 +693,7 @@ def pill(kind, text):
 
 trials = [
     ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "ε4/ε4 with early Alzheimer’s (Phase 3)",
-     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
+     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. Trial completed; Alzheon says it plans a further Phase 3 study. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine); Novartis and Amgen", "Cognitively unimpaired ε4/ε4, aged 60–75",
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
@@ -713,15 +718,17 @@ trials = [
      pill("run", "Fully enrolled") + " Primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
      pill("recruit", "Recruiting") + " Aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the <a href=\"https://www.emiratigenomeprogram.ae\">Emirati Genome Programme</a>. Started May 2026: 48 weeks of once-daily HT-4253 or placebo (placebo switches to the drug at week 24); aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
+    ("ALZEVIT", "None; APOE genotyping and digital follow-up (Firalis)", "Adults 45+ in France, all genotypes",
+     pill("recruit", "Recruiting") + " Started September 2026. A nationwide, mostly online study led with CHU de Montpellier: aims to genotype up to 50,000 people, then follow a subset of every genotype in detail, building a pool ready for prevention trials. <a class=\"cite\" href=\"https://www.vidal.fr/actualites/38293-lancement-du-recrutement-de-50-000-volontaires-en-france-pour-une-etude-sur-la-prevention-de-la-maladie-d-alzheimer.html\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07679906"),
     ("Mass General Brigham APOE Study", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
      pill("recruit", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the Mass General Brigham APOE Study",
      pill("recruit", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Jul 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': 'Dec 2025', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'TRAILBLAZER-ALZ 3': 'Jan 2026', 'HT-4253': 'Oct 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
+TRIAL_ASOF = {'APOLLOE4': 'Sep 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': 'Dec 2025', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'TRAILBLAZER-ALZ 3': 'Jan 2026', 'HT-4253': 'Oct 2026', 'ALZEVIT': 'Nov 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
     ("Drug trials run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
-    ("Observational studies in people with known APOE genotype", ["Harvard Alzheimer’s Risk Study", "Mass General Brigham APOE Study"]),
+    ("Observational studies in people with known APOE genotype", ["ALZEVIT", "Harvard Alzheimer’s Risk Study", "Mass General Brigham APOE Study"]),
     ("Major trials that report results by genotype", ["TRAILBLAZER-ALZ 3", "AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
@@ -739,6 +746,7 @@ TRIAL_N = {
     "TRAILBLAZER-ALZ 3": "About 3,000 enrolled",
     "AHEAD 3-45": "About 1,400 enrolled",
     "A4 Study": "1,169 randomized",
+    "ALZEVIT": "Up to 50,000 planned",
     "Mass General Brigham APOE Study": "Not stated",
     "Harvard Alzheimer’s Risk Study": "Not stated",
 }
@@ -756,6 +764,7 @@ TRIAL_E44 = {
     "TRAILBLAZER-ALZ 3": "Not reported",
     "AHEAD 3-45": "Not reported",
     "A4 Study": "Not reported",
+    "ALZEVIT": "About 750 planned for detailed follow-up",
     "Mass General Brigham APOE Study": "Enrolls by genotype; target not stated",
     "Harvard Alzheimer’s Risk Study": "Enrolls by genotype; target not stated",
 }
@@ -958,6 +967,7 @@ REFS = {
     "https://investor.lilly.com/node/52961": "Eli Lilly and Company. European Commission approves Kisunla (donanemab). Press release, September 2025.",
     "https://clinicaltrials.gov/study/NCT05738486": "TRAILBLAZER-ALZ 6 (donanemab dosing regimens). ClinicalTrials.gov NCT05738486.",
     "https://doi.org/10.1002/alz.70062": "Modified titration of donanemab reduces ARIA risk and maintains amyloid reduction (TRAILBLAZER-ALZ 6). <i>Alzheimer’s &amp; Dementia</i> 2025.",
+    "https://www.vidal.fr/actualites/38293-lancement-du-recrutement-de-50-000-volontaires-en-france-pour-une-etude-sur-la-prevention-de-la-maladie-d-alzheimer.html": "VIDAL. Lancement du recrutement de 50 000 volontaires en France pour une étude sur la prévention de la maladie d’Alzheimer (ALZEVIT). 2026.",
     "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/": "Efficacy and safety of oral valiltramiprosate in APOE4/4 homozygotes with early AD: topline results from the APOLLOE4 Phase 3 trial. 2025.",
     "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/": "Topline results from Phase 1/2 AAV gene therapy (LX1001) in APOE4/4 homozygotes with Alzheimer’s disease. 2025.",
     "https://doi.org/10.1172/JCI96429": "Liao F, et al. Targeting of nonlipidated, aggregated apoE with antibodies inhibits amyloid accumulation. <i>Journal of Clinical Investigation</i> 2018.",
@@ -1014,7 +1024,7 @@ ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal targ
     ("Generation Study 1", "trials.html#trial-generation-study-1"), ("Generation Study 2", "trials.html#trial-generation-study-2"),
     ("TRAILBLAZER-ALZ 2", "trials.html#trial-trailblazer-alz-2"), ("TRAILBLAZER-ALZ 3", "trials.html#trial-trailblazer-alz-3"),
     ("TRAILBLAZER-ALZ 6", "trials.html#trial-trailblazer-alz-6"), ("AHEAD 3-45", "trials.html#trial-ahead-3-45"),
-    ("Clarity AD", "trials.html#trial-clarity-ad"), ("APOLLOE4", "trials.html#trial-apolloe4"), ("A4 Study", "trials.html#trial-a4-study"),
+    ("Clarity AD", "trials.html#trial-clarity-ad"), ("APOLLOE4", "trials.html#trial-apolloe4"), ("ALZEVIT", "trials.html#trial-alzevit"), ("A4 Study", "trials.html#trial-a4-study"),
     ("LX1001", "trials.html#trial-lx1001"), ("HT-4253", "trials.html#trial-ht-4253"),
     ("lecanemab", "drugs.html#drug-lecanemab"), ("donanemab", "drugs.html#drug-donanemab"),
     ("valiltramiprosate", "drugs.html#drug-valiltramiprosate"), ("aducanumab", "drugs.html#drug-aducanumab"),
