@@ -841,15 +841,18 @@ body = head("Drugs", "Treatments and what they mean for ε4/ε4",
     "APOE genotype matters most for the safety of anti-amyloid antibodies. Several newer approaches target APOE4 biology directly. Within each group, the most advanced or most recent come first.")
 body += "\n    <section>\n"
 for g, items in drugs:
-    def _drug_cell(n):
+    def _drug_cell(n, x=""):
         m = re.match(r'<a href="([^"]+)">([^<]+)</a>(.*)', n, re.S)
         if not m:
-            return n, None
+            name = re.split(r"<span", n)[0]
+            src_m = re.search(r'href=\\?"([^"\\]+)\\?"', x)
+            pair = link_pair(None, "", src_m.group(1), "Source") if src_m else ""
+            return f'<span class="dname">{name}</span>{n[len(name):]}{pair}', drug_id(name)
         href, name, rest = m.groups()
         tr = DRUG_TO_TRIAL.get(name)
         return (f'<span class="dname">{name}</span>{rest}' + link_pair(("trials.html#" + trial_id(tr)) if tr else None, "Trial", href, ext_label(href)), drug_id(name))
     rows = "\n".join(
-        (lambda c: f'            <tr{(" id=" + chr(34) + c[1] + chr(34)) if c[1] else ""}><td data-label="Drug">{c[0]}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>')(_drug_cell(n))
+        (lambda c: f'            <tr{(" id=" + chr(34) + c[1] + chr(34)) if c[1] else ""}><td data-label="Drug">{c[0]}</td><td data-label="Type">{t}</td><td data-label="For ε4/ε4">{x}</td></tr>')(_drug_cell(n, x))
         for n, t, x in items)
     body += f"""    <div class="group">
       <h2>{g}</h2>
@@ -967,8 +970,59 @@ def number_refs(html):
 
 
 OUT.joinpath("style.css").write_text(BASE_CSS.strip() + "\n" + EXTRA_CSS)
+ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal target
+    ("Mass General Brigham APOE Study", "trials.html#" + trial_id("Mass General Brigham APOE Study")),
+    ("Harvard Alzheimer’s Risk Study", "trials.html#" + trial_id("Harvard Alzheimer’s Risk Study")),
+    ("Generation Study 1", "trials.html#trial-generation-study-1"), ("Generation Study 2", "trials.html#trial-generation-study-2"),
+    ("TRAILBLAZER-ALZ 2", "trials.html#trial-trailblazer-alz-2"), ("TRAILBLAZER-ALZ 3", "trials.html#trial-trailblazer-alz-3"),
+    ("TRAILBLAZER-ALZ 6", "trials.html#trial-trailblazer-alz-6"), ("AHEAD 3-45", "trials.html#trial-ahead-3-45"),
+    ("Clarity AD", "trials.html#trial-clarity-ad"), ("APOLLOE4", "trials.html#trial-apolloe4"), ("A4 Study", "trials.html#trial-a4-study"),
+    ("LX1001", "trials.html#trial-lx1001"), ("HT-4253", "trials.html#trial-ht-4253"),
+    ("lecanemab", "drugs.html#drug-lecanemab"), ("donanemab", "drugs.html#drug-donanemab"),
+    ("valiltramiprosate", "drugs.html#drug-valiltramiprosate"), ("aducanumab", "drugs.html#drug-aducanumab"),
+    ("umibecestat", "drugs.html#drug-umibecestat"), ("CAD106", "drugs.html#drug-cad106"),
+    ("memantine", "drugs.html#drug-memantine"), ("donepezil", "drugs.html#drug-donepezil-rivastigmine-galantamine"),
+    ("AD Knowledge Portal", "resources.html#adkp"), ("AD Workbench", "resources.html#addi"), ("UK Biobank", "resources.html#ukb"),
+    ("All of Us", "resources.html#aou"), ("MGB Biobank", "resources.html#mgbb"), ("NIAGADS", "resources.html#niagads"),
+    ("NCRAD", "resources.html#ncrad"), ("ADSP", "resources.html#adsp"), ("ADNI", "resources.html#adni"),
+    ("SEA-AD", "resources.html#seaad"), ("NACC", "resources.html#nacc"),
+]
+_SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "nav", "header", "footer"}
+
+
+def autolink(fname, html):
+    """Link the first unlinked mention of each drug, trial, study or resource on a page to its entry."""
+    if fname in ("papers.html", "404.html"):
+        return html
+    parts = re.split(r"(<[^>]+>)", html)
+    stack, done = [], set()
+    for k, part in enumerate(parts):
+        if part.startswith("<"):
+            m = re.match(r"<(/?)([a-zA-Z0-9]+)", part)
+            if m and not part.endswith("/>"):
+                tag = m.group(2).lower()
+                if m.group(1):
+                    if tag in stack:
+                        while stack and stack.pop() != tag:
+                            pass
+                elif tag in _SKIP_TAGS:
+                    stack.append(tag)
+            continue
+        if stack or not part.strip():
+            continue
+        for term, href in ENTITY_LINKS:
+            if term in done or href.split("#")[0] == fname:
+                continue
+            mm = re.search(r"(?<![\w-])" + re.escape(term) + r"(?![\w-])", part, re.I)
+            if mm:
+                part = part[:mm.start()] + f'<a href="{href}">{mm.group(0)}</a>' + part[mm.end():]
+                done.add(term)
+        parts[k] = part
+    return "".join(parts)
+
+
 for fname, label, title in PAGES:
-    OUT.joinpath(fname).write_text(number_refs(shell(fname, title, pages[fname])))
+    OUT.joinpath(fname).write_text(autolink(fname, number_refs(shell(fname, title, pages[fname]))))
 
 NOT_FOUND = head("Page not found", "This page doesn’t exist",
     "It may have moved when the site was reorganized.") + """
@@ -1003,6 +1057,6 @@ ABOUT = head("About", "About this site and its sources",
         <p>Found an error or a missing study? <a href="https://github.com/Moqri-Lab/APOE4.science/issues">Suggest a correction</a> on GitHub, where the full source and change history are public. For research updates, subscribe to the <a href="newsletter.html">newsletter</a>.</p>
       </div>
     </section>"""
-OUT.joinpath("about.html").write_text(number_refs(shell("about.html", "About", ABOUT)))
+OUT.joinpath("about.html").write_text(autolink("about.html", number_refs(shell("about.html", "About", ABOUT))))
 OUT.joinpath("404.html").write_text(shell("404.html", "Page not found", NOT_FOUND, '\n<meta name="robots" content="noindex">'))
 print("built", len(PAGES), "pages")
