@@ -275,7 +275,7 @@ cards = [
 pages["index.html"] = f"""    <div class="hero">
       <div>
         <p class="label">A community resource</p>
-        <h1 style="margin-top:14px">Two copies of APOE4: <em>about 15×</em> the risk of Alzheimer’s, with symptoms around age 65.</h1>
+        <h1 style="margin-top:14px">Two copies of APOE4: <em>about 15×</em> the risk of Alzheimer’s.</h1>
         <p class="lede">About 15 times the odds of Alzheimer’s compared with ε3/ε3, in people of European ancestry (<a href="https://doi.org/10.1001/jama.1997.03550160069041">Farrer, <i>JAMA</i> 1997</a>). Average age at first symptoms is 65 (<a href="https://doi.org/10.1038/s41591-024-02931-w">Fortea, <i>Nature Medicine</i> 2024</a>). Evidence, data, papers, trials and drugs on ε4/ε4, in one place.</p>
         <p class="note">Just learned you are ε4/ε4? <a href="start.html">Start here</a>.</p>
       </div>
