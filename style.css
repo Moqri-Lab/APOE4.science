@@ -173,10 +173,13 @@ table.data tr[id]{scroll-margin-top:24px}
 table.data tr:target td{background:var(--e4-soft)}
 td.e44{font-size:14px;white-space:normal;min-width:110px}
 .dname{font-weight:600;display:block}
-.xlinks{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:13px;font-weight:400}
+.xlinks{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px;font-size:13px;font-weight:400}
+.xlinks .sep{color:var(--muted)}
 .xlinks a{white-space:nowrap}
-a.lnk-int{color:var(--e4);text-decoration:none;border-bottom:1px solid currentColor}
-a.lnk-ext{color:var(--muted);text-decoration:underline dotted;text-underline-offset:3px}
+a.lnk-int{color:var(--e4);text-decoration:none}
+a.lnk-int:hover{text-decoration:underline}
+a.lnk-ext{color:var(--muted);text-decoration:none}
+a.lnk-ext:hover{text-decoration:underline}
 table.data tr[id]{scroll-margin-top:24px}
 a.pill-link{text-decoration:none}
 a.pill-link:hover .pill{background:var(--surface)}

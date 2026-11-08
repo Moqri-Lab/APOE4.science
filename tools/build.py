@@ -80,10 +80,13 @@ table.data tr[id]{scroll-margin-top:24px}
 table.data tr:target td{background:var(--e4-soft)}
 td.e44{font-size:14px;white-space:normal;min-width:110px}
 .dname{font-weight:600;display:block}
-.xlinks{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:13px;font-weight:400}
+.xlinks{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-top:4px;font-size:13px;font-weight:400}
+.xlinks .sep{color:var(--muted)}
 .xlinks a{white-space:nowrap}
-a.lnk-int{color:var(--e4);text-decoration:none;border-bottom:1px solid currentColor}
-a.lnk-ext{color:var(--muted);text-decoration:underline dotted;text-underline-offset:3px}
+a.lnk-int{color:var(--e4);text-decoration:none}
+a.lnk-int:hover{text-decoration:underline}
+a.lnk-ext{color:var(--muted);text-decoration:none}
+a.lnk-ext:hover{text-decoration:underline}
 table.data tr[id]{scroll-margin-top:24px}
 a.pill-link{text-decoration:none}
 a.pill-link:hover .pill{background:var(--surface)}
@@ -218,7 +221,7 @@ def paper_links(text):
             out.append((href, label))
     if not out:
         return ""
-    return '<span class="xlinks">' + "".join(f'<a class="lnk-int" href="{h}">→ {l}</a>' for h, l in out) + "</span>"
+    return '<span class="xlinks">' + ''.join(f'<a class="lnk-int" href="{h}">See {l[0].lower() + l[1:]}</a>' for h, l in out) + "</span>"
 
 
 def refs(items):
@@ -781,9 +784,9 @@ TRIAL_TO_DRUG = {"Clarity AD": "Lecanemab (Leqembi)", "AHEAD 3-45": "Lecanemab (
 def link_pair(internal_href, internal_text, external_href, external_text):
     out = '<span class="xlinks">'
     if internal_href:
-        out += f'<a class="lnk-int" href="{internal_href}">→ {internal_text}</a>'
+        out += f'<a class="lnk-int" href="{internal_href}">See {internal_text.lower()}</a>'
     if external_href:
-        out += f'<a class="lnk-ext" href="{external_href}">↗ {external_text}</a>'
+        out += f'<a class="lnk-ext" href="{external_href}">{external_text} ↗</a>'
     return out + "</span>"
 
 
@@ -1025,6 +1028,11 @@ ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal targ
 _SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "nav", "header", "footer", "ol"}
 
 
+def wrap_cells(html):
+    """Wrap each labelled table cell's content in one <div> so the phone grid layout keeps it together."""
+    return re.sub(r'(<td data-label="[^"]*"[^>]*>)(.*?)(</td>)', lambda m: m.group(1) + ("<div>" + m.group(2) + "</div>" if not m.group(2).startswith(("<div>", "<span>")) or "</span><" in m.group(2) else m.group(2)) + m.group(3), html, flags=re.S)
+
+
 def new_tabs(html, own="apoe4.science"):
     """Open links to other sites in a new tab."""
     def fix(m):
@@ -1067,7 +1075,7 @@ def autolink(fname, html):
 
 
 for fname, label, title in PAGES:
-    OUT.joinpath(fname).write_text(new_tabs(autolink(fname, number_refs(shell(fname, title, pages[fname])))))
+    OUT.joinpath(fname).write_text(new_tabs(wrap_cells(autolink(fname, number_refs(shell(fname, title, pages[fname]))))))
 
 NOT_FOUND = head("Page not found", "This page doesn’t exist",
     "It may have moved when the site was reorganized.") + """
