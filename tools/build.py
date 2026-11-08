@@ -680,7 +680,7 @@ def pill(kind, text):
     return f'<span class="pill {kind}">{text}</span>'
 
 trials = [
-    ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "325 ε4/ε4 with early Alzheimer’s (Phase 3)",
+    ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "ε4/ε4 with early Alzheimer’s (Phase 3)",
      pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine); Novartis and Amgen", "Cognitively unimpaired ε4/ε4, aged 60–75",
@@ -690,7 +690,7 @@ trials = [
      pill("stop", "Stopped 2019") + " Ended with the rest of the Generation Program.",
      "https://clinicaltrials.gov/study/NCT03131453"),
     ("LX1001", "AAV gene therapy delivering APOE2 (Lexeo Therapeutics)", "ε4/ε4 with MCI or Alzheimer’s dementia (Phase 1/2)",
-     pill("done", "Completed") + " 15 ε4/ε4 participants across four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
+     pill("done", "Completed") + " Four dose cohorts. Rising APOE2 in spinal fluid, tau PET reduction in 5 of 6 evaluated, no ARIA. FDA Fast Track. Small, open-label.<a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12739747/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT03634007"),
     ("Clarity AD", "Lecanemab (Eisai)", "Early Alzheimer’s, all genotypes (Phase 3)",
      pill("done", "Positive") + " Slowed decline. Symptomatic ARIA-E in 9% of ε4/ε4 versus 2% of heterozygotes and 1% of non-carriers; severe ARIA-E in 5% of ε4/ε4. Any ARIA in 45% of ε4/ε4 on lecanemab versus 22% on placebo (heterozygotes 19% vs 9%; non-carriers 13% vs 4%). <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2212948\" title=\"Results\" aria-label=\"Source: Results\">↗</a><a class=\"cite\" href=\"https://media-us.eisai.com/2025-12-03-Eisai-Presents-New-Data-on-the-Continued-and-Expanding-Benefit-of-LEQEMBI-R-lecanemab-irmb-Maintenance-Treatment-in-Early-Alzheimers-Disease-at-the-Clinical-Trials-on-Alzheimers-Disease-CTAD-Conference-2025\" title=\"Eisai CTAD 2025\" aria-label=\"Source: Eisai CTAD 2025\">↗</a>", "https://clinicaltrials.gov/study/NCT03887455"),
@@ -701,11 +701,11 @@ trials = [
     ("A4 Study", "Solanezumab (Eli Lilly)", "Cognitively unimpaired with elevated amyloid",
      pill("stop", "No benefit") + " Rich natural-history data on ε4/ε4, including small bleeds over time. <a class=\"cite\" href=\"https://doi.org/10.1056/NEJMoa2305032\" title=\"Results\" aria-label=\"Source: Results\">↗</a>", "https://clinicaltrials.gov/study/NCT02008357"),
     ("TRAILBLAZER-ALZ 3", "Donanemab (Eli Lilly)", "Preclinical Alzheimer’s (cognitively unimpaired with Alzheimer’s pathology)",
-     pill("run", "Fully enrolled") + " About 3,000 participants; primary completion expected October 2027. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12439032/\" title=\"Baseline data\" aria-label=\"Source: Baseline data\">↗</a>", "https://clinicaltrials.gov/study/NCT05026866"),
+     pill("run", "Fully enrolled") + " Primary completion expected October 2027. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12439032/\" title=\"Baseline data\" aria-label=\"Source: Baseline data\">↗</a>", "https://clinicaltrials.gov/study/NCT05026866"),
     ("AHEAD 3-45", "Lecanemab (Eisai)", "Preclinical Alzheimer’s (amyloid without symptoms)",
-     pill("run", "Fully enrolled") + " About 1,400 participants; primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
+     pill("run", "Fully enrolled") + " Primary completion expected December 2028.", "https://clinicaltrials.gov/study/NCT04468659"),
     ("HT-4253", "HT-4253, oral LRRK2 inhibitor (Halia Therapeutics)", "Biomarker-positive ε4 carriers, prevention (Phase 2a)",
-     pill("recruit", "Recruiting") + " 112 planned, aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the <a href=\"https://www.emiratigenomeprogram.ae\">Emirati Genome Programme</a>. Started May 2026: 48 weeks of once-daily HT-4253 or placebo (placebo switches to the drug at week 24); aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
+     pill("recruit", "Recruiting") + " Aged 50–75, at sites in Abu Dhabi, UAE. Carriers are identified through the <a href=\"https://www.emiratigenomeprogram.ae\">Emirati Genome Programme</a>. Started May 2026: 48 weeks of once-daily HT-4253 or placebo (placebo switches to the drug at week 24); aims to lower an amyloid risk score in blood. <a class=\"cite\" href=\"https://www.mediaoffice.abudhabi/en/health/m42s-insights-research-organization-and-solutions-launches-genomics-clinical-trial-to-prevent-alzheimers-disease/\" title=\"Announcement\" aria-label=\"Source: Announcement\">↗</a>", "https://clinicaltrials.gov/study/NCT07399171"),
     ("Mass General Brigham APOE Study", "None; blood samples and short surveys", "Adults 18+ who already know their APOE result",
      pill("recruit", "Open") + " Looks for early blood and survey signs that predict who is more or less likely to develop memory problems.", "https://rally.massgeneralbrigham.org/study/R45S3lXvFDG"),
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the Mass General Brigham APOE Study",
@@ -718,6 +718,23 @@ TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
     ("Major trials that report results by genotype", ["TRAILBLAZER-ALZ 3", "AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
 TRIAL_BY_NAME = {t[0]: t for t in trials}
+
+# Total participants, shown the same way for every study: "N randomized", "N enrolled" or "N planned".
+TRIAL_N = {
+    "APOLLOE4": "325 randomized",
+    "LX1001": "15 enrolled",
+    "Generation Study 1": "478 randomized",
+    "Generation Study 2": "1,145 randomized",
+    "HT-4253": "112 planned",
+    "Clarity AD": "1,795 randomized",
+    "TRAILBLAZER-ALZ 2": "1,736 randomized",
+    "TRAILBLAZER-ALZ 6": "843 randomized",
+    "TRAILBLAZER-ALZ 3": "About 3,000 enrolled",
+    "AHEAD 3-45": "About 1,400 enrolled",
+    "A4 Study": "1,169 randomized",
+    "Mass General Brigham APOE Study": "Not stated",
+    "Harvard Alzheimer’s Risk Study": "Not stated",
+}
 
 # Number of ε4/ε4 participants, shown in its own column for every study.
 TRIAL_E44 = {
@@ -735,7 +752,7 @@ TRIAL_E44 = {
     "Mass General Brigham APOE Study": "Enrolls by genotype; target not stated",
     "Harvard Alzheimer’s Risk Study": "Enrolls by genotype; target not stated",
 }
-assert sorted(TRIAL_E44) == sorted(TRIAL_BY_NAME)
+assert sorted(TRIAL_E44) == sorted(TRIAL_BY_NAME) == sorted(TRIAL_N)
 
 
 def trial_id(name):
@@ -795,13 +812,13 @@ assert sorted(TRIAL_BY_NAME) == sorted(n for _, ns in TRIAL_GROUPS for n in ns)
 trial_sections = ""
 for g, names in TRIAL_GROUPS:
     rows = "\n".join(
-        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{link_drug_names(name, drug)}</td><td data-label="Who">{pop}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
+        f'            <tr id="{trial_id(name)}"><td data-label="Study"><span class="dname">{name}</span>{link_pair(("drugs.html#" + drug_id(TRIAL_TO_DRUG[name])) if name in TRIAL_TO_DRUG else None, "Drug", link, ext_label(link))}</td><td data-label="Intervention">{link_drug_names(name, drug)}</td><td data-label="Who">{pop}</td><td data-label="Participants" class="e44">{TRIAL_N[name]}</td><td data-label="ε4/ε4" class="e44">{TRIAL_E44[name]}</td><td data-label="Status"><span>{pill_link(res, link)}</span></td><td class="asof" data-label="As of">{TRIAL_ASOF[name]}</td></tr>'
         for name, drug, pop, res, link in (TRIAL_BY_NAME[n] for n in names))
     trial_sections += f"""    <div class="group">
       <h2>{g}</h2>
       <div class="alleles" role="region" aria-label="{g}" tabindex="0">
         <table class="data">
-          <thead><tr><th>Study</th><th>Intervention</th><th>Who</th><th>ε4/ε4</th><th>Status and result</th><th>As of</th></tr></thead>
+          <thead><tr><th>Study</th><th>Intervention</th><th>Who</th><th>Participants</th><th>ε4/ε4</th><th>Status and result</th><th>As of</th></tr></thead>
           <tbody>
 {rows}
           </tbody>
@@ -1001,7 +1018,7 @@ ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal targ
     ("NCRAD", "resources.html#ncrad"), ("ADSP", "resources.html#adsp"), ("ADNI", "resources.html#adni"),
     ("SEA-AD", "resources.html#seaad"), ("NACC", "resources.html#nacc"),
 ]
-_SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "nav", "header", "footer"}
+_SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "nav", "header", "footer", "ol"}
 
 
 def new_tabs(html, own="apoe4.science"):
@@ -1016,7 +1033,7 @@ def new_tabs(html, own="apoe4.science"):
 
 def autolink(fname, html):
     """Link the first unlinked mention of each drug, trial, study or resource on a page to its entry."""
-    if fname in ("index.html", "papers.html", "404.html"):  # home already links each item; keep it uncluttered
+    if fname in ("index.html", "papers.html", "trials.html", "404.html"):  # home already links each item; keep it uncluttered
         return html
     parts = re.split(r"(<[^>]+>)", html)
     stack, done = [], set()
