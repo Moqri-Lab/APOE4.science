@@ -105,3 +105,13 @@ footer{padding-block:36px 48px;border-top:1px solid var(--rule);display:flex;jus
   .geno{animation:rise .8s ease-out both}
   @keyframes rise{from{transform:translateY(8px)}to{transform:none}}
 }
+
+/* Desktop hero: headline spans the full width; lede and ε4/ε4 sit side by side below */
+@media (min-width:821px){
+  .hero{row-gap:0;align-items:start}
+  .hero > div:first-child{display:contents}
+  .hero > div:first-child > .label,.hero > div:first-child > h1{grid-column:1 / -1}
+  .hero > div:first-child > .lede,.hero > div:first-child > .note{grid-column:1}
+  .hero h1{max-width:none;text-wrap:balance}
+  .hero .geno{grid-column:2;grid-row:3 / span 2;align-self:end;justify-self:end}
+}
