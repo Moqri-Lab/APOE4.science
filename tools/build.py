@@ -992,7 +992,7 @@ _SKIP_TAGS = {"a", "h1", "h2", "h3", "th", "title", "head", "script", "style", "
 
 def autolink(fname, html):
     """Link the first unlinked mention of each drug, trial, study or resource on a page to its entry."""
-    if fname in ("papers.html", "404.html"):
+    if fname in ("index.html", "papers.html", "404.html"):  # home already links each item; keep it uncluttered
         return html
     parts = re.split(r"(<[^>]+>)", html)
     stack, done = [], set()
