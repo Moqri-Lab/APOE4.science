@@ -597,9 +597,9 @@ groups = [
          "A vascular route for APOE4 effects, independent of amyloid and tau.", "https://doi.org/10.1038/s41586-020-2247-3"),
         ("Independent effects of white matter lesion volume and APOE ε4 on ARIA-H in the A4 Study. <i>Alzheimer’s &amp; Dementia</i> 2025.",
          "ε4/ε4 predicts accumulating small bleeds in people without symptoms.", "https://doi.org/10.1002/alz.70751"),
-        ("A pericyte-to-myofibroblast transition links APOE4 to cerebrovascular degeneration. <i>Cell</i> 2026.",
+        ("Schuldt B, …, Blanchard JW. A pericyte-to-myofibroblast transition links APOE4 to cerebrovascular degeneration. <i>Cell</i> 2026.",
          "In APOE4 carriers, cells that support brain blood vessels turn into scar-forming cells that make fibronectin and promote amyloid around vessels; blocking TGF-β reversed this in aged mice.", "https://doi.org/10.1016/j.cell.2026.08.058"),
-        ("Bhattarai P, et al. Fibronectin mediates APOE4-driven blood–brain barrier dysfunction in Alzheimer’s disease. <i>Nature Aging</i> 2026.",
+        ("Bhattarai P, …, Kizil C. Fibronectin mediates APOE4-driven blood–brain barrier dysfunction in Alzheimer’s disease. <i>Nature Aging</i> 2026.",
          "Excess fibronectin at the blood–brain barrier makes it leak in ε4 models; lowering it improved barrier function. Builds on people who stay healthy despite ε4.", "https://doi.org/10.1038/s43587-026-01204-0"),
     ]),
     ("Blood biomarkers", [
@@ -617,8 +617,8 @@ groups = [
          "Cholesterol handling and myelin loss in human ε4 brains and cells.", "https://doi.org/10.1038/s41586-022-05439-w"),
         ("Haney MS, Pálovics R, Munson CN, et al. APOE4/4 is linked to damaging lipid droplets in Alzheimer’s disease microglia. <i>Nature</i> 2024.",
          "Lipid-laden microglia in ε4/ε4 brains.", "https://doi.org/10.1038/s41586-024-07185-7"),
-        ("Akay L, …, Tsai LH. Genome-wide CRISPR screen reveals Wnt signaling as a potential therapeutic target for lipid accumulation and impaired myelination in APOE4 oligodendrocytes. <i>Cell Stem Cell</i> 2026.",
-         "APOE4 suppresses Wnt signaling in myelin-making cells; blocking GSK3β cleared lipid droplets and restored myelination in human brain organoids and mice.", "https://doi.org/10.1016/j.stem.2026.09.012"),
+        ("Akay L, …, Tsai LH. Genome-wide CRISPR screen reveals that Wnt signaling regulates lipid accumulation in APOE4 oligodendrocytes. <i>Cell Stem Cell</i> 2026.",
+         "APOE4 suppresses Wnt signaling in myelin-making cells; blocking GSK3β cleared lipid droplets and increased myelination in human cells and brain organoids.", "https://doi.org/10.1016/j.stem.2026.09.012"),
     ]),
     ("Protection and resilience", [
         ("Arboleda-Velasquez JF, Lopera F, O’Hare M, et al. Resistance to autosomal dominant Alzheimer’s disease in an APOE3 Christchurch homozygote: a case report. <i>Nature Medicine</i> 2019.",
