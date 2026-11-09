@@ -250,7 +250,7 @@ NEWSLETTER = """    <section id="newsletter">
 pages = {}
 
 # ---------- Home ----------
-UPDATES = [  # newest first; keep to about five
+UPDATES = [  # newest first; the home page shows the latest six
     ("Nov 2026", 'New: <a href="trials.html#trial-alzevit">ALZEVIT</a>, a 50,000-person APOE study in France; two 2026 papers on how ε4 damages brain blood vessels in <a href="papers.html">Papers</a>; APOLLOE4 status updated.'),
     ("Nov 2026", 'Sister site <a href="https://alzprevent.org">alzprevent.org</a> launched, on preventing Alzheimer’s for everyone.'),
     ("Nov 2026", 'Trials checked again: TRAILBLAZER-ALZ 3 added, HT-4253 now recruiting, lecanemab ARIA rates by genotype (45% in ε4/ε4).'),
@@ -294,7 +294,7 @@ pages["index.html"] = f"""    <div class="hero">
         <h2>What’s new</h2>
       </div>
       <ul class="refs">
-""" + "\n".join(f'        <li><span class="asof">{d}</span> · {t}</li>' for d, t in UPDATES) + """
+""" + "\n".join(f'        <li><span class="asof">{d}</span> · {t}</li>' for d, t in UPDATES[:6]) + """
       </ul>
     </section>
 """ + NEWSLETTER
