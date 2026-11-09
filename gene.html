@@ -97,21 +97,21 @@
         </article>
       </div>
       <div class="group" style="margin-top:40px">
-        <h2>Risk differs by ancestry</h2>
-        <p class="note" style="margin-top:0">Odds of Alzheimer’s with one ε4 copy (ε3/ε4) compared with ε3/ε3, by population ancestry. The study reported a similar stepwise pattern across ancestries for ε4/ε4.</p>
-        <div class="alleles" role="region" aria-label="APOE ε3/ε4 odds ratios by ancestry" tabindex="0">
-          <table class="data">
-            <thead><tr><th>Ancestry</th><th>Odds ratio</th><th>95% CI</th></tr></thead>
-            <tbody>
-            <tr><td data-label="Ancestry"><div>East Asian</div></td><td data-label="Odds ratio"><div><span class="bar-row"><span class="bar" style="width:91%"></span><span class="num">4.54</span></span></div></td><td data-label="95% CI" class="asof"><div>3.99–5.17</div></td></tr>
-            <tr><td data-label="Ancestry"><div>White</div></td><td data-label="Odds ratio"><div><span class="bar-row"><span class="bar" style="width:69%"></span><span class="num">3.46</span></span></div></td><td data-label="95% CI" class="asof"><div>3.27–3.65</div></td></tr>
-            <tr><td data-label="Ancestry"><div>Black</div></td><td data-label="Odds ratio"><div><span class="bar-row"><span class="bar" style="width:44%"></span><span class="num">2.18</span></span></div></td><td data-label="95% CI" class="asof"><div>1.90–2.49</div></td></tr>
-            <tr><td data-label="Ancestry"><div>Hispanic</div></td><td data-label="Odds ratio"><div><span class="bar-row"><span class="bar" style="width:38%"></span><span class="num">1.90</span></span></div></td><td data-label="95% CI" class="asof"><div>1.65–2.18</div></td></tr>
-            </tbody>
-          </table>
+        <h2>Risk by genotype and ancestry</h2>
+        <p class="note" style="margin-top:0">Odds of Alzheimer’s by APOE genotype, compared with ε3/ε3, in White, Black and Hispanic participants (68,756 people in total, including East Asian cohorts). Each ε4 copy raises risk in every group, but by different amounts. Hover or tab to a point for exact values; switch to women or men, or to the table.</p>
+        <div class="fp" id="fig-belloy">
+          <noscript>
+          <div class="alleles" role="region" aria-label="Odds of Alzheimer’s by APOE genotype, compared with ε3/ε3" tabindex="0"><table class="data"><thead><tr><th>Genotype</th><th>White</th><th>Black</th><th>Hispanic</th></tr></thead><tbody><tr><td data-label="Genotype"><div>ε4/ε4</div></td><td data-label="White" class="num"><div>13.04 (11.31–15.04)</div></td><td data-label="Black" class="num"><div>6.49 (5.07–8.31)</div></td><td data-label="Hispanic" class="num"><div>3.62 (2.56–5.11)</div></td></tr><tr><td data-label="Genotype"><div>ε3/ε4</div></td><td data-label="White" class="num"><div>3.46 (3.27–3.65)</div></td><td data-label="Black" class="num"><div>2.18 (1.90–2.49)</div></td><td data-label="Hispanic" class="num"><div>1.90 (1.65–2.18)</div></td></tr><tr><td data-label="Genotype"><div>ε2/ε4</div></td><td data-label="White" class="num"><div>2.23 (1.90–2.62)</div></td><td data-label="Black" class="num"><div>1.63 (1.24–2.13)</div></td><td data-label="Hispanic" class="num"><div>1.11 (0.72–1.72)</div></td></tr><tr><td data-label="Genotype"><div>ε3/ε3</div></td><td data-label="White" class="num"><div>1 (reference)</div></td><td data-label="Black" class="num"><div>1 (reference)</div></td><td data-label="Hispanic" class="num"><div>1 (reference)</div></td></tr><tr><td data-label="Genotype"><div>ε2/ε3</div></td><td data-label="White" class="num"><div>0.53 (0.48–0.59)</div></td><td data-label="Black" class="num"><div>0.69 (0.56–0.84)</div></td><td data-label="Hispanic" class="num"><div>0.89 (0.71–1.10)</div></td></tr><tr><td data-label="Genotype"><div>ε2/ε2</div></td><td data-label="White" class="num"><div>0.39 (0.25–0.61)</div></td><td data-label="Black" class="num"><div>0.78 (0.38–1.58)</div></td><td data-label="Hispanic" class="num"><div>1.02 (0.41–2.51)</div></td></tr></tbody></table></div>
+          </noscript>
         </div>
-        <p class="src note"><a href="https://doi.org/10.1001/jamaneurol.2023.3599" target="_blank" rel="noopener">Belloy et al., <i>JAMA Neurology</i> 2023</a></p>
+        <details class="fp-how">
+          <summary>How this figure was made</summary>
+          <p>Redrawn from Table 1 of <a href="https://doi.org/10.1001/jamaneurol.2023.3599" target="_blank" rel="noopener">Belloy et al., <i>JAMA Neurology</i> 2023</a> (open access). Values were extracted from the published full text, not digitized from the figure, and checked against the numbers in the paper’s abstract (for example, ε3/ε4 in White participants: 3.46, 95% CI 3.27–3.65). Odds ratios compare each genotype with ε3/ε3 within the same group; lines show 95% confidence intervals. East Asian estimates for every genotype are in the paper’s supplement (eTable 6) and are not shown; for ε3/ε4 the odds ratio was 4.54 (3.99–5.17).</p>
+          <p><a href="data/belloy-2023-table1.csv" download>Download the data (CSV)</a>: 54 rows, by sex, genotype and group, with carrier counts.</p>
+        </details>
       </div>
+<script src="figs/belloy-2023.js"></script>
+<script src="figs/forest.js" defer></script>
     </section>
   </main>
   <footer>

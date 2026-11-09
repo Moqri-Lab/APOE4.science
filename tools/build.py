@@ -72,6 +72,46 @@ dl.glossary dt{font-family:var(--body);text-transform:none;letter-spacing:0;font
   table.data td::before{content:attr(data-label);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 }
 .bar-row{display:flex;align-items:center;gap:10px;min-width:160px}
+.fp{position:relative;margin-top:18px;--fp-1:#2a78d6;--fp-2:#eb6834;--fp-3:#1baf7a}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .fp{--fp-1:#3987e5;--fp-2:#d95926;--fp-3:#199e70}}
+:root[data-theme="dark"] .fp{--fp-1:#3987e5;--fp-2:#d95926;--fp-3:#199e70}
+.fp-controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:12px}
+.fp-seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--surface)}
+.fp-seg button{font:inherit;font-size:14px;padding:6px 12px;border:0;background:none;color:var(--muted);cursor:pointer}
+.fp-seg button+button{border-left:1px solid var(--rule)}
+.fp-seg button[aria-pressed="true"]{color:var(--ink);background:var(--bg);font-weight:600}
+.fp-dl{font-size:14px}
+.fp-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:6px}
+.fp-key{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:14px;color:var(--ink);background:none;border:0;padding:4px 0;cursor:pointer}
+.fp-key[aria-pressed="false"]{color:var(--muted);text-decoration:line-through}
+.fp-key[aria-pressed="false"] svg{opacity:.3}
+.fp-figure{background:var(--surface);border:1px solid var(--rule)}
+.fp-figure svg{display:block;max-width:100%}
+.fp-band{fill:var(--bg);opacity:.6}
+.fp-grid{stroke:var(--rule);stroke-width:1}
+.fp-ref{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+.fp-tick,.fp-dir{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.fp-axis{font-size:12px;fill:var(--muted)}
+.fp-row{font-family:var(--mono);font-size:13px;fill:var(--ink)}
+.fp-row-key{font-weight:600}
+.fp-val{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+.fp-ci{stroke-width:2;stroke-linecap:round}
+.fp-c1{stroke:var(--fp-1);background:var(--fp-1)}.fp-c2{stroke:var(--fp-2);background:var(--fp-2)}.fp-c3{stroke:var(--fp-3);background:var(--fp-3)}
+.fp-m{stroke:var(--surface);stroke-width:2}
+.fp-s1{fill:var(--fp-1)}.fp-s2{fill:var(--fp-2)}.fp-s3{fill:var(--fp-3)}
+.fp-hit{fill:transparent}
+.fp-pt{cursor:pointer;outline:none}
+.fp-pt.is-on .fp-ci{stroke-width:3}
+.fp-pt:focus-visible .fp-m{stroke:var(--ink)}
+.fp-tip{position:absolute;z-index:2;pointer-events:none;background:var(--surface);border:1px solid var(--rule);box-shadow:0 4px 14px rgba(0,0,0,.12);padding:8px 10px;font-size:13px;line-height:1.4;white-space:nowrap}
+.fp-tip strong{display:block;font-family:var(--mono);font-size:14px;color:var(--ink)}
+.fp-tip span{color:var(--muted);display:flex;align-items:center;gap:6px}
+.fp-tk{display:inline-block;width:12px;height:2px}
+.fp-table td.num{font-family:var(--mono);font-size:13px;white-space:nowrap}
+.fp-how{margin-top:12px;font-size:14.5px;color:var(--muted);max-width:80ch}
+.fp-how summary{cursor:pointer;color:var(--ink)}
+.fp-how p{margin-top:8px}
+.fp [hidden]{display:none!important}
 .bar{display:block;height:10px;background:var(--e4);min-width:4px}
 .num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
 span.asof{font-family:var(--mono);font-size:13px;color:var(--muted)}
@@ -251,6 +291,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; the home page shows the latest six
+    ("Nov 2026", 'First interactive figure: <a href="gene.html#fig-belloy">risk by APOE genotype and ancestry</a>, redrawn from the source data of Belloy et al. 2023, with women/men views and a downloadable CSV.'),
     ("Nov 2026", 'New: <a href="trials.html#trial-alzevit">ALZEVIT</a>, a 50,000-person APOE study in France; two 2026 papers on how ε4 damages brain blood vessels in <a href="papers.html">Papers</a>; APOLLOE4 status updated.'),
     ("Nov 2026", 'Sister site <a href="https://alzprevent.org">alzprevent.org</a> launched, on preventing Alzheimer’s for everyone.'),
     ("Nov 2026", 'Trials checked again: TRAILBLAZER-ALZ 3 added, HT-4253 now recruiting, lecanemab ARIA rates by genotype (45% in ε4/ε4).'),
@@ -340,6 +381,49 @@ pages["start.html"] = head("Start here", "If you have just learned you are ε4/�
 """ + DISCLAIMER + """
     </section>"""
 
+# ---------- Interactive figures ----------
+import csv as _csv, json as _json, shutil as _shutil
+
+def forest_figure():
+    """Belloy et al. 2023, Table 1: odds of Alzheimer's by APOE genotype, group and sex."""
+    src = OUT / "data" / "belloy-2023-table1.csv"
+    rows = []
+    for r in _csv.DictReader(src.open()):
+        ref = r["ci_low"] == ""
+        rows.append(dict(sex=r["sex"], genotype=r["genotype"], group=r["group"], carriers=int(r["carriers"]),
+                         **({"or": 1.0, "lo": 1.0, "hi": 1.0} if ref else
+                            {"or": float(r["odds_ratio"]), "lo": float(r["ci_low"]), "hi": float(r["ci_high"])})))
+    cfg = dict(id="fig-belloy", csv="data/belloy-2023-table1.csv",
+               title="Odds of Alzheimer’s by APOE genotype, compared with ε3/ε3",
+               summary="Risk rises stepwise with each ε4 copy in every group, steepest in White participants (ε4/ε4 odds ratio 13.04) and smallest in Hispanic participants (3.62).",
+               genotypes=["ε4/ε4", "ε3/ε4", "ε2/ε4", "ε3/ε3", "ε2/ε3", "ε2/ε2"], reference="ε3/ε3",
+               groups=["White", "Black", "Hispanic"], domain=[0.015, 25],
+               ticks=[0.02, 0.05, 0.1, 0.25, 0.5, 1, 2, 4, 8, 16], ticksNarrow=[0.05, 0.25, 1, 4, 16], rows=rows)
+    (OUT / "figs").mkdir(exist_ok=True)
+    (OUT / "figs" / "belloy-2023.js").write_text("window.FOREST = " + _json.dumps(cfg, ensure_ascii=False) + ";\n")
+    _shutil.copy(HERE / "figs" / "forest.js", OUT / "figs" / "forest.js")
+    by = {(r["genotype"], r["group"]): r for r in rows if r["sex"] == "All"}
+    cell = lambda gt, g: "1 (reference)" if gt == "ε3/ε3" else f'{by[(gt, g)]["or"]:.2f} ({by[(gt, g)]["lo"]:.2f}–{by[(gt, g)]["hi"]:.2f})'
+    fallback = "".join(f'<tr><td data-label="Genotype">{gt}</td>' + "".join(f'<td data-label="{g}" class="num">{cell(gt, g)}</td>' for g in cfg["groups"]) + "</tr>" for gt in cfg["genotypes"])
+    return f"""      <div class="group" style="margin-top:40px">
+        <h2>Risk by genotype and ancestry</h2>
+        <p class="note" style="margin-top:0">{cfg["title"]}, in White, Black and Hispanic participants (68,756 people in total, including East Asian cohorts). Each ε4 copy raises risk in every group, but by different amounts. Hover or tab to a point for exact values; switch to women or men, or to the table.</p>
+        <div class="fp" id="fig-belloy">
+          <noscript>
+          <div class="alleles" role="region" aria-label="{cfg["title"]}" tabindex="0"><table class="data"><thead><tr><th>Genotype</th>{"".join(f"<th>{g}</th>" for g in cfg["groups"])}</tr></thead><tbody>{fallback}</tbody></table></div>
+          </noscript>
+        </div>
+        <details class="fp-how">
+          <summary>How this figure was made</summary>
+          <p>Redrawn from Table 1 of <a href="https://doi.org/10.1001/jamaneurol.2023.3599">Belloy et al., <i>JAMA Neurology</i> 2023</a> (open access). Values were extracted from the published full text, not digitized from the figure, and checked against the numbers in the paper’s abstract (for example, ε3/ε4 in White participants: 3.46, 95% CI 3.27–3.65). Odds ratios compare each genotype with ε3/ε3 within the same group; lines show 95% confidence intervals. East Asian estimates for every genotype are in the paper’s supplement (eTable 6) and are not shown; for ε3/ε4 the odds ratio was 4.54 (3.99–5.17).</p>
+          <p><a href="data/belloy-2023-table1.csv" download>Download the data (CSV)</a>: 54 rows, by sex, genotype and group, with carrier counts.</p>
+        </details>
+      </div>
+<script src="figs/belloy-2023.js"></script>
+<script src="figs/forest.js" defer></script>"""
+
+FOREST_HTML = forest_figure()
+
 # ---------- Gene ----------
 pages["gene.html"] = head("The gene", "One letter apart",
     "Apolipoprotein E carries cholesterol and other lipids in the brain and blood. Everyone inherits two copies, one from each parent.") + """
@@ -393,22 +477,7 @@ pages["gene.html"] = head("The gene", "One letter apart",
           <p class="src"><a href="https://doi.org/10.1038/mp.2011.52">Genin et al., <i>Molecular Psychiatry</i> 2011</a></p>
         </article>
       </div>
-      <div class="group" style="margin-top:40px">
-        <h2>Risk differs by ancestry</h2>
-        <p class="note" style="margin-top:0">Odds of Alzheimer’s with one ε4 copy (ε3/ε4) compared with ε3/ε3, by population ancestry. The study reported a similar stepwise pattern across ancestries for ε4/ε4.</p>
-        <div class="alleles" role="region" aria-label="APOE ε3/ε4 odds ratios by ancestry" tabindex="0">
-          <table class="data">
-            <thead><tr><th>Ancestry</th><th>Odds ratio</th><th>95% CI</th></tr></thead>
-            <tbody>
-            <tr><td data-label="Ancestry">East Asian</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:91%"></span><span class="num">4.54</span></span></td><td data-label="95% CI" class="asof">3.99–5.17</td></tr>
-            <tr><td data-label="Ancestry">White</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:69%"></span><span class="num">3.46</span></span></td><td data-label="95% CI" class="asof">3.27–3.65</td></tr>
-            <tr><td data-label="Ancestry">Black</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:44%"></span><span class="num">2.18</span></span></td><td data-label="95% CI" class="asof">1.90–2.49</td></tr>
-            <tr><td data-label="Ancestry">Hispanic</td><td data-label="Odds ratio"><span class="bar-row"><span class="bar" style="width:38%"></span><span class="num">1.90</span></span></td><td data-label="95% CI" class="asof">1.65–2.18</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="src note"><a href="https://doi.org/10.1001/jamaneurol.2023.3599">Belloy et al., <i>JAMA Neurology</i> 2023</a></p>
-      </div>
+""" + FOREST_HTML + """
     </section>"""
 
 # ---------- Resources ----------
