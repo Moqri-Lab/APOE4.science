@@ -266,19 +266,18 @@ UPDATES = [  # newest first; keep to about five
     ("Oct 2026", 'Site launched.'),
 ]
 cards = [
+    ("start.html", "Start here", "Just learned you are ε4/ε4? What it means, what it does not, and practical next steps."),
     ("gene.html", "Gene and evidence", "Three forms of APOE, one amino acid apart, and what two copies of ε4 do to timing, amyloid and blood vessels."),
     ("drugs.html", "Drugs", "Approved and investigational treatments, and what they mean for ε4/ε4."),
     ("trials.html", "Trials and studies", "Drug trials and observational studies in ε4/ε4 carriers, and trials that report results by genotype."),
     ("resources.html", "Resources", "Cohorts and repositories with ε4/ε4 data, and how to access them."),
-    ("papers.html", "Key papers", "The studies that define what we know, grouped by topic."),
-    ("https://alzprevent.org", "Prevention ↗", "Sister site alzprevent.org: risk factors, what works, and prevention trials for everyone."),
+    ("https://alzprevent.org", "Prevention ↗", "Sister site alzprevent.org: for everyone, with risk factors, what works and prevention trials."),
 ]
 pages["index.html"] = f"""    <div class="hero">
       <div>
         <p class="label">A community resource</p>
         <h1 style="margin-top:14px">Two copies of APOE4: <em>about 15×</em> the risk of Alzheimer’s.</h1>
         <p class="lede">About 15 times the odds of Alzheimer’s compared with ε3/ε3, in people of European ancestry (<a href="https://doi.org/10.1001/jama.1997.03550160069041">Farrer, <i>JAMA</i> 1997</a>). Average age at first symptoms is 65 (<a href="https://doi.org/10.1038/s41591-024-02931-w">Fortea, <i>Nature Medicine</i> 2024</a>). Evidence, data, papers, trials and drugs on ε4/ε4, in one place.</p>
-        <p class="note">Just learned you are ε4/ε4? <a href="start.html">Start here</a>.</p>
       </div>
       <div class="geno" aria-label="Genotype epsilon 4 slash epsilon 4">ε4/ε4<small><a href="https://www.eurekalert.org/news-releases/1043340">About 2–3% of people</a></small></div>
     </div>
