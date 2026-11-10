@@ -291,6 +291,7 @@ pages = {}
 
 # ---------- Home ----------
 UPDATES = [  # newest first; the home page shows the latest six
+    ("Nov 2026", '<a href="trials.html#trial-orion-e4">ORION-E4</a> added: a second Phase 3 trial of oral valiltramiprosate, in about 550 ε4/ε4 adults with mild cognitive impairment.'),
     ("Nov 2026", 'First interactive figure: <a href="gene.html#fig-belloy">risk by APOE genotype and ancestry</a>, redrawn from the source data of Belloy et al. 2023, with women/men views and a downloadable CSV.'),
     ("Nov 2026", 'New: <a href="trials.html#trial-alzevit">ALZEVIT</a>, a 50,000-person APOE study in France; two 2026 papers on how ε4 damages brain blood vessels in <a href="papers.html">Papers</a>; APOLLOE4 status updated.'),
     ("Nov 2026", 'Sister site <a href="https://alzprevent.org">alzprevent.org</a> launched, on preventing Alzheimer’s for everyone.'),
@@ -760,8 +761,11 @@ def pill(kind, text):
     return f'<span class="pill {kind}">{text}</span>'
 
 trials = [
+    ("ORION-E4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "ε4/ε4 with mild cognitive impairment (Phase 3)",
+     pill("run", "Launched") + " Announced November 2026 to confirm the benefit seen in the MCI subgroup of APOLLOE4: 265 mg twice daily or placebo for 78 weeks, at about 150 sites in about 12 countries. Not yet listed on ClinicalTrials.gov.",
+     "https://www.biospace.com/press-releases/alzheon-highlights-orion-e4-phase-3-trial-launch-for-oral-valiltramiprosate-alz-801-and-expansion-of-its-oral-anti-amyloid-aggregation-inhibitor-portfolio-at-ctad-2026-conference-in-boston-november-16-19"),
     ("APOLLOE4", "Valiltramiprosate (ALZ-801), oral (Alzheon)", "ε4/ε4 with early Alzheimer’s (Phase 3)",
-     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. Trial completed; Alzheon says it plans a further Phase 3 study. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
+     pill("stop", "Missed primary endpoint") + " Prespecified MCI subgroup favored drug (nominal p-values). ARIA-E about 3% in both arms. In July 2026 the company reported a 53% net reduction in plasma p-tau217 versus placebo in the MCI subgroup. Trial completed; the confirmatory Phase 3, ORION-E4, launched in November 2026. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Topline results\" aria-label=\"Source: Topline results\">↗</a>",
      "https://clinicaltrials.gov/study/NCT04770220"),
     ("Generation Study 1", "Umibecestat (BACE inhibitor) or CAD106 (amyloid vaccine); Novartis and Amgen", "Cognitively unimpaired ε4/ε4, aged 60–75",
      pill("stop", "Stopped 2019") + " Umibecestat arms stopped for mild cognitive worsening, brain volume loss and weight loss; CAD106 arm also halted. In a later analysis, CAD106 produced antibodies in 41 of 42 participants and slowed amyloid build-up versus placebo, with three ARIA cases.",
@@ -793,9 +797,9 @@ trials = [
     ("Harvard Alzheimer’s Risk Study", "None; one extra 10 mL blood sample", "Adults 60+ with known APOE genotype enrolled in the Mass General Brigham APOE Study",
      pill("recruit", "Open") + " Measures blood phosphorylated tau by APOE genotype to clarify when Alzheimer’s changes begin.", "https://rally.massgeneralbrigham.org/study/FTeDisxU8VR"),
 ]
-TRIAL_ASOF = {'APOLLOE4': 'Sep 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': 'Dec 2025', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'TRAILBLAZER-ALZ 3': 'Jan 2026', 'HT-4253': 'Oct 2026', 'ALZEVIT': 'Nov 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
+TRIAL_ASOF = {'ORION-E4': 'Nov 2026', 'APOLLOE4': 'Sep 2026', 'Generation Study 1': 'Dec 2019', 'Generation Study 2': '2019', 'LX1001': 'Jan 2026', 'Clarity AD': 'Dec 2025', 'TRAILBLAZER-ALZ 2': '2023', 'TRAILBLAZER-ALZ 6': '2025', 'A4 Study': '2023', 'AHEAD 3-45': 'Jun 2026', 'TRAILBLAZER-ALZ 3': 'Jan 2026', 'HT-4253': 'Oct 2026', 'ALZEVIT': 'Nov 2026', 'Mass General Brigham APOE Study': 'Oct 2026', 'Harvard Alzheimer’s Risk Study': 'Oct 2026'}
 TRIAL_GROUPS = [  # ordered: ongoing first, then most recent results first
-    ("Drug trials run only in ε4 carriers", ["HT-4253", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
+    ("Drug trials run only in ε4 carriers", ["HT-4253", "ORION-E4", "APOLLOE4", "LX1001", "Generation Study 1", "Generation Study 2"]),
     ("Observational studies in people with known APOE genotype", ["ALZEVIT", "Harvard Alzheimer’s Risk Study", "Mass General Brigham APOE Study"]),
     ("Major trials that report results by genotype", ["TRAILBLAZER-ALZ 3", "AHEAD 3-45", "TRAILBLAZER-ALZ 6", "TRAILBLAZER-ALZ 2", "Clarity AD", "A4 Study"]),
 ]
@@ -803,6 +807,7 @@ TRIAL_BY_NAME = {t[0]: t for t in trials}
 
 # Total participants, shown the same way for every study: "N randomized", "N enrolled" or "N planned".
 TRIAL_N = {
+    "ORION-E4": "About 550 planned",
     "APOLLOE4": "325 randomized",
     "LX1001": "15 enrolled",
     "Generation Study 1": "478 randomized",
@@ -821,6 +826,7 @@ TRIAL_N = {
 
 # Number of ε4/ε4 participants, shown in its own column for every study.
 TRIAL_E44 = {
+    "ORION-E4": "All (about 550 planned)",
     "APOLLOE4": "All 325",
     "LX1001": "All 15",
     "Generation Study 1": "All 478",
@@ -853,7 +859,7 @@ DRUG_TO_TRIAL = {"Lecanemab (Leqembi)": "Clarity AD", "Donanemab (Kisunla)": "TR
                  "Umibecestat (CNP520)": "Generation Study 1", "CAD106": "Generation Study 1"}
 TRIAL_TO_DRUG = {"Clarity AD": "Lecanemab (Leqembi)", "AHEAD 3-45": "Lecanemab (Leqembi)",
                  "TRAILBLAZER-ALZ 2": "Donanemab (Kisunla)", "TRAILBLAZER-ALZ 3": "Donanemab (Kisunla)",
-                 "TRAILBLAZER-ALZ 6": "Donanemab (Kisunla)", "APOLLOE4": "Valiltramiprosate (ALZ-801)",
+                 "TRAILBLAZER-ALZ 6": "Donanemab (Kisunla)", "APOLLOE4": "Valiltramiprosate (ALZ-801)", "ORION-E4": "Valiltramiprosate (ALZ-801)",
                  "HT-4253": "HT-4253", "LX1001": "LX1001", "Generation Study 1": "Umibecestat (CNP520)",
                  "Generation Study 2": "Umibecestat (CNP520)"}
 
@@ -930,7 +936,7 @@ drugs = [
     ]),
     ("Investigational, aimed at ε4/ε4", [
         ("<a href=\"https://clinicaltrials.gov/study/NCT04770220\">Valiltramiprosate (ALZ-801)</a><span class=\"maker\">Alzheon</span>", "Oral; blocks formation of toxic amyloid oligomers",
-         "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
+         "Phase 3 APOLLOE4 in ε4/ε4 missed its primary endpoint; a prespecified MCI subgroup favored drug. Low ARIA. A confirmatory Phase 3 in ε4/ε4 with MCI, ORION-E4, launched in November 2026. <a class=\"cite\" href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12726020/\" title=\"Results\" aria-label=\"Source: Results\">↗</a>"),
         ("<a href=\"https://clinicaltrials.gov/study/NCT07399171\">HT-4253</a><span class=\"maker\">Halia Therapeutics</span>", "Oral LRRK2 inhibitor acting on the RAB10 pathway",
          "Phase 2a prevention trial in biomarker-positive ε4 carriers, <a href=\"https://clinicaltrials.gov/study/NCT07399171\">now recruiting</a> in Abu Dhabi, UAE."),
         ("<a href=\"https://clinicaltrials.gov/study/NCT03634007\">LX1001</a><span class=\"maker\">Lexeo Therapeutics</span>", "Gene therapy that adds the protective APOE2 form",
@@ -1092,7 +1098,7 @@ ENTITY_LINKS = [  # term (matched case-insensitively, whole word), internal targ
     ("Generation Study 1", "trials.html#trial-generation-study-1"), ("Generation Study 2", "trials.html#trial-generation-study-2"),
     ("TRAILBLAZER-ALZ 2", "trials.html#trial-trailblazer-alz-2"), ("TRAILBLAZER-ALZ 3", "trials.html#trial-trailblazer-alz-3"),
     ("TRAILBLAZER-ALZ 6", "trials.html#trial-trailblazer-alz-6"), ("AHEAD 3-45", "trials.html#trial-ahead-3-45"),
-    ("Clarity AD", "trials.html#trial-clarity-ad"), ("APOLLOE4", "trials.html#trial-apolloe4"), ("ALZEVIT", "trials.html#trial-alzevit"), ("A4 Study", "trials.html#trial-a4-study"),
+    ("Clarity AD", "trials.html#trial-clarity-ad"), ("ORION-E4", "trials.html#trial-orion-e4"), ("APOLLOE4", "trials.html#trial-apolloe4"), ("ALZEVIT", "trials.html#trial-alzevit"), ("A4 Study", "trials.html#trial-a4-study"),
     ("LX1001", "trials.html#trial-lx1001"), ("HT-4253", "trials.html#trial-ht-4253"),
     ("lecanemab", "drugs.html#drug-lecanemab"), ("donanemab", "drugs.html#drug-donanemab"),
     ("valiltramiprosate", "drugs.html#drug-valiltramiprosate"), ("aducanumab", "drugs.html#drug-aducanumab"),
